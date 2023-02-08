@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import React, { useContext } from 'react';
+import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
+import { AuthContext } from './context/AuthContext';
 
 function App() {
+  const { isAuthenticated } = useContext(AuthContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/login">Inloggen</Link></li>
+            <li><Link to="/profile">Profiel</Link></li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/profile">
+            {isAuthenticated ? <Profile /> : <Redirect to="/" />}
+          </Route>
+        </Switch>
+      </>
   );
 }
 
