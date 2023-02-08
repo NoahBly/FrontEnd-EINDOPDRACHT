@@ -12,6 +12,12 @@ function AuthContextProvider({ children }) {
         status: 'pending',
     });
 
+    const [profileposts, setProfileposts] = useState({});
+
+    const [searchresultprofiles, setSearchresultprofiles] = useState({});
+
+    const [visitedprofileposts, setVisitedprofileposts] = useState({});
+
     useEffect(() => {
         console.log('De context is zojuist opnieuw opgestart!');
         // is er een token?
@@ -92,12 +98,37 @@ function AuthContextProvider({ children }) {
         history.push('/');
     }
 
+    function arrangeprofileposts(posts) {
+
+        console.log(posts);
+       setProfileposts(posts);
+
+    }
+
+    function arrangeprofilesearchresults(profiles) {
+        setSearchresultprofiles(profiles);
+    }
+
+    function arrangevisitedprofileposts(posts) {
+        setVisitedprofileposts(posts);
+    }
+
+
+
+
     const contextData = {
         banaan: 'geel', // ---> onveranderlijke "statische" data
         isAuthenticated: auth.isAuth, // ---> veranderlijke "dynamische" state data
         userDetails: auth.user, // ---> veranderlijke "dynamische" state data
         loginFunction: login, // ---> functies om data te kunnen aanpassen
         logoutFunction: logout, // ---> functies om data te kunnen aanpassen
+        setProfilepostsfunction: arrangeprofileposts,
+        postsofprofile: profileposts,
+        profilesearchresults: searchresultprofiles,
+        setProfilesearchresults: arrangeprofilesearchresults,
+        postsofvisitedprofile: visitedprofileposts,
+        setVisitedprofilepostsfunction: arrangevisitedprofileposts,
+
     };
 
     return (

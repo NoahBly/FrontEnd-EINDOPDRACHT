@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Pokemon.css';
+import {useContext} from "@types/react";
+import {AuthContext} from "../context/AuthContext";
+import {Link} from "react-router-dom";
 
-function Profile({ endpoint }) {
+function Profile({ userid }) {
     const [profile, setProfile] = useState({});
+    const { postsofprofile, setProfilespostfunction } = useContext(AuthContext);
 
     useEffect(() => {
-        console.log(endpoint);
+        console.log(userid);
 
         async function fetchData() {
             try {
-                const { data } = await axios.get(endpoint);
-                setProfile(data);
+                const { response } = await axios.get('http://localhost:3000/{userid}');
+                setProfile(response.data);
+                setProfilespostfunction(response.data.posts);
             } catch (e) {
                 console.error(e);
             }
         }
 
-        if (endpoint) {
+        if (userid) {
             fetchData();
         }
-    }, [endpoint]);
+    }, []);
 
 
     return (
@@ -40,6 +45,9 @@ function Profile({ endpoint }) {
                         {profile.posts.map((post) => {
                             return (
                                 <li key={`${post.id}-${post.name}`}>
+                                    <Link to={`/profile/post/${post.id}`}>
+                                        {post.title}
+                                    </Link>
                                     {post.name}
                                     {post.imagevideo}
                                 </li>
