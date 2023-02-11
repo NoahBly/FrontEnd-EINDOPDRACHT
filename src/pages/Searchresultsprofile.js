@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Pokemon.css';
-import {useContext} from "@types/react";
+import React, { useContext } from 'react';
 import {AuthContext} from "../context/AuthContext";
 import {Link, useParams} from "react-router-dom";
 
 function Searchresultsprofile() {
-    const { profile2Id } = useParams();
+    const {profile2Id} = useParams();
     const {profilesearchresults} = useContext(AuthContext);
     const {setVisitedprofilepostsfunction} = useContext(AuthContext);
 
-    const currentprofile = profilesearchresults.find((profile) => {
-        return profile.id === profile2Id;
-    });
-    setVisitedprofilepostsfunction(currentprofile.posts);
+    const currentprofile = {};
+    if (profilesearchresults.length >= 0) {
+        const currentprofile = profilesearchresults.find((profile) => {
+            return profile.id === profile2Id;
+        });
+        setVisitedprofilepostsfunction(currentprofile.posts);
+    }
 
     return (
         <section className="poke-card">
@@ -47,4 +47,4 @@ function Searchresultsprofile() {
     );
 }
 
-export default Profile;
+export default Searchresultsprofile;

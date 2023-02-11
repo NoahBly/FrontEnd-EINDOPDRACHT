@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
-import './Pokemon.css';
-import {useContext} from "@types/react";
 import {AuthContext} from "../context/AuthContext";
 import {Link} from "react-router-dom";
 

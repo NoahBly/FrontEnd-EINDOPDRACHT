@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useContext} from "@types/react";
 import {AuthContext} from "../AuthContext";
 
 function Menu() {

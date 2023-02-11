@@ -1,8 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState,useEffect} from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
-import {useEffect} from "@types/react";
 import {Link} from "react-router-dom";
 
 function Searchresults({data}) {
