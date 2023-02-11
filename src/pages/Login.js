@@ -13,7 +13,7 @@ function Login() {
         // Verstuur de inloggegevens via een post-request naar de backend
         try {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-            const response = await axios.post('http://localhost:3000/login', {
+            const response = await axios.post('http://localhost:8083/authenticate', {
                 username: data.username,
                 password: data.password,
             });

@@ -13,7 +13,7 @@ function Login() {
         // Verstuur de inloggegevens via een post-request naar de backend
         try {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-            const response = await axios.post('http://localhost:8083/user', {
+            const response = await axios.post('http://localhost:8083/users/normal', {
                 username: data.username,
                 password: data.password,
                 email: data.email,
@@ -32,7 +32,7 @@ function Login() {
 
     return (
         <div>
-            <h1>Login pagina</h1>
+            <h1>Create User account</h1>
             {isAuthenticated === false &&
                 <form onSubmit={handleSubmit(clickHandler)}>
                     <label htmlFor="username-field">Username:</label>
@@ -45,7 +45,7 @@ function Login() {
                     />
                     {errors.username && <p>{errors.username.message}</p>}
 
-                    <label htmlFor="email-field">Password:</label>
+                    <label htmlFor="email-field">Email:</label>
                     <input
                         type="text"
                         id="email-field"
@@ -66,7 +66,7 @@ function Login() {
                     />
                     {errors.password && <p>{errors.password.message}</p>}
 
-                    <label htmlFor="profilename-field">Password:</label>
+                    <label htmlFor="profilename-field">Profilename:</label>
                     <input
                         type="text"
                         id="profilename-field"
