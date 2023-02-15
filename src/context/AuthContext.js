@@ -11,7 +11,7 @@ function AuthContextProvider({ children }) {
         user: null,
         status: 'pending',
     });
-
+    const history = useHistory();
     const [profileposts, setProfileposts] = useState({});
 
     const [searchresultprofiles, setSearchresultprofiles] = useState({});
@@ -29,7 +29,7 @@ function AuthContextProvider({ children }) {
            //  zo JA: wat is de ID van deze ingelogde gebruiker? Hiervoor decoden we de token
             const decodedToken = jwtDecode(token);
            //  We geven de ID en de token mee aan de fetchUserData functie
-            fetchUserData(decodedToken.claims.userId, token);
+            fetchUserData(decodedToken.userId, token);
         } else {
             // Zo nee: doe niks, laat de state leeg!
             setAuth({
@@ -42,7 +42,7 @@ function AuthContextProvider({ children }) {
     // Deze functie staat hier netjes te wachten tot hij aangeroepen wordt (door useEffect OF login)
     async function fetchUserData(id, token) {
         try {
-            const response = await axios.get(`http://localhost:3000/600/users/${id}`, {
+            const response = await axios.get(`http://localhost:8083/users/id/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
@@ -51,24 +51,27 @@ function AuthContextProvider({ children }) {
             // De gebruikersgegevens staan op response.data
             console.log(response.data);
 
+
             // We gebruiken alle info en zetten die in de context en de status op DONE
             setAuth({
                 ...auth,
                 isAuth: true,
                 status: 'done',
                 user: {
-                    email: response.data.email,
                     id: response.data.id,
                     // allemaal andere informatie van de gebruiker in de state zetten!
                 },
             })
+
+                history.push('/profile');
+
         } catch (e) {
             console.error(e);
             // als het request mis ging, willen we uiteindelijk de status ook op DONE zetten. Doe je dat zelf nog even?
         }
     }
 
-    const history = useHistory();
+
 
     function login(token) {
         console.log(token);
@@ -79,11 +82,11 @@ function AuthContextProvider({ children }) {
        console.log('decoded token:', decodedToken);
 
         // ----  Indien nodig (als backend dit niet meestuurde) nieuwe data opvragen van gebruiker:
-        fetchUserData(decodedToken.claims.userId, token);
+        fetchUserData(decodedToken.userId, token);
         // de fetchUserData functie zorgt ervoor dat de juiste gegevens in de Context terecht komen
 
         console.log('Gebruiker is ingelogd!');
-        history.push('/profile');
+
     }
 
     function logout() {

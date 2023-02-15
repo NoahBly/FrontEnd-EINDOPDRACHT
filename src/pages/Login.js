@@ -21,7 +21,7 @@ function Login() {
             console.log('object uit de backend teruggekregen na inloggen', response);
 
             // We geven de token mee aan de context-functie, zodat de context de rest voor ons afhandeld!
-            loginFunction(response.data.accessToken);
+            loginFunction(response.data.jwt);
         } catch (e) {
             console.error(e);
         }
