@@ -3,7 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
-function Login() {
+function Createnormaluserpage() {
     const { isAuthenticated, loginFunction } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
@@ -86,4 +86,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Createnormaluserpage;

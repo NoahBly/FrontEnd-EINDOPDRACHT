@@ -18,6 +18,8 @@ function AuthContextProvider({ children }) {
 
     const [visitedprofileposts, setVisitedprofileposts] = useState({});
 
+    const [profileid, setProfileid] = useState();
+
     useEffect(() => {
         console.log('De context is zojuist opnieuw opgestart!');
         // is er een token?
@@ -116,7 +118,9 @@ function AuthContextProvider({ children }) {
         setVisitedprofileposts(posts);
     }
 
-
+    function arrangeprofileid(profileid) {
+        setProfileid(profileid);
+    }
 
 
     const contextData = {
@@ -131,6 +135,8 @@ function AuthContextProvider({ children }) {
         setProfilesearchresults: arrangeprofilesearchresults,
         postsofvisitedprofile: visitedprofileposts,
         setVisitedprofilepostsfunction: arrangevisitedprofileposts,
+        setProfileidfunction: arrangeprofileid,
+        profileidcurrent: profileid,
 
     };
 

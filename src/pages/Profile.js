@@ -7,6 +7,7 @@ function Profile() {
     const [profile, setProfile] = useState({});
     const {setProfilepostsfunction} = useContext(AuthContext);
     const {userDetails} = useContext(AuthContext);
+    const {setProfileid} = useContext(AuthContext);
 
     useEffect(() => {
         console.log(userDetails.id);
@@ -18,6 +19,7 @@ function Profile() {
                 console.log(data);
                 setProfile(data);
                 setProfilepostsfunction(data.posts);
+                setProfileid(data.id);
             } catch (e) {
                 console.error(e);
             }

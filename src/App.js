@@ -12,6 +12,7 @@ import { AuthContext } from './context/AuthContext';
 import Searchresultsprofile from "./pages/Searchresultsprofile";
 import Visitedpost from "./pages/Visitedpost";
 import Createnormaluserpage from "./pages/Createnormaluserpage";
+import Createpost from "./pages/Createpost";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -40,6 +41,9 @@ function App() {
           </Route>
             <Route path="/profile/post/:postId">
                 {isAuthenticated ? <Post /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/profile/post/create">
+                {isAuthenticated ? <Createpost /> : <Redirect to="/" />}
             </Route>
             <Route path="/menu">
                 <Menu />
