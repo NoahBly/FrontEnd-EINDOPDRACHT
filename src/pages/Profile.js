@@ -42,8 +42,8 @@ function Profile() {
                     src={profile.profileimage}
                 />
                 <p><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>
-                <p><strong>Followerslist: </strong>{profile.friendlist && <p>{profile.followerslist.length}</p>}</p>
-                <p><strong>Followingslist: </strong>{profile.friendlist && <p>{profile.followinglist.length}</p>}</p>
+                <p><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
+                <p><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>
                 <p><strong>Bio: </strong>{profile.bioinformation}</p>
                 <p><strong>Posts: </strong></p>
                 {profile.posts &&
