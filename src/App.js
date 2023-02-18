@@ -39,12 +39,13 @@ function App() {
           <Route path="/profile">
             {isAuthenticated ? <Profile /> : <Redirect to="/" />}
           </Route>
-            <Route path="/profile/post/:postId">
-                {isAuthenticated ? <Post /> : <Redirect to="/" />}
-            </Route>
-            <Route path="/profile/post/create">
+            <Route path="/post/create">
                 {isAuthenticated ? <Createpost /> : <Redirect to="/" />}
             </Route>
+            <Route path="/post/:postId">
+                {isAuthenticated ? <Post /> : <Redirect to="/" />}
+            </Route>
+
             <Route path="/menu">
                 <Menu />
             </Route>

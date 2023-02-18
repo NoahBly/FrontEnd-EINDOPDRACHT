@@ -7,7 +7,7 @@ function Profile() {
     const [profile, setProfile] = useState({});
     const {setProfilepostsfunction} = useContext(AuthContext);
     const {userDetails} = useContext(AuthContext);
-    const {setProfileid} = useContext(AuthContext);
+    const {setProfileidfunction} = useContext(AuthContext);
 
     useEffect(() => {
         console.log(userDetails.id);
@@ -19,7 +19,7 @@ function Profile() {
                 console.log(data);
                 setProfile(data);
                 setProfilepostsfunction(data.posts);
-                setProfileid(data.id);
+                setProfileidfunction(data.id);
             } catch (e) {
                 console.error(e);
             }
@@ -45,6 +45,7 @@ function Profile() {
                 <p><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
                 <p><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>
                 <p><strong>Bio: </strong>{profile.bioinformation}</p>
+               <Link to={`/post/create`}> <p>create post!</p></Link>
                 <p><strong>Posts: </strong></p>
                 {profile.posts &&
                     <ul>
@@ -54,9 +55,9 @@ function Profile() {
                                     <Link to={`/profile/post/${post.id}`}>
                                         {post.title}
                                     </Link>
-                                    {post.name}
-                                    {post.imagevideo}
-                                </li>
+                                    <p>{post.name}</p>
+                                  <p>{post.imagevideo}</p>
+                        </li>
                             )
                         })}
                     </ul>
