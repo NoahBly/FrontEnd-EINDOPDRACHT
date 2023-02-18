@@ -52,11 +52,14 @@ function Profile() {
                         {profile.posts.map((post) => {
                             return (
                                 <li key={`${post.id}-${post.name}`}>
-                                    <Link to={`/profile/post/${post.id}`}>
-                                        {post.title}
+                                    <Link to={`/post/${post.id}`}>
+                                       <p> {post.name} </p>
                                     </Link>
                                     <p>{post.name}</p>
-                                  <p>{post.imagevideo}</p>
+                                  <img
+                                    alt="Afbeelding post"
+                                    src={post.imagevideo}
+                                />
                         </li>
                             )
                         })}

@@ -7,32 +7,47 @@ function Post() {
 
     const {postsofprofile} = useContext(AuthContext);
 
+    console.log(postsofprofile);
+    console.log(postId);
+
+
+
 
     const currentPost = postsofprofile.find((post) => {
-        return post.id === postId;
+        return post.id === +postId;
     });
+    console.log(currentPost);
 
     return (
+        <section>
+        {currentPost &&
         <>
             <article>
                 <h1>{currentPost.name}</h1>
-                <h3>{currentPost.imagevideo}</h3>
+               <img
+                alt="Afbeelding post"
+                src={currentPost.imagevideo}
+               />
                 <p>voeg comment toe!</p>
                 <p><strong>Comments: </strong></p>
-                <ul>
-                    {currentPost.comments.map((comment) => {
-                        return (
-                            <li key={`${comment.id}-${comment.name}`}>
-                              <p> {comment.comment}</p>
-                            </li>
-                        )
-                    })}
-                </ul>
+                {currentPost.comments &&
+                    <ul>
+                        {currentPost.comments.map((comment) => {
+                            return (
+                                <li key={`${comment.id}-${comment.name}`}>
+                                    <p> {comment.comment}</p>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                }
             </article>
             <article>
                 <Link to="/">Terug naar Home</Link>
             </article>
-        </>
+            </>
+          }
+        </section>
     );
 }
 

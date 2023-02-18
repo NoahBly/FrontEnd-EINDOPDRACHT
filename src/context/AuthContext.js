@@ -12,11 +12,11 @@ function AuthContextProvider({ children }) {
         status: 'pending',
     });
     const history = useHistory();
-    const [profileposts, setProfileposts] = useState({});
+    const [profileposts, setProfileposts] = useState([]);
 
-    const [searchresultprofiles, setSearchresultprofiles] = useState({});
+    const [searchresultprofiles, setSearchresultprofiles] = useState([]);
 
-    const [visitedprofileposts, setVisitedprofileposts] = useState({});
+    const [visitedprofileposts, setVisitedprofileposts] = useState([]);
 
     const [profileid, setProfileid] = useState();
 
