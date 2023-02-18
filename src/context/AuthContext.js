@@ -20,6 +20,8 @@ function AuthContextProvider({ children }) {
 
     const [profileid, setProfileid] = useState();
 
+    const [postid, setPostid] = useState();
+
     useEffect(() => {
         console.log('De context is zojuist opnieuw opgestart!');
         // is er een token?
@@ -122,6 +124,9 @@ function AuthContextProvider({ children }) {
         setProfileid(profileid);
     }
 
+    function arrangepostid(postid) {
+        setPostid(postid);
+    }
 
     const contextData = {
         banaan: 'geel', // ---> onveranderlijke "statische" data
@@ -137,6 +142,8 @@ function AuthContextProvider({ children }) {
         setVisitedprofilepostsfunction: arrangevisitedprofileposts,
         setProfileidfunction: arrangeprofileid,
         profileidcurrent: profileid,
+        setPostidfunction: arrangepostid,
+        postidcurrent: postid,
 
     };
 

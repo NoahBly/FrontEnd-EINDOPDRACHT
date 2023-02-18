@@ -13,6 +13,7 @@ import Searchresultsprofile from "./pages/Searchresultsprofile";
 import Visitedpost from "./pages/Visitedpost";
 import Createnormaluserpage from "./pages/Createnormaluserpage";
 import Createpost from "./pages/Createpost";
+import Createcomment from "./pages/Createcomment";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -45,7 +46,9 @@ function App() {
             <Route path="/post/:postId">
                 {isAuthenticated ? <Post /> : <Redirect to="/" />}
             </Route>
-
+            <Route path="/comment/create">
+                {isAuthenticated ? <Createcomment /> : <Redirect to="/" />}
+            </Route>
             <Route path="/menu">
                 <Menu />
             </Route>
