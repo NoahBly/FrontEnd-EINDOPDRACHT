@@ -9,11 +9,11 @@ function Searchresults({data}) {
     const {setProfilesearchresults} = useContext(AuthContext);
 
     useEffect(() => {
-        async function fetchdata() {
+        async function fetchdata(data) {
             // Verstuur de inloggegevens via een post-request naar de backend
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get('http://localhost:3000/{data}');
+                const response = await axios.get(`http://localhost:8083/profiles/profile/${data}`);
                 // We krijgen een token terug:
                 console.log(response.data);
                 setResultprofiles(response.data);
@@ -24,7 +24,7 @@ function Searchresults({data}) {
             }
         }
 
-        fetchdata();
+        fetchdata(data);
 
     },[]);
 
