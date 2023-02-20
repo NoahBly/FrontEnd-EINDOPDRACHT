@@ -5,29 +5,29 @@ import { useForm } from 'react-hook-form';
 import {useHistory, useParams} from "react-router-dom";
 
 function Createpost() {
-    const {postId} = useParams();
+    const {post2Id} = useParams();
     const { isAuthenticated } = useContext(AuthContext);
-    const {profileidcurrent} = useContext(AuthContext);
-    const {postidcurrent} = useContext(AuthContext);
+    const {visitedprofileid} = useContext(AuthContext);
+    const {visitedpostidcurrent} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
     const history = useHistory();
 
-    const profileidcurrent2 = profileidcurrent;
-    const postidcurrent2 = postidcurrent;
+    const profileidvisited = visitedprofileid;
+    const postidcurrent2 = visitedpostidcurrent;
 
     async function clickHandler(data,profileidcurrent,postidcurrent) {
         // Verstuur de inloggegevens via een post-request naar de backend
 
         try {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-            const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`, {
+            const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidvisited}`, {
                 comment: data.comment,
             });
             // We krijgen een object terug en kijk dan naar waar de token zit:
             console.log('object uit de backend teruggekregen na posten', response);
-            history.push(`/post/${postidcurrent2}`);
+            history.push(`/searchresultsposts/profile/${postidcurrent2}`);
             // We geven de token mee aan de context-functie, zodat de context de rest voor ons afhandeld!
 
         } catch (e) {

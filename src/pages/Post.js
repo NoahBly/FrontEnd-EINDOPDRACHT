@@ -12,9 +12,15 @@ function Post() {
     console.log(postsofprofile);
     console.log(postId);
 
-    setPostidfunction(postId);
+
+
 
     useEffect(() => {
+
+        if(!postId.isEmpty ) {
+            const postid = postId;
+            setPostidfunction(postId);
+
 
         async function fetchData(postid) {
             try {
@@ -26,10 +32,10 @@ function Post() {
             }
         }
 
-        if (postId) {
-            fetchData(postId);
+        if (postid) {
+            fetchData(postid);
         }
-    }, []);
+    }}, []);
 
 
     // const currentPost = postsofprofile.find((post) => {

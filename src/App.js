@@ -14,6 +14,7 @@ import Visitedpost from "./pages/Visitedpost";
 import Createnormaluserpage from "./pages/Createnormaluserpage";
 import Createpost from "./pages/Createpost";
 import Createcomment from "./pages/Createcomment";
+import Createcommentvisitedprofile from "./pages/Createcommentvisitedprofile";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -25,6 +26,7 @@ function App() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/login">Inloggen</Link></li>
             <li><Link to="/profile">Profiel</Link></li>
+              {isAuthenticated ?   <li><Link to="/search">Search</Link></li> : <Redirect to="/" />}
           </ul>
         </nav>
         <Switch>
@@ -58,12 +60,16 @@ function App() {
             <Route path="/searchresults">
                 <Searchresults />
             </Route>
-        <Route path="/searchresults/:profile2Id">
-            {isAuthenticated ? <Searchresultsprofile /> : <Redirect to="/" />}
+        <Route path="/searchresultsprofiles/:profile2Id">
+            {/*{isAuthenticated ? <Searchresultsprofile /> : <Redirect to="/" />}*/}
+            <Searchresultsprofile/>
         </Route>
-        <Route path="/searchresults/profile/:post2Id">
+        <Route path="/searchresultsposts/profile/:post2Id">
             {isAuthenticated ? <Visitedpost /> : <Redirect to="/" />}
         </Route>
+            <Route path="/commentvisitedprofile/create">
+                {isAuthenticated ? <Createcommentvisitedprofile /> : <Redirect to="/" />}
+            </Route>
 
         </Switch>
       </>

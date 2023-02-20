@@ -6,33 +6,38 @@ import axios from "axios";
 
 function Visitedpost() {
     const { post2Id } = useParams();
-    const {postvisitedid, setPostvisitedid} = useState();
-    const {visitedpost, setVisitedpost} = useState();
 
+    const [visitedpost, setVisitedpost] = useState();
+
+    const {visitedprofileid} = useContext(AuthContext);
+
+    const {visitedpostidcurrent, setVisitedpostidfunction} = useContext(AuthContext);
 
     useEffect(() => {
 
         console.log(post2Id);
+        console.log(visitedprofileid);
+
 
         if(!post2Id.isEmpty) {
-            setPostvisitedid(post2Id);
+            const postvisitedid = post2Id;
+            setVisitedpostidfunction(post2Id);
 
 
-
-        async function fetchData(postvisitedid) {
-            try {
-                const {data} = await axios.get(`http://localhost:8083/posts/post/${postvisitedid}`);
-                console.log(data);
-                setVisitedpost(data);
-            } catch (e) {
-                console.error(e);
+            async function fetchData(postvisitedid) {
+                try {
+                    const {data} = await axios.get(`http://localhost:8083/posts/post/${postvisitedid}`);
+                    console.log(data);
+                    setVisitedpost(data);
+                } catch (e) {
+                    console.error(e);
+                }
             }
-        }
 
-        if (postvisitedid) {
-            fetchData(postvisitedid);
-        }
-    }}, []);
+            if (postvisitedid) {
+                fetchData(postvisitedid);
+            }
+        } }, []);
 
 
 
@@ -46,10 +51,14 @@ function Visitedpost() {
             {visitedpost &&
             <article>
                 <h1>{visitedpost.name}</h1>
-                <h3>{visitedpost.imagevideo}</h3>
-                <p>voeg comment toe!</p>
-                <p><strong>Comments: </strong></p>
+                <img
+                    alt="Afbeelding post"
+                    src={visitedpost.imagevideo}
+                />
 
+                <Link to={`/commentvisitedprofile/create`}> <p>voeg comment toe!</p> </Link>
+
+                <p><strong>Comments: </strong></p>
                 {visitedpost.comments &&
                     <ul>
                         {visitedpost.comments.map((comment) => {
@@ -64,7 +73,7 @@ function Visitedpost() {
             </article>
             }
             <article>
-                <Link to="/">Terug naar Home</Link>
+                <Link to={`/searchresultsprofiles/${visitedprofileid}`}> Back to Visited Profile! </Link>
             </article>
         </>
     );

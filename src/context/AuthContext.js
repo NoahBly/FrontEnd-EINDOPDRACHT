@@ -22,6 +22,10 @@ function AuthContextProvider({ children }) {
 
     const [postid, setPostid] = useState();
 
+    const [visitedprofid, setVisitedprofid] = useState();
+
+    const [visitedpostid, setVisitedpostid] = useState();
+
     useEffect(() => {
         console.log('De context is zojuist opnieuw opgestart!');
         // is er een token?
@@ -128,6 +132,14 @@ function AuthContextProvider({ children }) {
         setPostid(postid);
     }
 
+    function arrangevisitedprofileid(profileid) {
+        setVisitedprofid(profileid);
+    }
+
+    function arrangevisitedpostid(postid) {
+        setVisitedpostid(postid);
+    }
+
     const contextData = {
         banaan: 'geel', // ---> onveranderlijke "statische" data
         isAuthenticated: auth.isAuth, // ---> veranderlijke "dynamische" state data
@@ -144,6 +156,10 @@ function AuthContextProvider({ children }) {
         profileidcurrent: profileid,
         setPostidfunction: arrangepostid,
         postidcurrent: postid,
+        setVisitedprofileidfunction: arrangevisitedprofileid,
+        visitedprofileid: visitedprofid,
+        visitedpostidcurrent: visitedpostid,
+        setVisitedpostidfunction: arrangevisitedpostid,
 
     };
 

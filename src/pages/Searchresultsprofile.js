@@ -7,32 +7,33 @@ function Searchresultsprofile() {
     const {profile2Id} = useParams();
     const {profilesearchresults} = useContext(AuthContext);
     const {setVisitedprofilepostsfunction} = useContext(AuthContext);
-    const {profilevisited, setProfilevisited} = useState();
+    const [profilevisited, setProfilevisited] = useState();
+    //const {profile2id, setprofile2id} = useState();
+    const {setVisitedprofileidfunction} = useContext(AuthContext);
 
     useEffect(() => {
         console.log(profile2Id);
 
 
-        if(!profile2Id.isEmpty() ) {
-            const profile2id2 = profile2Id;
+         if(!profile2Id.isEmpty) {
+             const profile2id = profile2Id;
+             setVisitedprofileidfunction(profile2Id);
 
+             async function fetchData() {
+                 try {
+                     const {data} = await axios.get(`http://localhost:8083/profiles/${profile2id}`);
+                     console.log(data);
+                     setProfilevisited(data);
+                     setVisitedprofilepostsfunction(data.posts);
+                     // setProfileidfunction(data.id);
+                 } catch (e) {
+                     console.error(e);
+                 }
+             }
 
-            async function fetchData(profile2id2) {
-                try {
-                    const {data} = await axios.get(`http://localhost:8083/profiles/user/${profile2id2}`);
-                    console.log(data);
-                    setProfilevisited(data);
-                    setVisitedprofilepostsfunction(data.posts);
-                    // setProfileidfunction(data.id);
-                } catch (e) {
-                    console.error(e);
-                }
-            }
+             fetchData();
 
-            if (profile2id2) {
-                fetchData(profile2id2);
-            }
-        }  }, []);
+         }}, []);
 
 
 
@@ -55,8 +56,8 @@ function Searchresultsprofile() {
                     {profilevisited.posts.map((post) => {
                         return (
                             <li key={`${post.id}-${post.name}`}>
-                                <Link to={`/searchresults/profile/${post.id}`}>
-                                    {post.title}
+                                <Link to={`/searchresultsposts/profile/${post.id}`}>
+                                    {post.name}
                                 </Link>
                                 {post.name}
                                 {post.imagevideo}

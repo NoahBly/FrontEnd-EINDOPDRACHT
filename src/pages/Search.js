@@ -3,34 +3,37 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import Searchresults from "./Searchresults";
+import {useHistory} from "react-router-dom";
 
 function Search() {
     const { isAuthenticated } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
+    const history = useHistory();
 
-
+    const {profilesearchresults, setProfilesearchresults} = useContext(AuthContext);
 
    function clickHandler(data){
-       Searchresults(data);
+      setProfilesearchresults(data.profilename);
+       history.push("/searchresults");
    }
 
 
     return (
         <div>
             <h1>Search</h1>
-            {isAuthenticated === false &&
+            {isAuthenticated === true &&
                 <form onSubmit={handleSubmit(clickHandler)}>
-                    <label htmlFor="username-field">Username:</label>
+                    <label htmlFor="profilename-field">profilename:</label>
                     <input
                         type="text"
-                        id="username-field"
-                        {...register("username", {
-                            required: "username is required",
+                        id="profilename-field"
+                        {...register("profilename", {
+                            required: "profilename is required",
                         })}
                     />
-                    {errors.username && <p>{errors.username.message}</p>}
+                    {errors.profilename && <p>{errors.profilename.message}</p>}
 
                     <button type="submit">
                         Verzenden
