@@ -15,6 +15,9 @@ import Createnormaluserpage from "./pages/Createnormaluserpage";
 import Createpost from "./pages/Createpost";
 import Createcomment from "./pages/Createcomment";
 import Createcommentvisitedprofile from "./pages/Createcommentvisitedprofile";
+import Createfriendrequest from "./pages/Createfriendrequest";
+import Getallfriendrequests from "./pages/Getallfriendrequests";
+import Acceptfriendrequest from "./pages/Acceptfriendrequest";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -69,6 +72,15 @@ function App() {
         </Route>
             <Route path="/commentvisitedprofile/create">
                 {isAuthenticated ? <Createcommentvisitedprofile /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/createfriendrequest/create">
+                {isAuthenticated ? <Createfriendrequest /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/friendrequests/profile">
+                {isAuthenticated ? <Getallfriendrequests /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/friendrequestaccept/:friendrequestId">
+                {isAuthenticated ? <Acceptfriendrequest /> : <Redirect to="/" />}
             </Route>
 
         </Switch>
