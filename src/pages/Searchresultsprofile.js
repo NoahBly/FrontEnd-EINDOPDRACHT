@@ -52,11 +52,11 @@ function Searchresultsprofile() {
                 <p><strong>Followingslist: </strong>{profilevisited.followingslist && <p>{profilevisited.followingslist.length}</p>}</p>
 
                 <Link to={`/createfriendrequest/create`}>
-                    Create Friendrequest!
+                  <p>  Create Friendrequest!</p>
                 </Link>
 
                 <Link to={`/createfollowrequest/create`}>
-                    Create Followrequest
+                   <p>Create Followrequest</p>
                 </Link>
 
                 <p><strong>Bio: </strong>{profilevisited.bioinformation}</p>

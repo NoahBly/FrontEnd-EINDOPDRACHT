@@ -33,6 +33,7 @@ function App() {
             <li><Link to="/login">Inloggen</Link></li>
             <li><Link to="/profile">Profiel</Link></li>
               {isAuthenticated ?   <li><Link to="/search">Search</Link></li> : <Redirect to="/" />}
+              {isAuthenticated ?   <li><Link to="/menu">Menu</Link></li> : <Redirect to="/" />}
           </ul>
         </nav>
         <Switch>

@@ -3,7 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 
-function Searchresults() {
+function Getallfollowrequests() {
 
     const [followrequests, setFollowrequests] = useState({});
     const {profileidcurrent} = useContext(AuthContext);
@@ -16,7 +16,7 @@ function Searchresults() {
             // Verstuur de inloggegevens via een post-request naar de backend
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083//followrequests/profile/${profileidcurrent}`);
+                const response = await axios.get(`http://localhost:8083/followrequests/profile/${profileidcurrent}`);
                 // We krijgen een token terug:
                 console.log(response.data);
                 setFollowrequests(response.data);
@@ -56,4 +56,4 @@ function Searchresults() {
     );
 }
 
-export default Searchresults;
+export default Getallfollowrequests;

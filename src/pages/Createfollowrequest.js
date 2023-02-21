@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
+
 
 function Createfollowrequest() {
 
@@ -10,7 +11,7 @@ function Createfollowrequest() {
     const {visitedprofileid} = useContext(AuthContext);
 
 
-
+    useEffect(() => {
     const profileidcurrent2 = profileidcurrent;
     const visitedprofileid2 = visitedprofileid;
 
@@ -31,11 +32,13 @@ function Createfollowrequest() {
 
     }
     clickHandler();
+    },[]);
+
 
     return (
         <div>
             <h1>Your Followrequest has been created!</h1>
-            <Link to={`/searchresultsprofiles/${visitedprofileid2}`}> <p>click here to return to the visited profile!</p></Link>
+            <Link to={`/searchresultsprofiles/${visitedprofileid}`}> <p>click here to return to the visited profile!</p></Link>
         </div>
     );
 }

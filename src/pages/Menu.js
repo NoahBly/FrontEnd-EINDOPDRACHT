@@ -29,12 +29,12 @@ function Menu() {
                             </NavLink>
                         </li>
                         <li>
-                        <NavLink to="/friendrequests">
+                        <NavLink to="friendrequests/profile">
                             Friendrequests
                         </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/followrequests">
+                            <NavLink to="/followrequests/profile">
                             Followrequests
                         </NavLink>
                         </li>
