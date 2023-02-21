@@ -9,7 +9,7 @@ function Createfriendrequest() {
     // const {profileidcurrent} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
 
-    const {friendrequestId} = useParams();
+    const {followrequestId} = useParams();
 
     // const profileidcurrent2 = profileidcurrent;
     // const visitedprofileid2 = visitedprofileid;
@@ -19,7 +19,7 @@ function Createfriendrequest() {
 
         try {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-            const response = await axios.put(`http://localhost:8083//friendrequests/${friendrequestId}`);
+            const response = await axios.put(`http://localhost:8083//followrequests/${followrequestId}`);
             // We krijgen een object terug en kijk dan naar waar de token zit:
             console.log('object uit de backend teruggekregen na posten', response);
 
@@ -34,7 +34,7 @@ function Createfriendrequest() {
 
     return (
         <div>
-            <h1>You have accepted this friendrequest!</h1>
+            <h1>You have accepted this followrequest!</h1>
             <Link to={`/friendrequests/profile`}> <p>click here to return to the friendrequest list!</p></Link>
         </div>
     );

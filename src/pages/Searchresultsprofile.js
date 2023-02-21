@@ -46,10 +46,21 @@ function Searchresultsprofile() {
                     alt="Afbeelding profile"
                     src={profilevisited.profileimage}
                 />
+
                 <p><strong>Friendlist: </strong>{profilevisited.friendlist && <p>{profilevisited.friendlist.length}</p>}</p>
                 <p><strong>Followerslist: </strong>{profilevisited.followerslist && <p>{profilevisited.followerslist.length}</p>}</p>
                 <p><strong>Followingslist: </strong>{profilevisited.followingslist && <p>{profilevisited.followingslist.length}</p>}</p>
+
+                <Link to={`/createfriendrequest/create`}>
+                    Create Friendrequest!
+                </Link>
+
+                <Link to={`/createfollowrequest/create`}>
+                    Create Followrequest
+                </Link>
+
                 <p><strong>Bio: </strong>{profilevisited.bioinformation}</p>
+
                 <p><strong>Posts: </strong></p>
                 {profilevisited.posts &&
                 <ul>
