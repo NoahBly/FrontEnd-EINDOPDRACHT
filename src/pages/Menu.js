@@ -39,6 +39,13 @@ function Menu() {
                         </NavLink>
                         </li>
                         <li>
+                            <NavLink to="/friendlist/profile">
+                                Friendlist
+                            </NavLink>
+                        </li>
+
+
+                        <li>
                             <NavLink to="/settings">
                                 Settings
                             </NavLink>
