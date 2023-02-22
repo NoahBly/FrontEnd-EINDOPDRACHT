@@ -35,7 +35,7 @@ function Getallfollowrequests() {
     return (
         <div>
             <p><strong>Results: </strong></p>
-            {followrequests.length > 0 ? <ul>
+            {followrequests.length > 0 && <ul>
                     {followrequests.map((followrequest) => {
                         return (
                             <li key={`${followrequest.id}-${followrequest.maker.name}`}>
@@ -46,10 +46,7 @@ function Getallfollowrequests() {
                             </li>
                         )
                     })}
-                </ul>:
-                <Link to={`/followrequestaccept/${followrequests[0].id}`}>
-                    {followrequests[0].maker.name}
-                </Link>
+                </ul>
             }
 
         </div>

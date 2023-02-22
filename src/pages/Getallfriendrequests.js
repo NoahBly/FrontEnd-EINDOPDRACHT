@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 function Getallfriendrequests() {
 
-    const [friendrequests, setFriendrequests] = useState({});
+    const [friendrequests, setFriendrequests] = useState([]);
     const {profileidcurrent} = useContext(AuthContext);
 
     console.log(profileidcurrent);
@@ -34,9 +34,10 @@ function Getallfriendrequests() {
 
     return (
         <div>
+            {console.log(friendrequests)}
 
             <p><strong>Results: </strong></p>
-            {friendrequests.length > 0 ? <ul>
+            {friendrequests.length > 0 && <ul>
                     {friendrequests.map((friendrequest) => {
                         return (
                             <li key={`${friendrequest.id}-${friendrequest.maker.name}`}>
@@ -47,10 +48,7 @@ function Getallfriendrequests() {
                             </li>
                         )
                     })}
-                </ul>:
-                <Link to={`/friendrequestaccept/${friendrequests.id}`}>
-                    {friendrequests.maker.name}
-                </Link>
+                </ul>
             }
 
         </div>
