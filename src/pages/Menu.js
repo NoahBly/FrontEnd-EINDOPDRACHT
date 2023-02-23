@@ -43,6 +43,16 @@ function Menu() {
                                 Friendlist
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/followerslist/profile">
+                                Followerslist
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/followingslist/profile">
+                                Followinglist
+                            </NavLink>
+                        </li>
 
 
                         <li>

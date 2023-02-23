@@ -23,6 +23,10 @@ import Getallfollowrequests from "./pages/Getallfollowrequests";
 import Acceptfollowrequest from "./pages/Acceptfollowrequest";
 import Getallfriends from "./pages/Getallfriends";
 import Deletefriend from "./pages/Deletefriend";
+import Getallfollowers from "./pages/Getallfollowers";
+import Deletefollower from "./pages/Deletefollower";
+import Getallfollowings from "./pages/Getallfollowings";
+import Deletefollowing from "./pages/Deletefollowing";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -103,6 +107,22 @@ function App() {
 
             <Route path="/friendlistremove/friend/:friendId">
                 {isAuthenticated ? <Deletefriend /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/followerslist/profile">
+                {isAuthenticated ? <Getallfollowers /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/followerslistremove/follower/:followerId">
+                {isAuthenticated ? <Deletefollower /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/followingslist/profile">
+                {isAuthenticated ? <Getallfollowings /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/followingslistremove/following/:followingId">
+                {isAuthenticated ? <Deletefollowing /> : <Redirect to="/" />}
             </Route>
 
         </Switch>

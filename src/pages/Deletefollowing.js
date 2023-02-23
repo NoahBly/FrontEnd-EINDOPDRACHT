@@ -1,27 +1,29 @@
-import React, { useContext , useEffect} from 'react';
+import React, { useContext , useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
 
 
-function Acceptfollowrequest() {
+function Deletefollowing() {
     //
-    // const {profileidcurrent} = useContext(AuthContext);
+    const {profileidcurrent} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
 
-    const {followrequestId} = useParams();
+    const {followingId} = useParams();
 
-    // const profileidcurrent2 = profileidcurrent;
+
     // const visitedprofileid2 = visitedprofileid;
     useEffect(() => {
+
+        const profileidcurrent2 = profileidcurrent;
 
         async function clickHandler() {
             // Verstuur de inloggegevens via een post-request naar de backend
 
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.put(`http://localhost:8083/followrequests/${followrequestId}`);
+                const response = await axios.delete(`http://localhost:8083/followrequests/profile/${profileidcurrent2}/following/${followingId}`);
                 // We krijgen een object terug en kijk dan naar waar de token zit:
                 console.log('object uit de backend teruggekregen na posten', response);
 
@@ -32,18 +34,16 @@ function Acceptfollowrequest() {
             }
 
         }
-
         clickHandler();
     },[]);
 
 
-
     return (
         <div>
-            <h1>You have accepted this followrequest!</h1>
-            <Link to={`/followrequests/profile`}> <p>click here to return to the followrequest list!</p></Link>
+            <h1>You have deleted this following from your followingslist!</h1>
+            <Link to={`/followingslist/profile`}> <p>click here to return to the followinglist!</p></Link>
         </div>
     );
 }
 
-export default Acceptfollowrequest;
+export default Deletefollowing;
