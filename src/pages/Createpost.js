@@ -11,6 +11,7 @@ function Createpost() {
         mode: 'onChange',
     });
     const history = useHistory();
+    const {setPostidfunction} = useContext(AuthContext);
 
     const profileidcurrent2 = profileidcurrent;
 
@@ -24,7 +25,8 @@ function Createpost() {
             });
             // We krijgen een object terug en kijk dan naar waar de token zit:
             console.log('object uit de backend teruggekregen na posten', response);
-            history.push("/profile");
+            setPostidfunction(response.data);
+            history.push("/postfile/create");
             // We geven de token mee aan de context-functie, zodat de context de rest voor ons afhandeld!
 
         } catch (e) {

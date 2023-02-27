@@ -31,6 +31,7 @@ import Uploadprofileimage from "./pages/Uploadprofileimage";
 import Draganddropz from "./context/components/Draganddropz";
 import Draganddropzz from "./context/components/Draganddropzz";
 import Draganddropzzz from "./context/components/Draganddropzzz";
+import Postfileupload from "./context/components/Postfileupload";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -61,6 +62,9 @@ function App() {
           </Route>
             <Route path="/post/create">
                 {isAuthenticated ? <Createpost /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/postfile/create">
+                {isAuthenticated ? <Postfileupload /> : <Redirect to="/" />}
             </Route>
             <Route path="/post/:postId">
                 {isAuthenticated ? <Post /> : <Redirect to="/" />}

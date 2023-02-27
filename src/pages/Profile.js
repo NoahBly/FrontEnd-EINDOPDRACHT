@@ -10,7 +10,7 @@ function Profile() {
     const {setProfileidfunction} = useContext(AuthContext);
     const {profileidcurrent} = useContext(AuthContext);
 
-    const[image, setImage] = useState();
+    const[imageBlob, setImageBlob] = useState(null);
 
     useEffect(() => {
         console.log(userDetails.id);
@@ -34,9 +34,24 @@ function Profile() {
 
     async function fetchData2(profileidcurrent) {
         try {
-            const {data} = await axios.get(`http://localhost:8083/profiles/download/${profileidcurrent}`);
-            console.log(data);
-            setImage(data);
+            const response = await axios.get(`http://localhost:8083/profiles/download/${profileidcurrent}`, {
+                responseType: "blob"
+            });
+            const blob = response.data;
+            const reader = new FileReader();
+            reader.onload= function(e) {
+                const image = new Image();
+                image.src = e.target.result;
+                setImageBlob(image);
+            }
+            // console.log(data);
+            // setImageBlob(data);
+            // const bloburl = URL.createObjectURL(data.blob);
+            // console.log(bloburl);
+            reader.readAsDataURL(blob);
+            console.log(imageBlob)
+            console.log(response);
+            console.log(response.data);
 
         } catch (e) {
             console.error(e);
@@ -55,9 +70,9 @@ function Profile() {
             {profile &&
             <>
                 <h2>{profile.name}</h2>
-                {image && <img
+                {imageBlob && <img
                     alt="Afbeelding profile"
-                    src={image}
+                    src={imageBlob.src}
                 /> }
                 <Link to={`/profileimage/add`}> <p>Add profileimage!</p></Link>
                 <p><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>

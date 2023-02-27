@@ -12,6 +12,7 @@ function Post() {
     console.log(postsofprofile);
     console.log(postId);
 
+    const [imagevideoBlob, setImagevideoBlob] = useState(null);
 
 
 
@@ -35,6 +36,40 @@ function Post() {
         if (postid) {
             fetchData(postid);
         }
+
+            async function fetchData2(postid) {
+                try {
+                    const response = await axios.get(`http://localhost:8083/posts/downloadpostfile/${postid}`, {
+                        responseType: "blob"
+                    });
+                    const blob = response.data;
+                    console.log(blob);
+                    const reader = new FileReader();
+                    reader.onload= function(e) {
+                        const image = new Image();
+
+                        image.src = e.target.result;
+                        setImagevideoBlob(image);
+                    }
+                    // console.log(data);
+                    // setImageBlob(data);
+                    // const bloburl = URL.createObjectURL(data.blob);
+                    // console.log(bloburl);
+                    reader.readAsDataURL(blob);
+                    console.log(imagevideoBlob)
+                    console.log(response);
+                    console.log(response.data);
+
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+            if (postid) {
+                fetchData2(postid);
+            }
+
+
     }}, []);
 
 
@@ -49,10 +84,10 @@ function Post() {
         <>
             <article>
                 <h1>{post.name}</h1>
-               <img
+                {imagevideoBlob && <img
                 alt="Afbeelding post"
-                src={post.imagevideo}
-               />
+                src={imagevideoBlob.src}
+               /> }
                 <Link to={`/comment/create`}> <p>voeg comment toe!</p> </Link>
                 <p><strong>Comments: </strong></p>
                 {post.comments &&
