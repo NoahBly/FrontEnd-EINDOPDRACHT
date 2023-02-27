@@ -26,10 +26,12 @@ function Uploadprofileimage() {
         async function uploadprofileimage(data, profileidcurrent) {
             // Verstuur de inloggegevens via een post-request naar de backend
 
+            console.log(data);
+
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.post(`http://localhost:8083/posts/${profileidcurrent2}/addPostImageVideo`, {
-                    name: data.postname,
+                const response = await axios.post(`http://localhost:8083/profiles/${profileidcurrent2}/addProfileImage`, {
+                    file: data.profileImages,
                 });
                 // We krijgen een object terug en kijk dan naar waar de token zit:
                 console.log('object uit de backend teruggekregen na posten', response);
@@ -39,7 +41,8 @@ function Uploadprofileimage() {
             } catch (e) {
                 console.error(e);
             }
-        } uploadprofileimage();
+            uploadprofileimage();
+        }
     }
 
     return (
@@ -51,7 +54,7 @@ function Uploadprofileimage() {
                     multiple
                     updateFilesCb={updateUploadedFiles}
                 />
-                <button type="submit">Create New User</button>
+                <button type="submit">Upload profile image</button>
             </form>
         </div>
     );

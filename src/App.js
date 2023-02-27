@@ -27,6 +27,10 @@ import Getallfollowers from "./pages/Getallfollowers";
 import Deletefollower from "./pages/Deletefollower";
 import Getallfollowings from "./pages/Getallfollowings";
 import Deletefollowing from "./pages/Deletefollowing";
+import Uploadprofileimage from "./pages/Uploadprofileimage";
+import Draganddropz from "./context/components/Draganddropz";
+import Draganddropzz from "./context/components/Draganddropzz";
+import Draganddropzzz from "./context/components/Draganddropzzz";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -124,6 +128,11 @@ function App() {
             <Route path="/followingslistremove/following/:followingId">
                 {isAuthenticated ? <Deletefollowing /> : <Redirect to="/" />}
             </Route>
+
+            <Route path="/profileimage/add">
+                {isAuthenticated ? <Draganddropzzz /> : <Redirect to="/" />}
+            </Route>
+
 
         </Switch>
       </>

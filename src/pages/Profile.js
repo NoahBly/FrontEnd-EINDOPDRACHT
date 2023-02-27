@@ -8,6 +8,9 @@ function Profile() {
     const {setProfilepostsfunction} = useContext(AuthContext);
     const {userDetails} = useContext(AuthContext);
     const {setProfileidfunction} = useContext(AuthContext);
+    const {profileidcurrent} = useContext(AuthContext);
+
+    const[image, setImage] = useState();
 
     useEffect(() => {
         console.log(userDetails.id);
@@ -28,7 +31,22 @@ function Profile() {
         if (userDetails.id) {
             fetchData(userDetails.id);
         }
-    }, []);
+
+    async function fetchData2(profileidcurrent) {
+        try {
+            const {data} = await axios.get(`http://localhost:8083/profiles/download/${profileidcurrent}`);
+            console.log(data);
+            setImage(data);
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    if (profileidcurrent) {
+        fetchData2(profileidcurrent);
+    }
+}, []);
 
 
     return (
@@ -37,10 +55,11 @@ function Profile() {
             {profile &&
             <>
                 <h2>{profile.name}</h2>
-                <img
+                {image && <img
                     alt="Afbeelding profile"
-                    src={profile.profileimage}
-                />
+                    src={image}
+                /> }
+                <Link to={`/profileimage/add`}> <p>Add profileimage!</p></Link>
                 <p><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>
                 <p><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
                 <p><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>

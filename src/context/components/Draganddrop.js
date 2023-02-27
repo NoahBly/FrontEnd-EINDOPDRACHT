@@ -69,6 +69,8 @@ function Draganddrop() {
         };
 
         return (
+            <div>
+
             <>
                 <FileUploadContainer>
                     <InputLabel>{label}</InputLabel>
@@ -119,6 +121,7 @@ function Draganddrop() {
                     </PreviewList>
                 </FilePreviewContainer>
             </>
+            </div>
         );
     };
 }
