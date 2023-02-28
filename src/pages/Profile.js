@@ -72,7 +72,7 @@ function Profile() {
                 <h2>{profile.name}</h2>
                 {imageBlob && <img
                     alt="Afbeelding profile"
-                    src={imageBlob.src}
+                    src={imageBlob.src} width="500px"
                 /> }
                 <Link to={`/profileimage/add`}> <p>Add profileimage!</p></Link>
                 <p><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>

@@ -12,8 +12,8 @@ function Post() {
     console.log(postsofprofile);
     console.log(postId);
 
-    const [imagevideoBlob, setImagevideoBlob] = useState(null);
-
+    const [imageBlob, setImageBlob] = useState(null);
+    const [videoBlob, setVideoBlob] = useState(null);
 
 
     useEffect(() => {
@@ -44,19 +44,25 @@ function Post() {
                     });
                     const blob = response.data;
                     console.log(blob);
+                    if(blob.type === "video/mp4") {
+                        const objectURL = URL.createObjectURL(blob);
+                        setVideoBlob(objectURL);
+                    }else {
                     const reader = new FileReader();
                     reader.onload= function(e) {
                         const image = new Image();
 
                         image.src = e.target.result;
-                        setImagevideoBlob(image);
+                        setImageBlob(image);
                     }
+
                     // console.log(data);
                     // setImageBlob(data);
                     // const bloburl = URL.createObjectURL(data.blob);
                     // console.log(bloburl);
                     reader.readAsDataURL(blob);
-                    console.log(imagevideoBlob)
+                    }
+                    console.log(imageBlob)
                     console.log(response);
                     console.log(response.data);
 
@@ -84,10 +90,14 @@ function Post() {
         <>
             <article>
                 <h1>{post.name}</h1>
-                {imagevideoBlob && <img
+                {imageBlob && <img
                 alt="Afbeelding post"
-                src={imagevideoBlob.src}
+                src={imageBlob.src}
                /> }
+                {videoBlob && <video
+                    width="750" height="500" controls >
+                    <source src={videoBlob} type="video/mp4"/>
+                </video>}
                 <Link to={`/comment/create`}> <p>voeg comment toe!</p> </Link>
                 <p><strong>Comments: </strong></p>
                 {post.comments &&
