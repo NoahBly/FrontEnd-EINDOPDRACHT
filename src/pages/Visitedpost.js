@@ -13,6 +13,9 @@ function Visitedpost() {
 
     const {visitedpostidcurrent, setVisitedpostidfunction} = useContext(AuthContext);
 
+    const [imageBlob, setImageBlob] = useState();
+    const [videoBlob,setVideoBlob] = useState();
+
     useEffect(() => {
 
         console.log(post2Id);
@@ -37,6 +40,55 @@ function Visitedpost() {
             if (postvisitedid) {
                 fetchData(postvisitedid);
             }
+
+
+        } }, []);
+
+    useEffect(() => {
+
+        if(!post2Id.isEmpty) {
+            const postvisitedid = post2Id;
+
+            async function fetchData2() {
+                try {
+                    const response = await axios.get(`http://localhost:8083/posts/downloadpostfile/${postvisitedid}`, {
+                        responseType: "blob"
+                    });
+                    const blob = response.data;
+                    console.log(blob);
+                    if(blob.type === "video/mp4") {
+                        const objectURL = URL.createObjectURL(blob);
+                        setVideoBlob(objectURL);
+                    }else {
+                        const reader = new FileReader();
+                        reader.onload= function(e) {
+                            const image = new Image();
+
+                            image.src = e.target.result;
+                            setImageBlob(image);
+                        }
+
+                        // console.log(data);
+                        // setImageBlob(data);
+                        // const bloburl = URL.createObjectURL(data.blob);
+                        // console.log(bloburl);
+                        reader.readAsDataURL(blob);
+                    }
+                    console.log(imageBlob)
+                    console.log(response);
+                    console.log(response.data);
+
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+            if (visitedpostidcurrent) {
+                fetchData2();
+            }
+
+
+
         } }, []);
 
 
@@ -51,11 +103,14 @@ function Visitedpost() {
             {visitedpost &&
             <article>
                 <h1>{visitedpost.name}</h1>
-                <img
+                {imageBlob && <img
                     alt="Afbeelding post"
-                    src={visitedpost.imagevideo}
-                />
-
+                    src={imageBlob.src}
+                /> }
+                {videoBlob && <video
+                    width="750" height="500" controls >
+                    <source src={videoBlob} type="video/mp4"/>
+                </video>}
                 <Link to={`/commentvisitedprofile/create`}> <p>voeg comment toe!</p> </Link>
 
                 <p><strong>Comments: </strong></p>

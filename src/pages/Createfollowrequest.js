@@ -7,12 +7,12 @@ import {Link, useHistory, useParams} from "react-router-dom";
 
 function Createfollowrequest() {
 
-    const {profileidcurrent} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
     const {visitedprofileid} = useContext(AuthContext);
 
 
     useEffect(() => {
-    const profileidcurrent2 = profileidcurrent;
+    const profileidcurrent2 = userDetails.profile.id;
     const visitedprofileid2 = visitedprofileid;
 
     async function clickHandler() {

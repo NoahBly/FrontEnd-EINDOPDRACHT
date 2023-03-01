@@ -15,10 +15,10 @@ function Profile() {
     useEffect(() => {
         console.log(userDetails.id);
 
-        async function fetchData(userid) {
+        async function fetchData() {
             console.log(profileidcurrent);
             try {
-                const {data} = await axios.get(`http://localhost:8083/profiles/user/${userid}`);
+                const {data} = await axios.get(`http://localhost:8083/profiles/user/${userDetails.id}`);
                 console.log(data);
                 setProfile(data);
                 setProfilepostsfunction(data.posts);
@@ -29,16 +29,16 @@ function Profile() {
                 console.error(e);
             }
         }
-        if (userDetails.id) {
-            fetchData(userDetails.id);
+        if (userDetails) {
+            fetchData();
         }
     },[]);
 
     useEffect(() => {
 console.log('profile:', profile)
-    async function fetchData2(profileidcurrent) {
+    async function fetchData2() {
         try {
-            const response = await axios.get(`http://localhost:8083/profiles/download/${profileidcurrent}`, {
+            const response = await axios.get(`http://localhost:8083/profiles/download/${userDetails.profile.id}`, {
                 responseType: "blob"
             });
             const blob = response.data;
@@ -60,10 +60,10 @@ console.log('profile:', profile)
             console.error(e);
         }
     }
-    if (profileidcurrent) {
-        fetchData2(profileidcurrent);
+    if (userDetails) {
+        fetchData2();
     }
-}, [profile]);
+}, []);
 
     return (
 
@@ -90,11 +90,8 @@ console.log('profile:', profile)
                                     <Link to={`/post/${post.id}`}>
                                        <p> {post.name} </p>
                                     </Link>
-                                    <p>{post.name}</p>
-                                  <img
-                                    alt="Afbeelding post"
-                                    src={post.imagevideo}
-                                />
+                                    <h2>{post.name}</h2>
+
                         </li>
                             )
                         })}

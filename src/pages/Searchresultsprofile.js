@@ -9,7 +9,9 @@ function Searchresultsprofile() {
     const {setVisitedprofilepostsfunction} = useContext(AuthContext);
     const [profilevisited, setProfilevisited] = useState();
     //const {profile2id, setprofile2id} = useState();
-    const {setVisitedprofileidfunction} = useContext(AuthContext);
+    const {visitedprofileid,setVisitedprofileidfunction} = useContext(AuthContext);
+    const [imageBlob, setImageBlob] = useState();
+
 
     useEffect(() => {
         console.log(profile2Id);
@@ -35,6 +37,44 @@ function Searchresultsprofile() {
 
          }}, []);
 
+    useEffect(() => {
+
+
+        if(!profile2Id.isEmpty) {
+            const profilevisitedid = profile2Id;
+
+
+        async function fetchData2() {
+
+                try {
+                    const response = await axios.get(`http://localhost:8083/profiles/download/${profilevisitedid}`, {
+                        responseType: "blob"
+                    });
+                    const blob = response.data;
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const image = new Image();
+                        image.src = e.target.result;
+                        setImageBlob(image);
+                    }
+                    // console.log(data);
+                    // setImageBlob(data);
+                    // const bloburl = URL.createObjectURL(data.blob);
+                    // console.log(bloburl);
+                    reader.readAsDataURL(blob);
+                    console.log(imageBlob)
+                    console.log(response);
+                    console.log(response.data);
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+                fetchData2();
+
+        }}, []);
+
+
 
 
     return (
@@ -42,10 +82,10 @@ function Searchresultsprofile() {
             {profilevisited &&
             <>
                 <h2>{profilevisited.name}</h2>
-                <img
+                {imageBlob  && <img
                     alt="Afbeelding profile"
-                    src={profilevisited.profileimage}
-                />
+                    src={imageBlob.src} width="500px"
+                /> }
 
                 <p><strong>Friendlist: </strong>{profilevisited.friendlist && <p>{profilevisited.friendlist.length}</p>}</p>
                 <p><strong>Followerslist: </strong>{profilevisited.followerslist && <p>{profilevisited.followerslist.length}</p>}</p>
@@ -70,8 +110,7 @@ function Searchresultsprofile() {
                                 <Link to={`/searchresultsposts/profile/${post.id}`}>
                                     {post.name}
                                 </Link>
-                                {post.name}
-                                {post.imagevideo}
+                                <h2>{post.name}</h2>
                             </li>
                         )
                     })}

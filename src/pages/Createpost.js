@@ -6,14 +6,14 @@ import {useHistory} from "react-router-dom";
 
 function Createpost() {
     const { isAuthenticated } = useContext(AuthContext);
-    const {profileidcurrent} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
     const history = useHistory();
     const {setPostidfunction} = useContext(AuthContext);
 
-    const profileidcurrent2 = profileidcurrent;
+    const profileidcurrent2 = userDetails.profile.id;
 
     async function clickHandler(data,profileidcurrent) {
         // Verstuur de inloggegevens via een post-request naar de backend

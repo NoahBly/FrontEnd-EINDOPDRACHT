@@ -6,9 +6,9 @@ import {Link} from "react-router-dom";
 function Getallfollowrequests() {
 
     const [followrequests, setFollowrequests] = useState({});
-    const {profileidcurrent} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
 
-    console.log(profileidcurrent);
+    console.log(userDetails);
 
     useEffect(() => {
 
@@ -16,7 +16,7 @@ function Getallfollowrequests() {
             // Verstuur de inloggegevens via een post-request naar de backend
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/followrequests/profile/${profileidcurrent}`);
+                const response = await axios.get(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}`);
                 // We krijgen een token terug:
                 console.log(response.data);
                 setFollowrequests(response.data);

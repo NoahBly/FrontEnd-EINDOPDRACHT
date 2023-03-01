@@ -7,14 +7,14 @@ import {useHistory, useParams} from "react-router-dom";
 function Createpost() {
     const {postId} = useParams();
     const { isAuthenticated } = useContext(AuthContext);
-    const {profileidcurrent} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
     const {postidcurrent} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
     const history = useHistory();
 
-    const profileidcurrent2 = profileidcurrent;
+    const profileidcurrent2 = userDetails.profile.id;
     const postidcurrent2 = postidcurrent;
 
     async function clickHandler(data,profileidcurrent,postidcurrent) {

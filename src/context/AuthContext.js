@@ -65,10 +65,8 @@ function AuthContextProvider({ children }) {
                 ...auth,
                 isAuth: true,
                 status: 'done',
-                user: {
-                    id: response.data.id,
-                    // allemaal andere informatie van de gebruiker in de state zetten!
-                },
+                user: response.data,
+                    // allemaal andere informatie van de gebruiker in de state zetten!,
             })
 
                 history.push('/profile');

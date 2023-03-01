@@ -6,9 +6,9 @@ import {Link} from "react-router-dom";
 function Getallfriends() {
 
     const [friends, setFriends] = useState([]);
-    const {profileidcurrent} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
 
-    console.log(profileidcurrent);
+    console.log(userDetails.profile.id);
 
     useEffect(() => {
 
@@ -16,7 +16,7 @@ function Getallfriends() {
             // Verstuur de inloggegevens via een post-request naar de backend
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/friendrequests/profile/${profileidcurrent}/friends`);
+                const response = await axios.get(`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends`);
                 // We krijgen een token terug:
                 console.log(response.data);
                 setFriends(response.data);

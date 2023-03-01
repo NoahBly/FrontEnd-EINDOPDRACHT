@@ -7,14 +7,14 @@ import {useHistory, useParams} from "react-router-dom";
 function Createpost() {
     const {post2Id} = useParams();
     const { isAuthenticated } = useContext(AuthContext);
-    const {visitedprofileid} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
     const {visitedpostidcurrent} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
     const history = useHistory();
 
-    const profileidvisited = visitedprofileid;
+    const profileidmaker = userDetails.profile.id;
     const postidcurrent2 = visitedpostidcurrent;
 
     async function clickHandler(data,profileidcurrent,postidcurrent) {
@@ -22,7 +22,7 @@ function Createpost() {
 
         try {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-            const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidvisited}`, {
+            const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidmaker}`, {
                 comment: data.comment,
             });
             // We krijgen een object terug en kijk dan naar waar de token zit:

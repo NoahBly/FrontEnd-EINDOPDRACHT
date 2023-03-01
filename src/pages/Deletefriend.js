@@ -7,7 +7,7 @@ import {Link, useHistory, useParams} from "react-router-dom";
 
 function Deletefriend() {
     //
-    const {profileidcurrent} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
 
     const {friendId} = useParams();
@@ -16,7 +16,7 @@ function Deletefriend() {
     // const visitedprofileid2 = visitedprofileid;
     useEffect(() => {
 
-        const profileidcurrent2 = profileidcurrent;
+        const profileidcurrent2 = userDetails.profile.id;
 
         async function clickHandler() {
             // Verstuur de inloggegevens via een post-request naar de backend
