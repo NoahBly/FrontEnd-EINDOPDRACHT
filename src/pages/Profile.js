@@ -15,23 +15,27 @@ function Profile() {
     useEffect(() => {
         console.log(userDetails.id);
 
-
         async function fetchData(userid) {
+            console.log(profileidcurrent);
             try {
                 const {data} = await axios.get(`http://localhost:8083/profiles/user/${userid}`);
                 console.log(data);
                 setProfile(data);
                 setProfilepostsfunction(data.posts);
                 setProfileidfunction(data.id);
+                console.log(data.id);
+
             } catch (e) {
                 console.error(e);
             }
         }
-
         if (userDetails.id) {
             fetchData(userDetails.id);
         }
+    },[]);
 
+    useEffect(() => {
+console.log('profile:', profile)
     async function fetchData2(profileidcurrent) {
         try {
             const response = await axios.get(`http://localhost:8083/profiles/download/${profileidcurrent}`, {
@@ -52,17 +56,14 @@ function Profile() {
             console.log(imageBlob)
             console.log(response);
             console.log(response.data);
-
         } catch (e) {
             console.error(e);
         }
     }
-
     if (profileidcurrent) {
         fetchData2(profileidcurrent);
     }
-}, []);
-
+}, [profile]);
 
     return (
 
@@ -70,7 +71,7 @@ function Profile() {
             {profile &&
             <>
                 <h2>{profile.name}</h2>
-                {imageBlob && <img
+                {imageBlob  && <img
                     alt="Afbeelding profile"
                     src={imageBlob.src} width="500px"
                 /> }
