@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import { useParams, Link } from 'react-router-dom';
+import {useParams, Link, NavLink} from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext";
 import axios from "axios";
 
@@ -89,6 +89,10 @@ function Post() {
         {post &&
         <>
             <article>
+                <NavLink to="/postsdelete/delete">
+                    <p>delete post</p>
+                </NavLink>
+
                 <h1>{post.name}</h1>
                 {imageBlob && <img
                 alt="Afbeelding post"

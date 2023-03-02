@@ -32,6 +32,9 @@ import Draganddropz from "./context/components/Draganddropz";
 import Draganddropzz from "./context/components/Draganddropzz";
 import Draganddropzzz from "./context/components/Draganddropzzz";
 import Postfileupload from "./context/components/Postfileupload";
+import DeleteAccount from "./pages/DeleteAccount";
+import Settings from "./pages/Settings";
+import Deletepost from "./pages/Deletepost";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -137,6 +140,17 @@ function App() {
                 {isAuthenticated ? <Draganddropzzz /> : <Redirect to="/" />}
             </Route>
 
+            <Route path="/userprofileaccount/delete">
+                {isAuthenticated ? <DeleteAccount /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/userprofile/settings">
+                {isAuthenticated ? <Settings /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/postsdelete/delete">
+                {isAuthenticated ? <Deletepost /> : <Redirect to="/" />}
+            </Route>
 
         </Switch>
       </>

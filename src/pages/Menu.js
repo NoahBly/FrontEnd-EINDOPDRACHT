@@ -56,7 +56,7 @@ function Menu() {
 
 
                         <li>
-                            <NavLink to="/settings">
+                            <NavLink to="/userprofile/settings">
                                 Settings
                             </NavLink>
                         </li>
