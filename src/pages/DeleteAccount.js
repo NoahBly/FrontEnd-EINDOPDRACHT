@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
 
 
-function Deletefriend() {
+function Deleteaccount() {
     //
     const {userDetails} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
@@ -46,4 +46,4 @@ function Deletefriend() {
     );
 }
 
-export default Deletefriend;
+export default Deleteaccount;

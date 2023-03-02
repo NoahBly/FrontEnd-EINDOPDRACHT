@@ -35,6 +35,10 @@ import Postfileupload from "./context/components/Postfileupload";
 import DeleteAccount from "./pages/DeleteAccount";
 import Settings from "./pages/Settings";
 import Deletepost from "./pages/Deletepost";
+import Deletecomment from "./pages/Deletecomment";
+import Createcelebrityuserpage from "./pages/Createcelebrityuserpage";
+import Createpageadminpage from "./pages/Createpageadminpage";
+import Updatebiopage from "./pages/Updatebiopage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -57,6 +61,14 @@ function App() {
             <Route exact path="/createnormaluserpage">
                 <Createnormaluserpage />
             </Route>
+            <Route exact path="/createcelebrityuserpage">
+                <Createcelebrityuserpage />
+            </Route>
+            <Route exact path="/createpageadminuserpage">
+                <Createpageadminpage />
+            </Route>
+
+
           <Route path="/login">
             <Login />
           </Route>
@@ -151,6 +163,16 @@ function App() {
             <Route path="/postsdelete/delete">
                 {isAuthenticated ? <Deletepost /> : <Redirect to="/" />}
             </Route>
+
+
+            <Route path="/commentdelete/delete/:commentId">
+                {isAuthenticated ? <Deletecomment /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/profilebio/update/">
+                {isAuthenticated ? <Updatebiopage /> : <Redirect to="/" />}
+            </Route>
+
 
         </Switch>
       </>

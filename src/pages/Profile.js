@@ -79,7 +79,8 @@ console.log('profile:', profile)
                 <p><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>
                 <p><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
                 <p><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>
-                <p><strong>Bio: </strong>{profile.bioinformation}</p>
+                <h2><strong>Bio: </strong>{profile.bioinformation}</h2>
+                <Link to={`/profilebio/update`}> <p>update Bio!</p></Link>
                <Link to={`/post/create`}> <p>create post!</p></Link>
                 <p><strong>Posts: </strong></p>
                 {profile.posts &&

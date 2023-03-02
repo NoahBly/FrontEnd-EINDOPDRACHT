@@ -110,7 +110,11 @@ function Post() {
                             return (
                                 <li key={`${comment.id}-${comment.name}`}>
                                     <p> {comment.comment}</p>
+                                    <Link to={`/commentdelete/delete/${comment.id}`}>
+                                        delete this comment
+                                    </Link>
                                 </li>
+
                             )
                         })}
                     </ul>
