@@ -45,7 +45,7 @@ function Createpost() {
                     <input
                         type="text"
                         id="bio-field"
-                        {...register("comment", {
+                        {...register("bio", {
                             required: "bio is required",
                         })}
                     />
