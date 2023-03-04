@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto&display=swap');/*////////////////////////
+
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Merriweather', sans-serif;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+}
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Reusables ----------------------- */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.outer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border:  1px solid red;
+}
+
+.inner-container {
+    /*als flex item */
+    flex-basis: 1500px;
+    height: 400px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin: 0 20px;
+
+    /*als flex container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid black;
+
+}
+
+/* --------------- 4.1 Header ------------------------- */
+
+header {
+    background-color: palevioletred;
+
+}
+
+.header-content{
+    margin: 20px 20px;
+
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    border: 1px solid yellow;
+}
+
+ul {
+    flex-basis: 700px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 20px 0;
+    border: 1px solid darkblue;
+}
+
+li {
+    flex-basis: 100%;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid brown;
+    list-style-type: none;
+
+}

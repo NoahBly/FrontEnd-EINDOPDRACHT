@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import {useContext} from "@types/react";
+import React ,{useContext}from 'react';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {AuthContext} from "../AuthContext";
+import './styles/Stylesheet.css'
 
 function Navigationbar() {
 
@@ -15,6 +15,16 @@ function Navigationbar() {
                     <NavLink to="/menu">
                         Menu
                     </NavLink>
+                </li>
+                <li>
+                    <Link to="/login">
+                    Inloggen
+                </Link>
+                </li>
+                <li>
+                    <Link to="/profile">
+                        Profiel
+                    </Link>
                 </li>
                 {/*Is de gebruiker ingelogd? Laat dan de blogposts en uitlog knop zien, en anders alleen de login knop */}
                 {isAuthenticated === true
@@ -32,7 +42,7 @@ function Navigationbar() {
                     </>
                     :
                     <li>
-                        <NavLink to="/search">
+                        <NavLink to="/menu">
                             search
                         </NavLink>
                     </li>}

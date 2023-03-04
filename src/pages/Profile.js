@@ -37,6 +37,7 @@ function Profile() {
     useEffect(() => {
 console.log('profile:', profile)
     async function fetchData2() {
+
         try {
             const response = await axios.get(`http://localhost:8083/profiles/download/${userDetails.profile.id}`, {
                 responseType: "blob"
