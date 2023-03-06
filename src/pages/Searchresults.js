@@ -32,6 +32,7 @@ function Searchresults() {
 
     return (
         <div>
+            <h1>Searchresults for : {profilesearchresults}</h1>
             <p><strong>Results: </strong></p>
             {resultsprofiles.length > 0 ? <ul>
                 {resultsprofiles.map((profile) => {

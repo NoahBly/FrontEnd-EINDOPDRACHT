@@ -39,21 +39,17 @@ import Deletecomment from "./pages/Deletecomment";
 import Createcelebrityuserpage from "./pages/Createcelebrityuserpage";
 import Createpageadminpage from "./pages/Createpageadminpage";
 import Updatebiopage from "./pages/Updatebiopage";
+import Navigationbar from "./context/components/Navigationbar";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
       <>
-        <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/login">Inloggen</Link></li>
-            <li><Link to="/profile">Profiel</Link></li>
-              {isAuthenticated ?   <li><Link to="/search">Search</Link></li> : <Redirect to="/" />}
-              {isAuthenticated ?   <li><Link to="/menu">Menu</Link></li> : <Redirect to="/" />}
-          </ul>
-        </nav>
+
+         <Navigationbar>
+         </Navigationbar>
+
         <Switch>
           <Route exact path="/">
             <Home />

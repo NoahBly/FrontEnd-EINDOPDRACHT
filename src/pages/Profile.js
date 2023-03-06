@@ -25,6 +25,10 @@ function Profile() {
                 setProfileidfunction(data.id);
                 console.log(data.id);
 
+                if(data.profileimage !== null) {
+                    fetchData2();
+                }
+
             } catch (e) {
                 console.error(e);
             }
@@ -34,7 +38,7 @@ function Profile() {
         }
     },[]);
 
-    useEffect(() => {
+
 console.log('profile:', profile)
     async function fetchData2() {
 
@@ -61,10 +65,7 @@ console.log('profile:', profile)
             console.error(e);
         }
     }
-    if (userDetails) {
-        fetchData2();
-    }
-}, []);
+
 
     return (
 
