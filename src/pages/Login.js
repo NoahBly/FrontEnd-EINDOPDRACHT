@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
 function Login() {
-    const { isAuthenticated, loginFunction } = useContext(AuthContext);
+    const { isAuthenticated, loginFunction, setTokenfunction } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
@@ -19,7 +19,8 @@ function Login() {
             });
             // We krijgen een object terug en kijk dan naar waar de token zit:
             console.log('object uit de backend teruggekregen na inloggen', response);
-
+            console.log(response.data.jwt);
+            setTokenfunction(response.data.jwt);
             // We geven de token mee aan de context-functie, zodat de context de rest voor ons afhandeld!
             loginFunction(response.data.jwt);
         } catch (e) {
