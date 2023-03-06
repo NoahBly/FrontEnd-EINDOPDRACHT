@@ -32,6 +32,12 @@ function Visitedpost() {
                     const {data} = await axios.get(`http://localhost:8083/posts/post/${postvisitedid}`);
                     console.log(data);
                     setVisitedpost(data);
+
+                    if (data.imagevideo !== null) {
+                        fetchData2();
+                    }
+
+
                 } catch (e) {
                     console.error(e);
                 }
@@ -44,9 +50,9 @@ function Visitedpost() {
 
         } }, []);
 
-    useEffect(() => {
 
-        if(!post2Id.isEmpty) {
+
+
             const postvisitedid = post2Id;
 
             async function fetchData2() {
@@ -83,13 +89,9 @@ function Visitedpost() {
                 }
             }
 
-            if (visitedpostidcurrent) {
-                fetchData2();
-            }
 
 
 
-        } }, []);
 
 
 
