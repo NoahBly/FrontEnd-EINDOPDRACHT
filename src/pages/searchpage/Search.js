@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import Searchresults from "./Searchresults";
+import Searchresults from "../searchresultspage/Searchresults";
 import {useHistory} from "react-router-dom";
 
 function Search() {

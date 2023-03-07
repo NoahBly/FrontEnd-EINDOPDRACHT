@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import "../createnormaluserpage/createnormaluserstyle.css"
 
-function Createcelebrityuserpage() {
+function Createnormaluserpage() {
     const { isAuthenticated, loginFunction } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
@@ -13,7 +14,7 @@ function Createcelebrityuserpage() {
         // Verstuur de inloggegevens via een post-request naar de backend
         try {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-            const response = await axios.post('http://localhost:8083/users/celebrity', {
+            const response = await axios.post('http://localhost:8083/users/normal', {
                 username: data.username,
                 password: data.password,
                 email: data.email,
@@ -31,10 +32,11 @@ function Createcelebrityuserpage() {
 
 
     return (
-        <div>
-            <h1>Create Celebrity account</h1>
+        <div className="outer-container">
+            <div className="inner-container">
+            <h1 className="h1-begin">Create normal user account</h1>
             {isAuthenticated === false &&
-                <form onSubmit={handleSubmit(clickHandler)}>
+                <form className="article-begin" onSubmit={handleSubmit(clickHandler)}>
                     <label htmlFor="username-field">Username:</label>
                     <input
                         type="text"
@@ -82,8 +84,10 @@ function Createcelebrityuserpage() {
                     </button>
                 </form>
             }
+
+        </div>
         </div>
     );
 }
 
-export default Createcelebrityuserpage;
+export default Createnormaluserpage;

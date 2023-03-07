@@ -1,24 +1,26 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import {Link} from "react-router-dom";
+import "../homepage/homestyle.css"
 
 function Home() {
     const { isAuthenticated, logoutFunction } = useContext(AuthContext);
 
     return (
-        <div>
-            <h1>Home pagina</h1>
-            <p>Welkom op deze website!</p>
+        <div className="outer-container-2">
+        <div className="inner-container-2">
+            <h1 className="h1-intro">Home page</h1>
+            <p className="p-intro">Welcome at ARTAPP!</p>
             {isAuthenticated === false &&
-                <div>
+                <div className="article-section-2">
             <Link to={`/createnormaluserpage`}>
-                <p> klik hier om een normale user account en profiel aan te maken</p>
+                <p className="p-intro"> Click here to create a normal user account and profile!</p>
             </Link>
             <Link to={`/createcelebrityuserpage`}>
-                <p> klik hier om een Celebrity user account en profiel aan te maken</p>
+                <p className="p-intro"> Click here to create a celebrity user account and profile!</p>
             </Link>
             <Link to={`/createpageadminuserpage`}>
-                <p> klik hier om een Page Admin user account en profiel aan te maken</p>
+                <p className="p-intro"> Click here to create a page admin account and profile!</p>
             </Link>
                 </div>
             }
@@ -27,6 +29,7 @@ function Home() {
                     Uitloggen
                 </button>
             }
+        </div>
         </div>
     );
 }

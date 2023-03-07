@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {Link} from "react-router-dom";
+import "../profilepage/profilestyle.css"
 
 function Profile() {
     const [profile, setProfile] = useState({});
@@ -68,32 +69,33 @@ console.log('profile:', profile)
 
 
     return (
-
-        <section className="poke-card">
+        <div className="outer-container-2">
+        <section className="inner-container-2">
+            <div className="article-section-2">
             {profile &&
             <>
-                <h2>{profile.name}</h2>
+                <h1 className="h1-intro">{profile.name}</h1>
                 {imageBlob  && <img
                     alt="Afbeelding profile"
                     src={imageBlob.src} width="500px"
                 /> }
                 <Link to={`/profileimage/add`}> <p>Add profileimage!</p></Link>
-                <p><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>
-                <p><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
-                <p><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>
-                <h2><strong>Bio: </strong>{profile.bioinformation}</h2>
-                <Link to={`/profilebio/update`}> <p>update Bio!</p></Link>
-               <Link to={`/post/create`}> <p>create post!</p></Link>
-                <p><strong>Posts: </strong></p>
+                <p className="p-intro"><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>
+                <p className="p-intro"><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
+                <p className="p-intro"><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>
+                <h1 className="h1-intro"><strong>Bio: </strong>{profile.bioinformation}</h1>
+                <Link to={`/profilebio/update`}> <p className="p-intro">update Bio!</p></Link>
+               <Link to={`/post/create`}> <p className="p-intro">create post!</p></Link>
+                <p className="p-intro"><strong>Posts: </strong></p>
                 {profile.posts &&
                     <ul>
                         {profile.posts.map((post) => {
                             return (
                                 <li key={`${post.id}-${post.name}`}>
                                     <Link to={`/post/${post.id}`}>
-                                       <p> {post.name} </p>
+                                        <h1 className="h1-intro">{post.name}</h1>
                                     </Link>
-                                    <h2>{post.name}</h2>
+
 
                         </li>
                             )
@@ -103,7 +105,9 @@ console.log('profile:', profile)
 
             </>
             }
+        </div>
         </section>
+        </div>
     )
     ;
 }

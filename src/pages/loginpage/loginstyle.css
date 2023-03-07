@@ -1,0 +1,37 @@
+.outer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border:  1px solid red;
+}
+
+.inner-container {
+    /*als flex item */
+    flex-basis: 1500px;
+    height: 400px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin: 0 20px;
+
+    /*als flex container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid black;
+
+}
+
+
+
+.article-begin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+#h1-begin {
+    padding: 10px;
+}

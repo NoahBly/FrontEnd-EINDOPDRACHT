@@ -1,7 +1,7 @@
 import React ,{useContext}from 'react';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
-import {AuthContext} from "../AuthContext";
-import "../../styles/Stylesheet.css"
+import {AuthContext} from "../../authenticationcontext/AuthContext";
+import "../../../styles/Stylesheet.css"
 
 function Navigationbar() {
 
@@ -12,11 +12,18 @@ function Navigationbar() {
         <nav>
             <ul>
                 {isAuthenticated === false &&
+               <>
                 <li>
                     <Link to="/login">
-                    Inloggen
+                    Log in!
                 </Link>
                 </li>
+                   <li>
+                       <Link to="/">
+                           Home
+                       </Link>
+                   </li>
+                    </>
                 }
                 {/*Is de gebruiker ingelogd? Laat dan de blogposts en uitlog knop zien, en anders alleen de login knop */}
                 {isAuthenticated === true
@@ -39,14 +46,14 @@ function Navigationbar() {
                     </li>
                         <li>
                         <Link to="/profile">
-                            Profiel
+                            Profile
                         </Link>
                     </li>
                     </>
                     :
                     <li>
                         <NavLink to="/menu">
-                            search
+                            menu
                         </NavLink>
                     </li>}
             </ul>

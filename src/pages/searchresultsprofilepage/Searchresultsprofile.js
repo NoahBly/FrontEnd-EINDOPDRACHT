@@ -1,7 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
+import "../searchresultsprofilepage/searchresultsprofilestyle.css"
 
 function Searchresultsprofile() {
     const {profile2Id} = useParams();
@@ -81,31 +82,27 @@ function Searchresultsprofile() {
 
 
         return (
-            <section className="poke-card">
+            <div className="outer-container-2">
+            <section className="inner-container-2">
+
+                <div className="article-section-2">
                 {profilevisited &&
                     <>
-                        <h2>{profilevisited.name}</h2>
+                        <h1 className="h1-intro">{profilevisited.name}</h1>
                         {imageBlob && <img
                             alt="Afbeelding profile"
                             src={imageBlob.src} width="500px"
                         />}
 
-                        <p><strong>Friendlist: </strong>{profilevisited.friendlist &&
-                            <p>{profilevisited.friendlist.length}</p>}</p>
-                        <p><strong>Followerslist: </strong>{profilevisited.followerslist &&
+                        <p className="p-intro"><strong>Friendlist: </strong>{profilevisited.friendlist &&
+                            <p className="p-intro">{profilevisited.friendlist.length}</p>}</p>
+                        <p className="p-intro"><strong>Followerslist: </strong>{profilevisited.followerslist &&
                             <p>{profilevisited.followerslist.length}</p>}</p>
-                        <p><strong>Followingslist: </strong>{profilevisited.followingslist &&
-                            <p>{profilevisited.followingslist.length}</p>}</p>
+                        <p className="p-intro"><strong>Followingslist: </strong>{profilevisited.followinglist &&
+                            <p>{profilevisited.followinglist.length}</p>}</p>
 
-                        <Link to={`/createfriendrequest/create`}>
-                            <p> Create Friendrequest!</p>
-                        </Link>
 
-                        <Link to={`/createfollowrequest/create`}>
-                            <p>Create Followrequest</p>
-                        </Link>
-
-                        <p><strong>Bio: </strong>{profilevisited.bioinformation}</p>
+                        <h1 className="h1-intro"><strong>Bio: </strong>{profilevisited.bioinformation}</h1>
 
                         <p><strong>Posts: </strong></p>
                         {profilevisited.posts &&
@@ -124,8 +121,18 @@ function Searchresultsprofile() {
                         }
                     </>
                 }
-
+            </div>
             </section>
+                <div className="article-section-2">
+                <Link to={`/createfriendrequest/create`}>
+                    <p className="p-intro"> Create Friendrequest!</p>
+                </Link>
+
+                <Link to={`/createfollowrequest/create`}>
+                    <p className="p-intro">Create Followrequest</p>
+                </Link>
+                </div>
+            </div>
         );
     }
 

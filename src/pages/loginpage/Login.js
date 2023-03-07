@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import "../loginpage/loginstyle.css"
 
 function Login() {
     const { isAuthenticated, loginFunction, setTokenfunction } = useContext(AuthContext);
@@ -30,8 +31,10 @@ function Login() {
 
 
     return (
-        <div>
-            <h1>Login pagina</h1>
+        <div className="outer-container">
+            <div className="inner-container">
+                <div className="article-begin">
+            <h1 className="h1-begin ">Login pagina</h1>
             {isAuthenticated === false &&
                 <form onSubmit={handleSubmit(clickHandler)}>
                     <label htmlFor="username-field">Username:</label>
@@ -58,6 +61,8 @@ function Login() {
                     </button>
                 </form>
             }
+                </div>
+            </div>
         </div>
     );
 }

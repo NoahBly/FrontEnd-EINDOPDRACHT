@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../context/authenticationcontext/AuthContext";
 import axios from "axios";
 
 function Post() {

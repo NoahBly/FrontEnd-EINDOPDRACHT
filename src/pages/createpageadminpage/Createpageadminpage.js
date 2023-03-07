@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import "../createpageadminpage/createpageadminstyle.css"
 
-function Createnormaluserpage() {
+function Createpageadminpage() {
     const { isAuthenticated, loginFunction } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
@@ -13,7 +14,7 @@ function Createnormaluserpage() {
         // Verstuur de inloggegevens via een post-request naar de backend
         try {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-            const response = await axios.post('http://localhost:8083/users/normal', {
+            const response = await axios.post('http://localhost:8083/users/pageadmin', {
                 username: data.username,
                 password: data.password,
                 email: data.email,
@@ -31,10 +32,11 @@ function Createnormaluserpage() {
 
 
     return (
-        <div>
-            <h1>Create User account</h1>
+        <div className="outer-container">
+            <div className="inner-container">
+            <h1>Create Page Admin account</h1>
             {isAuthenticated === false &&
-                <form onSubmit={handleSubmit(clickHandler)}>
+                <form className="article-begin" onSubmit={handleSubmit(clickHandler)}>
                     <label htmlFor="username-field">Username:</label>
                     <input
                         type="text"
@@ -82,8 +84,9 @@ function Createnormaluserpage() {
                     </button>
                 </form>
             }
+            </div>
         </div>
     );
 }
 
-export default Createnormaluserpage;
+export default Createpageadminpage;

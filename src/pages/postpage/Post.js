@@ -1,7 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {useParams, Link, NavLink} from 'react-router-dom';
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import axios from "axios";
+import "../postpage/poststyle.css"
 
 function Post() {
     const { postId } = useParams();
@@ -85,10 +86,11 @@ function Post() {
     // console.log(currentPost);
 
     return (
-        <section>
+        <section className="outer-container-2">
+            <div className="inner-container-2">
         {post &&
         <>
-            <article>
+            <article className="article-section-2">
                 <NavLink to="/postsdelete/delete">
                     <p>delete post</p>
                 </NavLink>
@@ -105,7 +107,7 @@ function Post() {
                 <Link to={`/comment/create`}> <p>voeg comment toe!</p> </Link>
                 <p><strong>Comments: </strong></p>
                 {post.comments &&
-                    <ul>
+                    <ul className="article-section-2">
                         {post.comments.map((comment) => {
                             return (
                                 <li key={`${comment.id}-${comment.name}`}>
@@ -120,11 +122,15 @@ function Post() {
                     </ul>
                 }
             </article>
-            <article>
-                <Link to="/">Terug naar Home</Link>
-            </article>
+
             </>
           }
+            </div>
+
+            <article className="article-section-2b">
+            <Link to="/profile">Back to  Profile</Link>
+        </article>
+
         </section>
     );
 }
