@@ -98,7 +98,7 @@ function Post() {
                 <h1>{post.name}</h1>
                 {imageBlob && <img
                 alt="Afbeelding post"
-                src={imageBlob.src}
+                src={imageBlob.src} width= "500px"
                /> }
                 {videoBlob && <video
                     width="750" height="500" controls >

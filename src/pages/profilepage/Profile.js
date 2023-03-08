@@ -88,7 +88,7 @@ console.log('profile:', profile)
                <Link to={`/post/create`}> <p className="p-intro">create post!</p></Link>
                 <p className="p-intro"><strong>Posts: </strong></p>
                 {profile.posts &&
-                    <ul>
+                    <ul className="article-section-2 ">
                         {profile.posts.map((post) => {
                             return (
                                 <li key={`${post.id}-${post.name}`}>

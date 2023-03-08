@@ -17,7 +17,7 @@ function Menu() {
             <ul className="article-section-6">
                 <li>
                     <NavLink to="/">
-                      <h1>Home</h1>
+                      <h3>Home</h3>
                     </NavLink>
                 </li>
                 {/*Is de gebruiker ingelogd? Laat dan de blogposts en uitlog knop zien, en anders alleen de login knop */}
@@ -25,51 +25,51 @@ function Menu() {
                     ? <>
                         <li>
                             <button type="button" onClick={logoutFunction}>
-                               <h1>Uitloggen</h1>
+                               <h3>Uitloggen</h3>
                             </button>
                         </li>
                         <li>
                             <NavLink to="/profile">
-                               <h1>Profile</h1>
+                               <h3>Profile</h3>
                             </NavLink>
                         </li>
                         <li>
                         <NavLink to="friendrequests/profile">
-                           <h1>Friendrequests</h1>
+                           <h3>Friendrequests</h3>
                         </NavLink>
                         </li>
                         <li>
                             <NavLink to="/followrequests/profile">
-                            <h1>Followrequests</h1>
+                            <h3>Followrequests</h3>
                         </NavLink>
                         </li>
                         <li>
                             <NavLink to="/friendlist/profile">
-                                <h1>Friendlist</h1>
+                                <h3>Friendlist</h3>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/followerslist/profile">
-                              <h1>Followerslist</h1>
+                              <h3>Followerslist</h3>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/followingslist/profile">
-                              <h1>Followinglist</h1>
+                              <h3>Followinglist</h3>
                             </NavLink>
                         </li>
 
 
                         <li>
                             <NavLink to="/userprofile/settings">
-                               <h1>Settings</h1>
+                               <h3>Settings</h3>
                             </NavLink>
                         </li>
 
                     </>
                     :
                     <li>
-                        <h1> please login and enjoy!</h1>
+                        <h3> please login and enjoy!</h3>
                     </li>}
             </ul>
         </nav>

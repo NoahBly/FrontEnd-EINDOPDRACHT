@@ -1,8 +1,9 @@
 import React, { useContext ,useEffect} from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
+import "../createfriendrequestpage/createfriendrequeststyle.css"
 
 
 function Createfriendrequest() {
@@ -37,9 +38,13 @@ function Createfriendrequest() {
 
 
     return (
-        <div>
+        <div className="outer-container-2 ">
+            <div className="inner-container-2">
+                <article className="article-section-2">
             <h1>Your Friendrequest has been created!</h1>
             <Link to={`/searchresultsprofiles/${visitedprofileid}`}> <p>click here to return to the visited profile!</p></Link>
+            </article>
+            </div>
         </div>
     );
 }

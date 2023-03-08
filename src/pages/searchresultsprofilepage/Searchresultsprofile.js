@@ -106,14 +106,14 @@ function Searchresultsprofile() {
 
                         <p><strong>Posts: </strong></p>
                         {profilevisited.posts &&
-                            <ul>
+                            <ul className= "article-section-2 ">
                                 {profilevisited.posts.map((post) => {
                                     return (
                                         <li key={`${post.id}-${post.name}`}>
                                             <Link to={`/searchresultsposts/profile/${post.id}`}>
-                                                {post.name}
+                                                <h2>{post.name}</h2>
                                             </Link>
-                                            <h2>{post.name}</h2>
+
                                         </li>
                                     )
                                 })}

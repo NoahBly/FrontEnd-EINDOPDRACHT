@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
+import "../createfollowrequestpage/createfollowrequeststyle.css"
 
 
 function Createfollowrequest() {
@@ -36,9 +37,13 @@ function Createfollowrequest() {
 
 
     return (
-        <div>
-            <h1>Your Followrequest has been created!</h1>
+        <div className="outer-container-2">
+            <div className="inner-container-2">
+                <article className="article-section-2">
+            <h1 className="h1-intro ">Your Followrequest has been created!</h1>
             <Link to={`/searchresultsprofiles/${visitedprofileid}`}> <p>click here to return to the visited profile!</p></Link>
+            </article>
+            </div>
         </div>
     );
 }

@@ -1,7 +1,8 @@
 import React, {useContext, useState,useEffect} from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import "../getallfriendrequestspage/getallfriendrequestsstyle.css"
 
 function Getallfriendrequests() {
 
@@ -33,10 +34,12 @@ function Getallfriendrequests() {
 
 
     return (
-        <div>
+        <div className="outer-container-2 ">
+            <div className="inner-container-2">
+                <article className="article-section-2">
             {console.log(friendrequests)}
 
-            <p><strong>Results: </strong></p>
+            <p className="p-intro"><strong>Friendrequests: </strong></p>
             {friendrequests.length > 0 && <ul>
                     {friendrequests.map((friendrequest) => {
                         return (
@@ -50,7 +53,8 @@ function Getallfriendrequests() {
                     })}
                 </ul>
             }
-
+                </article>
+        </div>
         </div>
     );
 }

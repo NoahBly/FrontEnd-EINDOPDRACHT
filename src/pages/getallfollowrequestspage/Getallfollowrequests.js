@@ -1,7 +1,8 @@
 import React, {useContext, useState,useEffect} from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import "../getallfollowrequestspage/getallfollowrequestsstyle.css"
 
 function Getallfollowrequests() {
 
@@ -33,8 +34,10 @@ function Getallfollowrequests() {
 
 
     return (
-        <div>
-            <p><strong>Results: </strong></p>
+        <div className="outer-container-2">
+            <div className="inner-container-2 ">
+                <article className="article-section-2">
+            <p className="p-intro"><strong>Followrequests: </strong></p>
             {followrequests.length > 0 && <ul>
                     {followrequests.map((followrequest) => {
                         return (
@@ -48,7 +51,8 @@ function Getallfollowrequests() {
                     })}
                 </ul>
             }
-
+                </article>
+        </div>
         </div>
     );
 }

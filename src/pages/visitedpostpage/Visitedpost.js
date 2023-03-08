@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {AuthContext} from "../../context/authenticationcontext/AuthContext";
+import "../visitedpostpage/visiteedpoststyle.css"
 
 import axios from "axios";
 
@@ -101,13 +102,14 @@ function Visitedpost() {
     // });
 
     return (
-        <>
+        <section className="outer-container-2">
+        <div className="inner-container-2">
             {visitedpost &&
-            <article>
+            <article className="article-section-2">
                 <h1>{visitedpost.name}</h1>
                 {imageBlob && <img
                     alt="Afbeelding post"
-                    src={imageBlob.src}
+                    src={imageBlob.src} width= "500px"
                 /> }
                 {videoBlob && <video
                     width="750" height="500" controls >
@@ -117,7 +119,7 @@ function Visitedpost() {
 
                 <p><strong>Comments: </strong></p>
                 {visitedpost.comments &&
-                    <ul>
+                    <ul className="article-section-2">
                         {visitedpost.comments.map((comment) => {
                             return (
                                 <li key={`${comment.id}-${comment.name}`}>
@@ -129,10 +131,13 @@ function Visitedpost() {
                 }
             </article>
             }
+        </div>
+
             <article>
-                <Link to={`/searchresultsprofiles/${visitedprofileid}`}> Back to Visited Profile! </Link>
+            <Link to={`/searchresultsprofiles/${visitedprofileid}`}> Back to Visited Profile! </Link>
             </article>
-        </>
+
+        </section>
     );
 }
 

@@ -1,8 +1,9 @@
 import React, { useContext , useEffect } from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
+import "../acceptfriendrequestpage/acceptfriendrequeststyle.css"
 
 
 function Acceptfriendrequest() {
@@ -36,9 +37,13 @@ function Acceptfriendrequest() {
 
 
     return (
-        <div>
+        <div className="outer-container">
+            <div className="inner-container ">
+                <article className="article-begin">
             <h1>You have accepted this friendrequest!</h1>
             <Link to={`/friendrequests/profile`}> <p>click here to return to the friendrequest list!</p></Link>
+            </article>
+        </div>
         </div>
     );
 }

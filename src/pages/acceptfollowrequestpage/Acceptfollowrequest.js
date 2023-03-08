@@ -1,8 +1,9 @@
 import React, { useContext , useEffect} from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
+import "../acceptfollowrequestpage/acceptfollowrequeststyle.css"
 
 
 function Acceptfollowrequest() {
@@ -39,9 +40,13 @@ function Acceptfollowrequest() {
 
 
     return (
-        <div>
+        <div className="outer-container">
+        <div className="inner-container">
+            <article className="article-begin">
             <h1>You have accepted this followrequest!</h1>
             <Link to={`/followrequests/profile`}> <p>click here to return to the followrequest list!</p></Link>
+        </article>
+        </div>
         </div>
     );
 }

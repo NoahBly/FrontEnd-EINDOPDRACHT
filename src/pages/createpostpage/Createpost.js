@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {useHistory} from "react-router-dom";
+import "../createpostpage/createpoststyle.css"
 
 function Createpost() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -36,7 +37,9 @@ function Createpost() {
 
 
     return (
-        <div>
+        <div className="outer-container">
+            <div className="inner-container">
+                <article className="article-begin">
             <h1>Create your post!</h1>
             {isAuthenticated === true &&
                 <form onSubmit={handleSubmit(clickHandler)}>
@@ -56,6 +59,8 @@ function Createpost() {
                     </button>
                 </form>
             }
+                </article>
+            </div>
         </div>
     );
 }
