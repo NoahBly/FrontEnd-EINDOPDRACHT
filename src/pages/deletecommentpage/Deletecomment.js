@@ -1,8 +1,9 @@
 import React, { useContext , useEffect } from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
+import ".//deletecommentstyle.css"
 
 
 function Deletecomment() {
@@ -44,9 +45,13 @@ function Deletecomment() {
 
 
     return (
-        <div>
+        <div className="outer-container">
+            <div className="inner-container">
+                <article className="article-begin">
             <h1>You have deleted this comment!</h1>
             <Link to={`/post/${postidcurrent}`}> <p>click here to return to the post!</p></Link>
+            </article>
+        </div>
         </div>
     );
 }

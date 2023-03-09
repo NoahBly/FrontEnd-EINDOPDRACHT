@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {useHistory, useParams} from "react-router-dom";
+import "../updatebiopage/updatebiostyle.css"
 
 function Createpost() {
     const {postId} = useParams();
@@ -37,7 +38,9 @@ function Createpost() {
 
 
     return (
-        <div>
+        <div className="outer-container">
+            <div className="inner-container ">
+                <article className="article-begin">
             <h1>Update your Bio here!</h1>
             {isAuthenticated === true &&
                 <form onSubmit={handleSubmit(clickHandler)}>
@@ -57,6 +60,8 @@ function Createpost() {
                     </button>
                 </form>
             }
+                </article>
+            </div>
         </div>
     );
 }

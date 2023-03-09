@@ -1,29 +1,30 @@
 import React, { useContext , useEffect } from 'react';
-import { AuthContext } from '../context/authenticationcontext/AuthContext';
+import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
+import "../deletepostpage/deletepoststyle.css"
 
 
-function Deletefollower() {
+function Deletepost() {
     //
-    const {userDetails} = useContext(AuthContext);
+    const {postidcurrent} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
-
-    const {followerId} = useParams();
 
 
     // const visitedprofileid2 = visitedprofileid;
+
+
     useEffect(() => {
 
-        const profileidcurrent2 = userDetails.profile.id;
+        const postidcurrent2 = postidcurrent;
 
         async function clickHandler() {
             // Verstuur de inloggegevens via een post-request naar de backend
 
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.delete(`http://localhost:8083/followrequests/profile/${profileidcurrent2}/followers/${followerId}`);
+                const response = await axios.delete(`http://localhost:8083/posts/post/${postidcurrent2}`);
                 // We krijgen een object terug en kijk dan naar waar de token zit:
                 console.log('object uit de backend teruggekregen na posten', response);
 
@@ -39,11 +40,15 @@ function Deletefollower() {
 
 
     return (
-        <div>
-            <h1>You have deleted this follower from your followerslist!</h1>
-            <Link to={`/followerslist/profile`}> <p>click here to return to the followers list!</p></Link>
+        <div className="outer-container">
+            <div className="inner-container">
+                <article className="article-begin">
+            <h1>You have deleted this post!</h1>
+            <Link to={`/profile`}> <p>click here to return to your profile!</p></Link>
+            </article>
+        </div>
         </div>
     );
 }
 
-export default Deletefollower;
+export default Deletepost;

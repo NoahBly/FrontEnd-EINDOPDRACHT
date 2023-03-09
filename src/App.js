@@ -22,23 +22,23 @@ import Createfollowrequest from "./pages/createfollowrequestpage/Createfollowreq
 import Getallfollowrequests from "./pages/getallfollowrequestspage/Getallfollowrequests";
 import Acceptfollowrequest from "./pages/acceptfollowrequestpage/Acceptfollowrequest";
 import Getallfriends from "./pages/getallfriendspage/Getallfriends";
-import Deletefriend from "./pages/Deletefriend";
+import Deletefriend from "./pages/deletefriendpage/Deletefriend";
 import Getallfollowers from "./pages/getallfollowerspage/Getallfollowers";
-import Deletefollower from "./pages/Deletefollower";
+import Deletefollower from "./pages/deletefollowerpage/Deletefollower";
 import Getallfollowings from "./pages/getallfollowingpage/Getallfollowings";
-import Deletefollowing from "./pages/Deletefollowing";
+import Deletefollowing from "./pages/deletefollowingpage/Deletefollowing";
 import Uploadprofileimage from "./pages/Uploadprofileimage";
 import Draganddropz from "./context/components/Draganddropz";
 import Draganddropzz from "./context/components/Draganddropzz";
 import Draganddropzzz from "./context/components/profileimageupload/Draganddropzzz";
 import Postfileupload from "./context/components/postfileupload/Postfileupload";
-import DeleteAccount from "./pages/DeleteAccount";
-import Settings from "./pages/Settings";
-import Deletepost from "./pages/Deletepost";
-import Deletecomment from "./pages/Deletecomment";
+import DeleteAccount from "./pages/deleteaccountpage/DeleteAccount";
+import Settings from "./pages/settingspage/Settings";
+import Deletepost from "./pages/deletepostpage/Deletepost";
+import Deletecomment from "./pages/deletecommentpage/Deletecomment";
 import Createcelebrityuserpage from "./pages/createcelebuserpage/Createcelebrityuserpage";
 import Createpageadminpage from "./pages/createpageadminpage/Createpageadminpage";
-import Updatebiopage from "./pages/Updatebiopage";
+import Updatebiopage from "./pages/updatebiopage/Updatebiopage";
 import Navigationbar from "./context/components/navigationbar/Navigationbar";
 
 function App() {
