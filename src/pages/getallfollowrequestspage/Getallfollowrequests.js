@@ -38,7 +38,7 @@ function Getallfollowrequests() {
             <div className="inner-container-2 ">
                 <article className="article-section-2">
             <p className="p-intro"><strong>Followrequests: </strong></p>
-            {followrequests.length > 0 && <ul>
+            {followrequests.length > 0 && <ul className="article-section-2">
                     {followrequests.map((followrequest) => {
                         return (
                             <li key={`${followrequest.id}-${followrequest.maker.name}`}>

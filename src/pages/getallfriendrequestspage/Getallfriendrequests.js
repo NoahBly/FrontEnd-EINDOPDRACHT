@@ -40,7 +40,7 @@ function Getallfriendrequests() {
             {console.log(friendrequests)}
 
             <p className="p-intro"><strong>Friendrequests: </strong></p>
-            {friendrequests.length > 0 && <ul>
+            {friendrequests.length > 0 && <ul className="article-section-2">
                     {friendrequests.map((friendrequest) => {
                         return (
                             <li key={`${friendrequest.id}-${friendrequest.maker.name}`}>

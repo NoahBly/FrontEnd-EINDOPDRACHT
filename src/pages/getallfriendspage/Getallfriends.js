@@ -40,7 +40,7 @@ function Getallfriends() {
             {console.log(friends)}
 
             <p className ="p-intro " ><strong>Friends: </strong></p>
-            {friends.length > 0 && <ul>
+            {friends.length > 0 && <ul className="article-section-2">
                 {friends.map((friend) => {
                     return (
                         <li key={`${friend.id}-${friend.friend.name}`}>

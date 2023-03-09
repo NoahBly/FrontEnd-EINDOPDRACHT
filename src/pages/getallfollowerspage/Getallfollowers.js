@@ -40,7 +40,7 @@ function Getallfollowers() {
             {console.log(followers)}
 
             <p className="p-intro"><strong>Followers: </strong></p>
-            {followers.length > 0 && <ul>
+            {followers.length > 0 && <ul className="article-section-2">
                 {followers.map((follower) => {
                     return (
                         <li key={`${follower.id}-${follower.friend.name}`}>
