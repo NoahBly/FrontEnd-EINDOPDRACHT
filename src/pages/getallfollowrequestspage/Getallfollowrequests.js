@@ -42,10 +42,13 @@ function Getallfollowrequests() {
                     {followrequests.map((followrequest) => {
                         return (
                             <li key={`${followrequest.id}-${followrequest.maker.name}`}>
-                                <Link to={`/followrequestaccept/${followrequest.id}`}>
+                                <Link to={`/followrequestaccept/${followrequest.id}`} >
                                     {followrequest.maker.name}
                                 </Link>
-                                {followrequest.maker.profileimage}
+                                <p>  or  </p>
+                                <Link to={`/followrequestdelete/${followrequest.id}`} >
+                                    delete followrequest from : {followrequest.maker.name}
+                                </Link>
                             </li>
                         )
                     })}

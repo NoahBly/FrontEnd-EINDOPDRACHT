@@ -40,6 +40,8 @@ import Createcelebrityuserpage from "./pages/createcelebuserpage/Createcelebrity
 import Createpageadminpage from "./pages/createpageadminpage/Createpageadminpage";
 import Updatebiopage from "./pages/updatebiopage/Updatebiopage";
 import Navigationbar from "./context/components/navigationbar/Navigationbar";
+import Deletefriendrequest from "./pages/deletefriendrequestpage/Deletefriendrequest";
+import Deletefollowrequest from "./pages/deletefollowrequestpage/Deletefollowrequest";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -167,6 +169,13 @@ function App() {
 
             <Route path="/profilebio/update/">
                 {isAuthenticated ? <Updatebiopage /> : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/friendrequestdelete/:friendrequestId">
+                {isAuthenticated ? <Deletefriendrequest /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/followrequestdelete/:followrequestId">
+                {isAuthenticated ? <Deletefollowrequest /> : <Redirect to="/" />}
             </Route>
 
 
