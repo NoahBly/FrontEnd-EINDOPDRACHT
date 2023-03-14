@@ -43,7 +43,7 @@ function Getallfollowrequests() {
                         return (
                             <li key={`${followrequest.id}-${followrequest.maker.name}`}>
                                 <Link to={`/followrequestaccept/${followrequest.id}`} >
-                                    {followrequest.maker.name}
+                                accept followrequest from : {followrequest.maker.name}
                                 </Link>
                                 <p>  or  </p>
                                 <Link to={`/followrequestdelete/${followrequest.id}`} >
