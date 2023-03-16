@@ -11,6 +11,7 @@ function Visitedpost() {
     const [visitedpost, setVisitedpost] = useState();
 
     const {visitedprofileid} = useContext(AuthContext);
+    const {profileidcurrent} = useContext(AuthContext);
 
     const {visitedpostidcurrent, setVisitedpostidfunction} = useContext(AuthContext);
 
@@ -121,11 +122,14 @@ function Visitedpost() {
                 {visitedpost.comments &&
                     <ul className="article-section-2">
                         {visitedpost.comments.map((comment) => {
-                            return (
-                                <li key={`${comment.id}-${comment.name}`}>
-                                    <p> {comment.comment}</p>
-                                </li>
-                            )
+                            return <li key={`${comment.id}-${comment.name}`}>
+                                <p> {comment.comment}</p>
+                                {comment.commentmaker.id === profileidcurrent || comment.post.profile.id === profileidcurrent ?
+                                    <Link to={`/commentdelete/delete/${comment.id}`}>
+                                        delete this comment
+                                    </Link>: <p> </p>}
+
+                            </li>
                         })}
                     </ul>
                 }

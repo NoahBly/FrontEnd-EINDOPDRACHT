@@ -10,6 +10,7 @@ function Post() {
 
     const {postsofprofile} = useContext(AuthContext);
     const {setPostidfunction} = useContext(AuthContext);
+    const {profileidcurrent} = useContext(AuthContext);
     console.log(postsofprofile);
     console.log(postId);
 
@@ -112,9 +113,9 @@ function Post() {
                             return (
                                 <li key={`${comment.id}-${comment.name}`}>
                                     <p> {comment.comment}</p>
-                                    <Link to={`/commentdelete/delete/${comment.id}`}>
+                                    {comment.commentmaker.id === profileidcurrent || comment.post.profile.id === profileidcurrent ?  <Link to={`/commentdelete/delete/${comment.id}`}>
                                         delete this comment
-                                    </Link>
+                                    </Link> : <p></p>}
                                 </li>
 
                             )
