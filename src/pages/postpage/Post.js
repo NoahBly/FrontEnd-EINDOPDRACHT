@@ -112,7 +112,7 @@ function Post() {
                         {post.comments.map((comment) => {
                             return (
                                 <li key={`${comment.id}-${comment.name}`}>
-                                    <p> {comment.comment}</p>
+                                  <p>{comment.commentmaker.name} - </p>  <p> {comment.comment}</p>
                                     {comment.commentmaker.id === profileidcurrent || comment.post.profile.id === profileidcurrent ?  <Link to={`/commentdelete/delete/${comment.id}`}>
                                         delete this comment
                                     </Link> : <p></p>}
