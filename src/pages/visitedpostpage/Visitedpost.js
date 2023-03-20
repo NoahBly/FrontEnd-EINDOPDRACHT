@@ -110,7 +110,7 @@ function Visitedpost() {
                 <h1>{visitedpost.name}</h1>
                 {imageBlob && <img
                     alt="Afbeelding post"
-                    src={imageBlob.src} width= "500px"
+                    src={imageBlob.src} className="image-post"
                 /> }
                 {videoBlob && <video
                     width="750" height="500" controls >

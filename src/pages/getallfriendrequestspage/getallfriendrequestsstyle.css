@@ -32,6 +32,11 @@
 
 }
 
+.text-align {
+    text-align: center;
+    margin: 5px;
+}
+
 #h1-intro {
     flex-basis: 300px;
     padding: 20px 0;

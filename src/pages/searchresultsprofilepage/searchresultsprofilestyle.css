@@ -41,3 +41,7 @@
     flex-basis: 50px;
     margin: 20px 0;
 }
+.image-post {
+    width: 500px;
+    max-height: 250px;
+}

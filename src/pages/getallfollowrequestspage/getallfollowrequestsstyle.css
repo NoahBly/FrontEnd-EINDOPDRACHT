@@ -41,3 +41,8 @@
     flex-basis: 50px;
     margin: 20px 0;
 }
+
+.text-align {
+    text-align: center;
+    margin: 5px;
+}

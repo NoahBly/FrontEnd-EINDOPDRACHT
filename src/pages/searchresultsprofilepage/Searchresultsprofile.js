@@ -91,7 +91,7 @@ function Searchresultsprofile() {
                         <h1 className="h1-intro">{profilevisited.name}</h1>
                         {imageBlob && <img
                             alt="Afbeelding profile"
-                            src={imageBlob.src} width="500px"
+                            src={imageBlob.src} className="image-post"
                         />}
 
                         <p className="p-intro"><strong>Friendlist: </strong>{profilevisited.friendlist &&

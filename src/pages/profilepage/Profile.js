@@ -77,7 +77,8 @@ console.log('profile:', profile)
                 <h1 className="h1-intro">{profile.name}</h1>
                 {imageBlob  && <img
                     alt="Afbeelding profile"
-                    src={imageBlob.src} width="500px"
+                    src={imageBlob.src}
+                    className="image-post"
                 /> }
                 <Link to={`/profileimage/add`}> <p>Add profileimage!</p></Link>
                 <p className="p-intro"><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>

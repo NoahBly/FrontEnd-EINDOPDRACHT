@@ -44,12 +44,12 @@ function Getallfriendrequests() {
                     {friendrequests.map((friendrequest) => {
                         return (
                             <li key={`${friendrequest.id}-${friendrequest.maker.name}`}>
-                                <Link to={`/friendrequestaccept/${friendrequest.id}`} >
-                                 accept as friend :   {friendrequest.maker.name}
+                                <Link  to={`/friendrequestaccept/${friendrequest.id}`} >
+                                    <p className="text-align">accept as friend :   {friendrequest.maker.name}</p>
                                 </Link>
-                                <p>  or  </p>
+                                <p className="text-align">  or  </p>
                                 <Link to={`/friendrequestdelete/${friendrequest.id}`} >
-                                  delete friendrequest from : {friendrequest.maker.name}
+                                    <p className="text-align">delete friendrequest from : {friendrequest.maker.name}</p>
                                 </Link>
                             </li>
                         )

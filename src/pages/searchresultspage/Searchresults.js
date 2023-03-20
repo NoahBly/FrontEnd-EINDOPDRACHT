@@ -41,7 +41,7 @@ function Searchresults() {
                             <Link to={`/searchresultsprofiles/${profile.id}`}>
                                 {profile.name}
                             </Link>
-                            {profile.profileimage}
+
                         </li>
                     )
                 })}
