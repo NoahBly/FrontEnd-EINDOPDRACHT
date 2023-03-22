@@ -46,3 +46,13 @@
     flex-basis: 50px;
     margin: 20px 0;
 }
+
+.Disableonclick {
+    pointer-events: none;
+}
+
+.disabled {
+    pointer-events: auto;
+    cursor: pointer;
+    display: inline-block;
+}

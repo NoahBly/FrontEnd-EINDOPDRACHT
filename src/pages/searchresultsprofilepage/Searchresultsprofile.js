@@ -12,6 +12,8 @@ function Searchresultsprofile() {
     //const {profile2id, setprofile2id} = useState();
     const {visitedprofileid, setVisitedprofileidfunction} = useContext(AuthContext);
     const [imageBlob, setImageBlob] = useState();
+    const [profiles, setProfiles] = useState([]);
+    const {userDetails} = useContext(AuthContext);
 
 
     useEffect(() => {
@@ -76,12 +78,30 @@ function Searchresultsprofile() {
                 console.error(e);
             }
 
-
-
         }
 
+    useEffect(() => {
+        console.log(userDetails.id);
 
-        return (
+        async function fetchData() {
+            try {
+                const {data} = await axios.get(`http://localhost:8083/profiles/user/${userDetails.id}`);
+                console.log(data);
+                if(data) {
+                setProfiles(data.friendlist);
+            }
+
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+            fetchData();
+
+    },[]);
+
+
+    return (
             <div className="outer-container-2">
             <section className="inner-container-2">
 
@@ -123,15 +143,29 @@ function Searchresultsprofile() {
                 }
             </div>
             </section>
-                <div className="article-section-2">
-                <Link to={`/createfriendrequest/create`}>
-                    <p className="p-intro"> Create Friendrequest!</p>
-                </Link>
+                {profiles &&
+                 profiles.map((profile) => {
+                     console.log(profile);
+                if(profilevisited.name === profile.friend.name) {
+                    return (
+                    <p></p>
+                    )
+                }else {
+                    return (
+                        <div className="article-section-2">
 
-                <Link to={`/createfollowrequest/create`}>
-                    <p className="p-intro">Create Followrequest</p>
-                </Link>
-                </div>
+                            <Link to={`/createfriendrequest/create`}>
+                                <p className="p-intro"> Create Friendrequest!</p>
+                            </Link>
+
+                            <Link to={`/createfollowrequest/create`}>
+                                <p className="p-intro">Create Followrequest</p>
+                            </Link>
+                        </div>
+                    )
+                }
+            })}
+
             </div>
         );
     }

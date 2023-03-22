@@ -6,6 +6,7 @@ import "../getallfollowrequestspage/getallfollowrequestsstyle.css"
 
 function Getallfollowrequests() {
 
+
     const [followrequests, setFollowrequests] = useState({});
     const {userDetails} = useContext(AuthContext);
 
@@ -31,6 +32,10 @@ function Getallfollowrequests() {
         fetchdata();
 
     },[]);
+
+
+
+
 
 
     return (
