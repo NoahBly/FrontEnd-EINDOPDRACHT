@@ -14,7 +14,10 @@ function Searchresultsprofile() {
     const [imageBlob, setImageBlob] = useState();
     const [profiles, setProfiles] = useState([]);
     const {userDetails} = useContext(AuthContext);
-
+    const [followers, setFollowers] = useState([]);
+    const [followings, setFollowings] = useState([]);
+    const [banaan, setBanaan] = useState(false);
+    const [appel, setAppel] = useState(false);
 
     useEffect(() => {
         console.log(profile2Id);
@@ -83,22 +86,76 @@ function Searchresultsprofile() {
     useEffect(() => {
         console.log(userDetails.id);
 
-        async function fetchData() {
+        async function fetchData3() {
+
             try {
                 const {data} = await axios.get(`http://localhost:8083/profiles/user/${userDetails.id}`);
                 console.log(data);
                 if(data) {
-                setProfiles(data.friendlist);
-            }
+                    // setProfiles(data.friendlist)
+                    setProfiles(data.friendlist.filter((profile) => {
+                        if (profile.friend.name === profilevisited.name) {
+                            setBanaan(true);
+                            console.log("test");
+                        }else {
+                            setBanaan(false);
+                        }
+
+
+                    } ));
+                       }
+
 
             } catch (e) {
                 console.error(e);
             }
         }
 
-            fetchData();
+            fetchData3();
 
-    },[]);
+    },[profilevisited]);
+
+
+
+    useEffect(() => {
+
+        async function fetchdata5() {
+            // Verstuur de inloggegevens via een post-request naar de backend
+            try {
+                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
+                const response = await axios.get(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`);
+                // We krijgen een token terug:
+                console.log(response.data);
+
+                if(response.data) {
+                    // setProfiles(data.friendlist)
+                    setFollowings(response.data.filter((profile) => {
+                        if (profile.friend.name === profilevisited.name) {
+                            setAppel(true);
+                            console.log("test");
+                        }else {
+                            setAppel(false);
+                        }
+
+
+                    } ));
+                }
+                // if(response.data) {
+                // setFollowings(response.data);
+                //setProfilesearchresults(response.data);
+            // }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        fetchdata5();
+
+    },[profilevisited]);
+
+
+
+
 
 
     return (
@@ -143,31 +200,109 @@ function Searchresultsprofile() {
                 }
             </div>
             </section>
-                {profiles &&
-                 profiles.map((profile) => {
-                     console.log(profile);
-                if(profilevisited.name === profile.friend.name) {
-                    return (
-                    <p></p>
-                    )
-                }else {
-                    return (
-                        <div className="article-section-2">
+              {/*//  data.friendlist.find((profile) =>*/}
+              {/*  //     profile.friend.name === profilevisited.name*/}
+                { console.log(profiles)}
+                {console.log(banaan)}
+                {/*{ console.log(profilevisited)}*/}
+                {/*{profiles &&*/}
+                {/*{  profiles.find((profile) => {*/}
+                {/*   // setBanaan( profile.friend.name === profilevisited.name);*/}
+                {/*    // console.log(output);*/}
 
-                            <Link to={`/createfriendrequest/create`}>
-                                <p className="p-intro"> Create Friendrequest!</p>
-                            </Link>
+                {/*    //*/}
+                {/*    // if(output) {*/}
+                {/*    //      setBanaan(true);*/}
+                {/*    // } else {*/}
+                {/*    //     setBanaan(false);*/}
+                {/*    // }*/}
 
-                            <Link to={`/createfollowrequest/create`}>
-                                <p className="p-intro">Create Followrequest</p>
-                            </Link>
-                        </div>
-                    )
+                {/*    // else {*/}
+                {/*    //    return  (   <div className="article-section-2">*/}
+                {/*    //*/}
+                {/*    //         <Link to={`/createfriendrequest/create`}>*/}
+                {/*    //             <p className="p-intro"> Create Friendrequest!</p>*/}
+                {/*    //         </Link>*/}
+                {/*    //     </div>)*/}
+                {/*    // }*/}
+
+                {/*})}*/}
+
+                {/*{*/}
+                { banaan ? <p></p> : <div className="article-section-2">
+
+                                 <Link to={`/createfriendrequest/create`}>
+                                     <p className="p-intro"> Create Friendrequest!</p>
+                                 </Link>
+                             </div>
                 }
-            })}
+            {/*    */}
+
+                { console.log(followings)}
+                {console.log(appel)}
+
+
+                { appel ? <p></p> :  <div className="article-section-2">
+
+                    <Link to={`/createfollowrequest/create`}>
+                        <p className="p-intro">Create Followrequest</p>
+                    </Link>
+
+                </div>
+                }
+
+            {/*//         return (*/}
+            {/*//         <p></p>*/}
+            {/*//         )*/}
+            {/*//     }else {*/}
+            {/*//         return (*/}
+            {/*//             <div className="article-section-2">*/}
+            {/*//*/}
+            {/*//                 <Link to={`/createfriendrequest/create`}>*/}
+            {/*//                     <p className="p-intro"> Create Friendrequest!</p>*/}
+            {/*//                 </Link>*/}
+            {/*//             </div>*/}
+            {/*//*/}
+            {/*//         )*/}
+            {/*//     }*/}
+            {/*// })*/}
+            {/*//         : <p>test</p>*/}
+            {/*//*/}
+            {/*//     }*/}
+
+            {/*    { console.log(followings)}*/}
+            {/*    {followings > 0 ?*/}
+            {/*        followings.map((following) => {*/}
+            {/*            console.log(following);*/}
+            {/*            if(profilevisited.id === following.friend.id) {*/}
+            {/*                return (*/}
+            {/*                    <p></p>*/}
+            {/*                )*/}
+            {/*            }else {*/}
+            {/*                return (*/}
+            {/*                    <div className="article-section-2">*/}
+
+            {/*                        <Link to={`/createfollowrequest/create`}>*/}
+            {/*                            <p className="p-intro">Create Followrequest</p>*/}
+            {/*                        </Link>*/}
+
+            {/*                    </div>*/}
+            {/*                )*/}
+            {/*            }*/}
+            {/*        })*/}
+            {/*        : <div className="article-section-2">*/}
+
+            {/*            <Link to={`/createfollowrequest/create`}>*/}
+            {/*                <p className="p-intro">Create Followrequest</p>*/}
+            {/*            </Link>*/}
+
+            {/*        </div>*/}
+            {/*    }*/}
+
 
             </div>
-        );
+
+                );
     }
 
 
