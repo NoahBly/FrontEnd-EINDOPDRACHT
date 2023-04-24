@@ -8,7 +8,7 @@ function Draganddropzzz() {
     const {register,handleSubmit} = useForm();
     const [test, setTest] = useState([]);
 
-    const {profileidcurrent} = useContext(AuthContext);
+    const {profileidcurrent,currenttoken} = useContext(AuthContext);
     const history = useHistory();
 
 
@@ -34,10 +34,9 @@ function Draganddropzzz() {
                 const response = await axios.post(`http://localhost:8083/profiles/${profileidcurrent2}/addProfileImage`,
                    formdata , {
                     headers :{
-                        "Content-Type" : "multipart/form-data"
-                    }
-
-            });
+                        "Content-Type" : "multipart/form-data",
+                        Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 // We krijgen een object terug en kijk dan naar waar de token zit:
                 console.log('object uit de backend teruggekregen na posten', response);
                 history.push("/profile");

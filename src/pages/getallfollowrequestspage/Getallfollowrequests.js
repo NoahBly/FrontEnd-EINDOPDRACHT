@@ -3,37 +3,25 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfollowrequestspage/getallfollowrequestsstyle.css"
+import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 
 function Getallfollowrequests() {
 
-
-    const [followrequests, setFollowrequests] = useState({});
+  const [test, setTest] = useState([]);
+    const [followrequests, setFollowrequests] = useState([]);
     const {userDetails} = useContext(AuthContext);
 
     console.log(userDetails);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
+        clickHandler(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}`, token, followrequests, setFollowrequests);
 
-        async function fetchdata() {
-            // Verstuur de inloggegevens via een post-request naar de backend
-            try {
-                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}`);
-                // We krijgen een token terug:
-                console.log(response.data);
-                setFollowrequests(response.data);
-                //setProfilesearchresults(response.data);
-
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        fetchdata();
-
-    },[]);
+    }, [test])
 
 
+
+console.log(followrequests);
 
 
 
@@ -48,7 +36,7 @@ function Getallfollowrequests() {
                         return (
                             <li key={`${followrequest.id}-${followrequest.maker.name}`}>
                                 <Link to={`/followrequestaccept/${followrequest.id}`} >
-                              <p className="text-align"> accept followrequest from : {followrequest.maker.name}</p>
+                              <button onClick={( ) => setTest(!test)} className="text-align"> accept followrequest from : {followrequest.maker.name}</button>
                             </Link>
                                 <p className="text-align">  or  </p>
                                 <Link to={`/followrequestdelete/${followrequest.id}`} >

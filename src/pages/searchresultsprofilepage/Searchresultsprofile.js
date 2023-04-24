@@ -7,7 +7,7 @@ import "../searchresultsprofilepage/searchresultsprofilestyle.css"
 function Searchresultsprofile() {
     const {profile2Id} = useParams();
     const {profilesearchresults} = useContext(AuthContext);
-    const {setVisitedprofilepostsfunction} = useContext(AuthContext);
+    const {setVisitedprofilepostsfunction,currenttoken} = useContext(AuthContext);
     const [profilevisited, setProfilevisited] = useState();
     //const {profile2id, setprofile2id} = useState();
     const {visitedprofileid, setVisitedprofileidfunction} = useContext(AuthContext);
@@ -19,6 +19,8 @@ function Searchresultsprofile() {
     const [banaan, setBanaan] = useState(false);
     const [appel, setAppel] = useState(false);
 
+    const token = localStorage.getItem("token");
+
     useEffect(() => {
         console.log(profile2Id);
 
@@ -29,7 +31,12 @@ function Searchresultsprofile() {
 
             async function fetchData() {
                 try {
-                    const {data} = await axios.get(`http://localhost:8083/profiles/${profile2id}`);
+                    const {data} = await axios.get(`http://localhost:8083/profiles/${profile2id}`,
+                        {
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                            }});
                     console.log(data);
                     setProfilevisited(data);
                     setVisitedprofilepostsfunction(data.posts);
@@ -60,8 +67,10 @@ function Searchresultsprofile() {
 
             try {
                 const response = await axios.get(`http://localhost:8083/profiles/download/${profilevisitedid}`, {
-                    responseType: "blob"
-                });
+                    responseType: "blob",
+                    headers: {
+                            Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 const blob = response.data;
                 const reader = new FileReader();
                 reader.onload = function (e) {
@@ -89,7 +98,11 @@ function Searchresultsprofile() {
         async function fetchData3() {
 
             try {
-                const {data} = await axios.get(`http://localhost:8083/profiles/user/${userDetails.id}`);
+                const {data} = await axios.get(`http://localhost:8083/profiles/user/${userDetails.id}`,{
+                    headers: {
+                        "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 console.log(data);
                 if(data) {
                     // setProfiles(data.friendlist)
@@ -123,7 +136,11 @@ function Searchresultsprofile() {
             // Verstuur de inloggegevens via een post-request naar de backend
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`);
+                const response = await axios.get(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 // We krijgen een token terug:
                 console.log(response.data);
 

@@ -3,32 +3,20 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfollowingpage/getallfollowingpagestyle.css"
+import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 
 function Getallfollowings() {
 
     const [followings, setFollowings] = useState([]);
     const {userDetails} = useContext(AuthContext);
 
+
+
     console.log(userDetails);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
-
-        async function fetchdata() {
-            // Verstuur de inloggegevens via een post-request naar de backend
-            try {
-                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`);
-                // We krijgen een token terug:
-                console.log(response.data);
-                setFollowings(response.data);
-                //setProfilesearchresults(response.data);
-
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        fetchdata();
+        clickHandler(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`, token,followings, setFollowings)
 
     },[]);
 
@@ -51,7 +39,6 @@ function Getallfollowings() {
                                 remove {following.friend.name} as friend
                             </Link>
 
-                            {following.friend.profileimage}
                         </li>
                     )
                 })}

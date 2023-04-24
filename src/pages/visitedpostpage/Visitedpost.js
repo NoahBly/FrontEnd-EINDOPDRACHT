@@ -17,7 +17,7 @@ function Visitedpost() {
 
     const [imageBlob, setImageBlob] = useState();
     const [videoBlob,setVideoBlob] = useState();
-
+    const token = localStorage.getItem("token");
     useEffect(() => {
 
         console.log(post2Id);
@@ -31,7 +31,11 @@ function Visitedpost() {
 
             async function fetchData(postvisitedid) {
                 try {
-                    const {data} = await axios.get(`http://localhost:8083/posts/post/${postvisitedid}`);
+                    const {data} = await axios.get(`http://localhost:8083/posts/post/${postvisitedid}`,{
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                        }});
                     console.log(data);
                     setVisitedpost(data);
 
@@ -60,8 +64,10 @@ function Visitedpost() {
             async function fetchData2() {
                 try {
                     const response = await axios.get(`http://localhost:8083/posts/downloadpostfile/${postvisitedid}`, {
-                        responseType: "blob"
-                    });
+                        responseType: "blob",
+                        headers: {
+                                Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                        }});
                     const blob = response.data;
                     console.log(blob);
                     if(blob.type === "video/mp4") {

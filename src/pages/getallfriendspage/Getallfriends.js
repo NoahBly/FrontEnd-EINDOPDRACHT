@@ -1,34 +1,27 @@
 import React, {useContext, useState,useEffect} from 'react';
 import { AuthContext } from '../../context/authenticationcontext/AuthContext';
-import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfriendspage/getallfriendsstyle.css"
+import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+// import useGetlist from "../../context/components/componentgetList/useGetlist";
 
 function Getallfriends() {
 
     const [friends, setFriends] = useState([]);
     const {userDetails} = useContext(AuthContext);
+    const [data, setData] = useState([]);
+
 
     console.log(userDetails.profile.id);
 
+const token = localStorage.getItem("token");
+
+
+
+    console.log(data);
+
     useEffect(() => {
-
-        async function fetchdata() {
-            // Verstuur de inloggegevens via een post-request naar de backend
-            try {
-                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends`);
-                // We krijgen een token terug:
-                console.log(response.data);
-                setFriends(response.data);
-                //setProfilesearchresults(response.data);
-
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        fetchdata();
+        clickHandler(`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends`, token, friends, setFriends);
 
     },[]);
 
@@ -41,7 +34,7 @@ function Getallfriends() {
 
             <p className ="p-intro " ><strong>Friends: </strong></p>
             {friends.length > 0 && <ul className="article-section-2">
-                {friends.map((friend) => {
+                {friends.map((friend ) => {
                     return (
                         <li key={`${friend.id}-${friend.friend.name}`}>
 
@@ -51,7 +44,7 @@ function Getallfriends() {
                                 remove {friend.friend.name} as friend
                             </Link>
 
-                            {friend.friend.profileimage}
+
                         </li>
                     )
                 })}

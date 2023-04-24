@@ -16,7 +16,7 @@ function Post() {
 
     const [imageBlob, setImageBlob] = useState(null);
     const [videoBlob, setVideoBlob] = useState(null);
-
+    const currenttoken = localStorage.getItem("token");
 
     useEffect(() => {
 
@@ -27,7 +27,11 @@ function Post() {
 
         async function fetchData(postid) {
             try {
-                const {data} = await axios.get(`http://localhost:8083/posts/post/${postid}`);
+                const {data} = await axios.get(`http://localhost:8083/posts/post/${postid}`,{
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 console.log(data);
                 setPost(data);
             } catch (e) {
@@ -42,7 +46,10 @@ function Post() {
             async function fetchData2(postid) {
                 try {
                     const response = await axios.get(`http://localhost:8083/posts/downloadpostfile/${postid}`, {
-                        responseType: "blob"
+                        responseType: "blob",
+                        headers: {
+                            Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+                        }
                     });
                     const blob = response.data;
                     console.log(blob);

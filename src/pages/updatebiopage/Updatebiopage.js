@@ -8,7 +8,7 @@ import "../updatebiopage/updatebiostyle.css"
 function Createpost() {
     const {postId} = useParams();
     const { isAuthenticated } = useContext(AuthContext);
-    const {userDetails} = useContext(AuthContext);
+    const {userDetails,currenttoken} = useContext(AuthContext);
     const {postidcurrent} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
@@ -17,7 +17,7 @@ function Createpost() {
 
     const profileidcurrent2 = userDetails.profile.id;
     const postidcurrent2 = postidcurrent;
-
+    const token = localStorage.getItem("token");
     async function clickHandler(data,profileidcurrent,postidcurrent) {
         // Verstuur de inloggegevens via een post-request naar de backend
 
@@ -25,7 +25,11 @@ function Createpost() {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
             const response = await axios.put(`http://localhost:8083/profiles/${userDetails.profile.id}`, {
                 bioinformation: data.bio,
-            });
+            },{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                }});
             // We krijgen een object terug en kijk dan naar waar de token zit:
             console.log('object uit de backend teruggekregen na posten', response);
             history.push(`/profile`);

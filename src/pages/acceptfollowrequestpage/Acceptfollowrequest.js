@@ -1,40 +1,29 @@
-import React, { useContext , useEffect} from 'react';
-import { AuthContext } from '../../context/authenticationcontext/AuthContext';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../acceptfollowrequestpage/acceptfollowrequeststyle.css"
+import useAcceptrequest, {clickHandleraccept} from "../../context/components/componentacceptrequest/useAcceptrequest";
+import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 
 
 function Acceptfollowrequest() {
     //
     // const {profileidcurrent} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
+    const [data,setData] = useState([]);
+    const [data2,setData2] = useState([]);
 
     const {followrequestId} = useParams();
 
     // const profileidcurrent2 = profileidcurrent;
     // const visitedprofileid2 = visitedprofileid;
+ const token = localStorage.getItem("token");
+
+
+
     useEffect(() => {
 
-        async function clickHandler() {
-            // Verstuur de inloggegevens via een post-request naar de backend
-
-            try {
-                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.put(`http://localhost:8083/followrequests/${followrequestId}`);
-                // We krijgen een object terug en kijk dan naar waar de token zit:
-                console.log('object uit de backend teruggekregen na posten', response);
-
-                // We geven de token mee aan de context-functie, zodat de context de rest voor ons afhandeld!
-
-            } catch (e) {
-                console.error(e);
-            }
-
-        }
-
-        clickHandler();
+        clickHandleraccept(`http://localhost:8083/followrequests/${followrequestId}`,token, data, setData);
+        setData2(data);
     },[]);
 
 
@@ -42,10 +31,12 @@ function Acceptfollowrequest() {
     return (
         <div className="outer-container">
         <div className="inner-container">
-            <article className="article-begin">
-            <h1>You have accepted this followrequest!</h1>
-            <Link to={`/followrequests/profile`}> <p>click here to return to the followrequest list!</p></Link>
-        </article>
+            {data &&
+                <article className="article-begin">
+                    <h1>You have accepted this followrequest!</h1>
+                    <Link to={`/followrequests/profile`}><p>click here to return to the followrequest list!</p></Link>
+                </article>
+            }
         </div>
         </div>
     );

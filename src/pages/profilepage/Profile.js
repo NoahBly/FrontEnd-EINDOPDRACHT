@@ -12,14 +12,19 @@ function Profile() {
     const {profileidcurrent} = useContext(AuthContext);
 
     const[imageBlob, setImageBlob] = useState(null);
-
+    const currenttoken = localStorage.getItem("token");
     useEffect(() => {
         console.log(userDetails.id);
 
         async function fetchData() {
             console.log(profileidcurrent);
+
             try {
-                const {data} = await axios.get(`http://localhost:8083/profiles/user/${userDetails.id}`);
+                const {data} = await axios.get(`http://localhost:8083/profiles/user/${userDetails.id}`,{
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 console.log(data);
                 setProfile(data);
                 setProfilepostsfunction(data.posts);
@@ -42,11 +47,13 @@ function Profile() {
 
 console.log('profile:', profile)
     async function fetchData2() {
-
+        const currenttoken = localStorage.getItem("token");
         try {
             const response = await axios.get(`http://localhost:8083/profiles/download/${userDetails.profile.id}`, {
-                responseType: "blob"
-            });
+                responseType: "blob",
+                headers: {
+                Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+            }});
             const blob = response.data;
             const reader = new FileReader();
             reader.onload= function(e) {
@@ -59,8 +66,8 @@ console.log('profile:', profile)
             // const bloburl = URL.createObjectURL(data.blob);
             // console.log(bloburl);
             reader.readAsDataURL(blob);
-            console.log(imageBlob)
-            console.log(response);
+            // console.log(imageBlob)
+            // console.log(response);
             console.log(response.data);
         } catch (e) {
             console.error(e);

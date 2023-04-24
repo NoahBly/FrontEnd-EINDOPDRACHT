@@ -27,9 +27,9 @@ import Getallfollowers from "./pages/getallfollowerspage/Getallfollowers";
 import Deletefollower from "./pages/deletefollowerpage/Deletefollower";
 import Getallfollowings from "./pages/getallfollowingpage/Getallfollowings";
 import Deletefollowing from "./pages/deletefollowingpage/Deletefollowing";
-import Uploadprofileimage from "./pages/Uploadprofileimage";
-import Draganddropz from "./context/components/Draganddropz";
-import Draganddropzz from "./context/components/Draganddropzz";
+
+
+
 import Draganddropzzz from "./context/components/profileimageupload/Draganddropzzz";
 import Postfileupload from "./context/components/postfileupload/Postfileupload";
 import DeleteAccount from "./pages/deleteaccountpage/DeleteAccount";

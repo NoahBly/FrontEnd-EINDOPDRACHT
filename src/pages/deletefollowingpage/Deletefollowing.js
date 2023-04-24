@@ -8,7 +8,7 @@ import "../deletefollowingpage/deletefollowingstyle.css"
 
 function Deletefollowing() {
     //
-    const {userDetails} = useContext(AuthContext);
+    const {userDetails,currenttoken} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
 
     const {followingId} = useParams();
@@ -24,7 +24,11 @@ function Deletefollowing() {
 
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.delete(`http://localhost:8083/followrequests/profile/${profileidcurrent2}/following/${followingId}`);
+                const response = await axios.delete(`http://localhost:8083/followrequests/profile/${profileidcurrent2}/following/${followingId}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 // We krijgen een object terug en kijk dan naar waar de token zit:
                 console.log('object uit de backend teruggekregen na posten', response);
 

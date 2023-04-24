@@ -9,12 +9,18 @@ function Searchresults() {
     const {profilesearchresults} = useContext(AuthContext);
 
     console.log(profilesearchresults);
+
+    const token = localStorage.getItem("token");
     useEffect(() => {
         async function fetchdata() {
             // Verstuur de inloggegevens via een post-request naar de backend
             try {
                 // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/profiles/profile/${profilesearchresults}`);
+                const response = await axios.get(`http://localhost:8083/profiles/profile/${profilesearchresults}`,{
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
+                    }});
                 // We krijgen een token terug:
                 console.log(response.data);
                 setResultprofiles(response.data);

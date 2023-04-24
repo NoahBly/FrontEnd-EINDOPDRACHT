@@ -3,34 +3,24 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfriendrequestspage/getallfriendrequestsstyle.css"
+import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 
 function Getallfriendrequests() {
 
     const [friendrequests, setFriendrequests] = useState([]);
+    const [test, setTest] = useState(false);
+
     const {userDetails} = useContext(AuthContext);
 
     console.log(userDetails.profile.id);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
+        clickHandler(`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}`, token, friendrequests, setFriendrequests);
 
-        async function fetchdata() {
-            // Verstuur de inloggegevens via een post-request naar de backend
-            try {
-                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.get(`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}`);
-                // We krijgen een token terug:
-                console.log(response.data);
-                setFriendrequests(response.data);
-                //setProfilesearchresults(response.data);
+}, [test])
 
-            } catch (e) {
-                console.error(e);
-            }
-        }
 
-        fetchdata();
-
-    },[]);
 
 
     return (
@@ -46,7 +36,7 @@ function Getallfriendrequests() {
                             <li key={`${friendrequest.id}-${friendrequest.maker.name}`}>
 
                                 <Link  to={`/friendrequestaccept/${friendrequest.id}`} >
-                                    <p  className="text-align ">accept as friend :   {friendrequest.maker.name}</p>
+                                    <button onClick={( ) => setTest(!test)}  className="text-align ">accept as friend :   {friendrequest.maker.name}</button>
                                 </Link>
                                 <p className="text-align">  or  </p>
                                 <Link to={`/friendrequestdelete/${friendrequest.id}`} >

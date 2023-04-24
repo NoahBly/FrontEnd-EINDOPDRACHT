@@ -10,6 +10,7 @@ function Createpost() {
     const { isAuthenticated } = useContext(AuthContext);
     const {userDetails} = useContext(AuthContext);
     const {postidcurrent} = useContext(AuthContext);
+    const{currenttoken} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
@@ -25,7 +26,11 @@ function Createpost() {
             // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
             const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`, {
                 comment: data.comment,
-            });
+            },{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+                }});
             // We krijgen een object terug en kijk dan naar waar de token zit:
             console.log('object uit de backend teruggekregen na posten', response);
             history.push(`/post/${postidcurrent2}`);
