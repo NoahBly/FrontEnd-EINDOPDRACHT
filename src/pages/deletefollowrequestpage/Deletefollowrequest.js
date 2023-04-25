@@ -9,7 +9,6 @@ import {clickHandlerdelete} from "../../context/components/componentdeletereques
 
 function Deletefriendrequest() {
     //
-    const {userDetails,currenttoken} = useContext(AuthContext);
 
     const [data, setData] = useState();
     const {followrequestId} = useParams();

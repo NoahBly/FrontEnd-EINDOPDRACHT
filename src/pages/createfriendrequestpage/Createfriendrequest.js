@@ -4,12 +4,13 @@ import {Link, useHistory, useParams} from "react-router-dom";
 import "../createfriendrequestpage/createfriendrequeststyle.css"
 import useCreaterequest, {clickHandlerCreate} from "../../context/components/componentcreaterequest/useCreaterequest";
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 
 function Createfriendrequest() {
 
     const {userDetails} = useContext(AuthContext);
-    const {visitedprofileid} = useContext(AuthContext);
+    const {visitedprofileid} = useContext(ProfileContext);
     const profileidcurrent2 = userDetails.profile.id;
     const visitedprofileid2 = visitedprofileid;
 

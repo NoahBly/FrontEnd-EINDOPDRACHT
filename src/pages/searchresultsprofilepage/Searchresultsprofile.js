@@ -3,14 +3,13 @@ import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import "../searchresultsprofilepage/searchresultsprofilestyle.css"
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Searchresultsprofile() {
     const {profile2Id} = useParams();
     const {profilesearchresults} = useContext(AuthContext);
-    const {setVisitedprofilepostsfunction,currenttoken} = useContext(AuthContext);
+    const {setVisitedprofilepostsfunction,setVisitedprofileidfunction} = useContext(ProfileContext);
     const [profilevisited, setProfilevisited] = useState();
-    //const {profile2id, setprofile2id} = useState();
-    const {visitedprofileid, setVisitedprofileidfunction} = useContext(AuthContext);
     const [imageBlob, setImageBlob] = useState();
     const [profiles, setProfiles] = useState([]);
     const {userDetails} = useContext(AuthContext);

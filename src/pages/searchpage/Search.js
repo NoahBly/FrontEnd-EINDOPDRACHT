@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import Searchresults from "../searchresultspage/Searchresults";
 import {useHistory} from "react-router-dom";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Search() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -12,7 +13,7 @@ function Search() {
     });
     const history = useHistory();
 
-    const {profilesearchresults, setProfilesearchresults} = useContext(AuthContext);
+    const {profilesearchresults, setProfilesearchresults} = useContext(ProfileContext);
 
    function clickHandler(data){
       setProfilesearchresults(data.profilename);

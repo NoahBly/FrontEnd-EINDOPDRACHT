@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import "../createnormaluserpage/createnormaluserstyle.css"
 
 function Createnormaluserpage() {
-    const { isAuthenticated, loginFunction } = useContext(AuthContext);
+    const { isAuthenticated} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });

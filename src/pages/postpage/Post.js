@@ -3,14 +3,13 @@ import {useParams, Link, NavLink} from 'react-router-dom';
 import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import axios from "axios";
 import "../postpage/poststyle.css"
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Post() {
     const { postId } = useParams();
     const [post,setPost] = useState();
+    const {postsofprofile,setPostidfunction,profileidcurrent} = useContext(ProfileContext);
 
-    const {postsofprofile} = useContext(AuthContext);
-    const {setPostidfunction} = useContext(AuthContext);
-    const {profileidcurrent} = useContext(AuthContext);
     console.log(postsofprofile);
     console.log(postId);
 

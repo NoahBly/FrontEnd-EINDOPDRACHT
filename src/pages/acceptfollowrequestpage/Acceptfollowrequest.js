@@ -14,8 +14,7 @@ function Acceptfollowrequest() {
 
     const {followrequestId} = useParams();
 
-    // const profileidcurrent2 = profileidcurrent;
-    // const visitedprofileid2 = visitedprofileid;
+
  const token = localStorage.getItem("token");
 
 

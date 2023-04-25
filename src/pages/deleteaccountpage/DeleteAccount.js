@@ -8,13 +8,11 @@ import "../deleteaccountpage/deleteaccountstyle.css"
 
 function Deleteaccount() {
     //
-    const {userDetails} = useContext(AuthContext);
-    // const {visitedprofileid} = useContext(AuthContext);
-    const {logoutFunction,currenttoken} = useContext(AuthContext);
+    const {userDetails,logoutFunction,currenttoken} = useContext(AuthContext);
+
     const history = useHistory();
 
 
-    // const visitedprofileid2 = visitedprofileid;
     useEffect(() => {
 
         const useridcurrent2 = userDetails.id;

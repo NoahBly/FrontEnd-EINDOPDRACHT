@@ -3,13 +3,13 @@ import axios from 'axios';
 import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {Link} from "react-router-dom";
 import "../profilepage/profilestyle.css"
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Profile() {
     const [profile, setProfile] = useState({});
-    const {setProfilepostsfunction} = useContext(AuthContext);
+    const {setProfilepostsfunction,setProfileidfunction,profileidcurrent} = useContext(ProfileContext);
     const {userDetails} = useContext(AuthContext);
-    const {setProfileidfunction} = useContext(AuthContext);
-    const {profileidcurrent} = useContext(AuthContext);
+
 
     const[imageBlob, setImageBlob] = useState(null);
     const currenttoken = localStorage.getItem("token");

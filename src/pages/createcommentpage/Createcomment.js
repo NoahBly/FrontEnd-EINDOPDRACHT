@@ -4,13 +4,12 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {useHistory, useParams} from "react-router-dom";
 import "../createcommentpage/createcommentstyle.css"
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Createpost() {
     const {postId} = useParams();
-    const { isAuthenticated } = useContext(AuthContext);
-    const {userDetails} = useContext(AuthContext);
-    const {postidcurrent} = useContext(AuthContext);
-    const{currenttoken} = useContext(AuthContext);
+    const { isAuthenticated,userDetails,currenttoken } = useContext(AuthContext);
+    const {postidcurrent} = useContext(ProfileContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });

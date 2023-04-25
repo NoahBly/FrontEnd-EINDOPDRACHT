@@ -4,14 +4,15 @@ import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import "../visitedpostpage/visiteedpoststyle.css"
 
 import axios from "axios";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Visitedpost() {
     const { post2Id } = useParams();
 
     const [visitedpost, setVisitedpost] = useState();
 
-    const {visitedprofileid} = useContext(AuthContext);
-    const {profileidcurrent} = useContext(AuthContext);
+    const {visitedprofileid,profileidcurrent} = useContext(ProfileContext);
+
 
     const {visitedpostidcurrent, setVisitedpostidfunction} = useContext(AuthContext);
 

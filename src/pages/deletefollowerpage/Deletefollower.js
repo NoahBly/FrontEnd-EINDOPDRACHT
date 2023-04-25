@@ -9,7 +9,7 @@ import {clickHandlerdelete} from "../../context/components/componentdeletereques
 
 function Deletefollower() {
     //
-    const {userDetails,currenttoken} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
     const [data, setData] = useState();
 
     const {followerId} = useParams();

@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {useHistory, useParams} from "react-router-dom";
 import "../updatebiopage/updatebiostyle.css"
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Createpost() {
     const {postId} = useParams();
-    const { isAuthenticated } = useContext(AuthContext);
-    const {userDetails,currenttoken} = useContext(AuthContext);
-    const {postidcurrent} = useContext(AuthContext);
+    const { isAuthenticated,userDetails } = useContext(AuthContext);
+    const {postidcurrent} = useContext(ProfileContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
@@ -18,6 +18,7 @@ function Createpost() {
     const profileidcurrent2 = userDetails.profile.id;
     const postidcurrent2 = postidcurrent;
     const token = localStorage.getItem("token");
+
     async function clickHandler(data,profileidcurrent,postidcurrent) {
         // Verstuur de inloggegevens via een post-request naar de backend
 

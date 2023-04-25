@@ -5,11 +5,12 @@ import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../deletepostpage/deletepoststyle.css"
 import {clickHandlerdelete} from "../../context/components/componentdeleterequest/useDeleterequest";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 
 function Deletepost() {
     //
-    const {postidcurrent,currenttoken} = useContext(AuthContext);
+    const {postidcurrent} = useContext(ProfileContext);
 
     const [data, setData] = useState();
 

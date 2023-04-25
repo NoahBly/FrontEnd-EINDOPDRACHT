@@ -9,7 +9,7 @@ import {clickHandlerdelete} from "../../context/components/componentdeletereques
 
 function Deletefriend() {
     //
-    const {userDetails,currenttoken} = useContext(AuthContext);
+    const {userDetails} = useContext(AuthContext);
     // const {visitedprofileid} = useContext(AuthContext);
     const [data,setData] = useState();
     const {friendId} = useParams();

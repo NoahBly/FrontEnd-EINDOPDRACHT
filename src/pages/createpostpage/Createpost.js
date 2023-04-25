@@ -4,15 +4,15 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {useHistory} from "react-router-dom";
 import "../createpostpage/createpoststyle.css"
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Createpost() {
-    const { isAuthenticated } = useContext(AuthContext);
-    const {userDetails,currenttoken} = useContext(AuthContext);
+    const { isAuthenticated,userDetails,currenttoken } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
     const history = useHistory();
-    const {setPostidfunction} = useContext(AuthContext);
+    const {setPostidfunction} = useContext(ProfileContext);
 
     const profileidcurrent2 = userDetails.profile.id;
 

@@ -10,8 +10,7 @@ import {clickHandler} from "../../context/components/componentgetList/useGetlist
 
 function Acceptfriendrequest() {
     //
-    // const {profileidcurrent} = useContext(AuthContext);
-    // const {visitedprofileid} = useContext(AuthContext);
+
     const [data, setData] = useState([]);
 
 

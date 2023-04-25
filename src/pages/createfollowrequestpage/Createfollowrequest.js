@@ -6,13 +6,14 @@ import {Link, useHistory, useParams} from "react-router-dom";
 import "../createfollowrequestpage/createfollowrequeststyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 import {clickHandlerCreate} from "../../context/components/componentcreaterequest/useCreaterequest";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 
 
 function Createfollowrequest() {
 
     const {userDetails} = useContext(AuthContext);
-    const {visitedprofileid} = useContext(AuthContext);
+    const {visitedprofileid} = useContext(ProfileContext);
     const profileidcurrent2 = userDetails.profile.id;
     const visitedprofileid2 = visitedprofileid;
     const [data, setData] = useState([]);

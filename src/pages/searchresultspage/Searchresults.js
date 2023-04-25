@@ -2,11 +2,12 @@ import React, {useContext, useState,useEffect} from 'react';
 import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 function Searchresults() {
 
     const [resultsprofiles, setResultprofiles] = useState({});
-    const {profilesearchresults} = useContext(AuthContext);
+    const {profilesearchresults} = useContext(ProfileContext);
 
     console.log(profilesearchresults);
 
