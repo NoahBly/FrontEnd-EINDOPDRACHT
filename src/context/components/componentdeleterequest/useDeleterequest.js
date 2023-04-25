@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 
 // function useAcceptrequest (url)  {
 //     const [data, setData] = useState(null);
-export async function clickHandleraccept(url, token, data, setData ) {
+export async function clickHandlerdelete(url, token, data, setData ) {
     // Verstuur de inloggegevens via een post-request naar de backend
     try {
         // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-        const response = await axios.put(url,  {} , {headers: {
+        const response = await axios.delete(url,  { headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`, // is hetzelfde als 'Bearer ' + token,
             }});
@@ -21,10 +20,4 @@ export async function clickHandleraccept(url, token, data, setData ) {
         console.error(e);
     }
 }
-clickHandleraccept()
-
-
-//     return [data];
-// };
-//
-// export default useAcceptrequest;
+clickHandlerdelete()

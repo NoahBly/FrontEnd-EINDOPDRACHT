@@ -1,9 +1,10 @@
-import React, { useContext , useEffect } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
 import ".//deletecommentstyle.css"
+import {clickHandlerdelete} from "../../context/components/componentdeleterequest/useDeleterequest";
 
 
 function Deletecomment() {
@@ -14,43 +15,26 @@ function Deletecomment() {
    const {commentId} = useParams();
     const{currenttoken} = useContext(AuthContext);
     console.log(currenttoken);
+    const [data,setData] = useState();
 
-    // const visitedprofileid2 = visitedprofileid;
+    const token = localStorage.getItem("token");
+
     useEffect(() => {
 
+        clickHandlerdelete(`http://localhost:8083/comments/${commentId}`, token, data, setData)
 
-
-        async function clickHandler() {
-            // Verstuur de inloggegevens via een post-request naar de backend
-
-            try {
-                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
-                const response = await axios.delete(`http://localhost:8083/comments/${commentId}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
-                    }});
-                // We krijgen een object terug en kijk dan naar waar de token zit:
-                console.log('object uit de backend teruggekregen na posten', response);
-
-                // We geven de token mee aan de context-functie, zodat de context de rest voor ons afhandeld!
-
-            } catch (e) {
-                console.error(e);
-            }
-
-        }
-        clickHandler();
     },[]);
 
 
     return (
         <div className="outer-container">
             <div className="inner-container">
+                {data &&
                 <article className="article-begin">
             <h1>You have deleted this comment!</h1>
             <Link to={`/post/${postidcurrent}`}> <p>click here to return to the post!</p></Link>
             </article>
+                }
         </div>
         </div>
     );
