@@ -3,6 +3,8 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import "../createpageadminpage/createpageadminstyle.css"
+import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
+import InputComponent from "../../context/components/componentinput/InputComponent";
 
 function Createpageadminpage() {
     const { isAuthenticated} = useContext(AuthContext);
@@ -37,51 +39,103 @@ function Createpageadminpage() {
             <h1>Create Page Admin account</h1>
             {isAuthenticated === false &&
                 <form className="article-begin" onSubmit={handleSubmit(clickHandler)}>
-                    <label htmlFor="username-field">Username:</label>
-                    <input
-                        type="text"
-                        id="username-field"
-                        {...register("username", {
-                            required: "username is required",
-                        })}
+
+                    <InputComponent
+                        name={"username"}
+                        label={"Username"}
+                        validationRules={{
+                            required: "Voornaam is verplicht",
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.username && <p>{errors.username.message}</p>}
 
-                    <label htmlFor="email-field">Email:</label>
-                    <input
-                        type="text"
-                        id="email-field"
-                        {...register("email", {
-                            required: "email is required",
-                        })}
+
+                    <InputComponent
+                        name={"email"}
+                        label={"Email"}
+                        validationRules={{
+                            required: "email is verplicht",
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.email && <p>{errors.email.message}</p>}
 
 
-                    <label htmlFor="password-field">Password:</label>
-                    <input
-                        type="text"
-                        id="password-field"
-                        {...register("password", {
-                            required: "password is required",
-                        })}
+                    <InputComponent
+                        name={"password"}
+                        label={"Password"}
+                        validationRules={{
+                            required: "password is verplicht",
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.password && <p>{errors.password.message}</p>}
 
-                    <label htmlFor="profilename-field">Profilename:</label>
-                    <input
-                        type="text"
-                        id="profilename-field"
-                        {...register("profilename", {
-                            required: "profilename is required",
-                        })}
+                    <InputComponent
+                        name={"profilename"}
+                        label={"Profilename"}
+                        validationRules={{
+                            required: "profilename is verplicht",
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.password && <p>{errors.password.message}</p>}
 
 
-                    <button type="submit">
+
+
+
+
+                    {/*<label htmlFor="username-field">Username:</label>*/}
+                    {/*<input*/}
+                    {/*    type="text"*/}
+                    {/*    id="username-field"*/}
+                    {/*    {...register("username", {*/}
+                    {/*        required: "username is required",*/}
+                    {/*    })}*/}
+                    {/*/>*/}
+                    {/*{errors.username && <p>{errors.username.message}</p>}*/}
+
+                    {/*<label htmlFor="email-field">Email:</label>*/}
+                    {/*<input*/}
+                    {/*    type="text"*/}
+                    {/*    id="email-field"*/}
+                    {/*    {...register("email", {*/}
+                    {/*        required: "email is required",*/}
+                    {/*    })}*/}
+                    {/*/>*/}
+                    {/*{errors.email && <p>{errors.email.message}</p>}*/}
+
+
+                    {/*<label htmlFor="password-field">Password:</label>*/}
+                    {/*<input*/}
+                    {/*    type="text"*/}
+                    {/*    id="password-field"*/}
+                    {/*    {...register("password", {*/}
+                    {/*        required: "password is required",*/}
+                    {/*    })}*/}
+                    {/*/>*/}
+                    {/*{errors.password && <p>{errors.password.message}</p>}*/}
+
+                    {/*<label htmlFor="profilename-field">Profilename:</label>*/}
+                    {/*<input*/}
+                    {/*    type="text"*/}
+                    {/*    id="profilename-field"*/}
+                    {/*    {...register("profilename", {*/}
+                    {/*        required: "profilename is required",*/}
+                    {/*    })}*/}
+                    {/*/>*/}
+                    {/*{errors.password && <p>{errors.password.message}</p>}*/}
+
+
+                    <ButtonComponent type="submit">
                         Verzenden
-                    </button>
+                    </ButtonComponent>
                 </form>
             }
             </div>

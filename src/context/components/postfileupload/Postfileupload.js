@@ -3,12 +3,13 @@ import {useForm} from "react-hook-form";
 import {AuthContext} from "../../authenticationcontext/AuthContext";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
+import {ProfileContext} from "../../profilecontext/ProfileContext";
 
 function Draganddropzzz() {
     const {register,handleSubmit} = useForm();
     const [test, setTest] = useState([]);
 
-    const {postidcurrent,currenttoken} = useContext(AuthContext);
+    const {postidcurrent} = useContext(ProfileContext);
     const history = useHistory();
 
 
@@ -16,6 +17,8 @@ function Draganddropzzz() {
         const upload = e.target.files[0];
         setTest(upload);
     }
+
+    const currenttoken = localStorage.getItem("token");
 
     async function onSubmit(data) {
         console.log(data.file)

@@ -216,35 +216,7 @@ function Searchresultsprofile() {
                 }
             </div>
             </section>
-              {/*//  data.friendlist.find((profile) =>*/}
-              {/*  //     profile.friend.name === profilevisited.name*/}
-                { console.log(profiles)}
-                {console.log(banaan)}
-                {/*{ console.log(profilevisited)}*/}
-                {/*{profiles &&*/}
-                {/*{  profiles.find((profile) => {*/}
-                {/*   // setBanaan( profile.friend.name === profilevisited.name);*/}
-                {/*    // console.log(output);*/}
 
-                {/*    //*/}
-                {/*    // if(output) {*/}
-                {/*    //      setBanaan(true);*/}
-                {/*    // } else {*/}
-                {/*    //     setBanaan(false);*/}
-                {/*    // }*/}
-
-                {/*    // else {*/}
-                {/*    //    return  (   <div className="article-section-2">*/}
-                {/*    //*/}
-                {/*    //         <Link to={`/createfriendrequest/create`}>*/}
-                {/*    //             <p className="p-intro"> Create Friendrequest!</p>*/}
-                {/*    //         </Link>*/}
-                {/*    //     </div>)*/}
-                {/*    // }*/}
-
-                {/*})}*/}
-
-                {/*{*/}
                 { banaan ? <p></p> : <div className="article-section-2">
 
                                  <Link to={`/createfriendrequest/create`}>
@@ -267,53 +239,6 @@ function Searchresultsprofile() {
                 </div>
                 }
 
-            {/*//         return (*/}
-            {/*//         <p></p>*/}
-            {/*//         )*/}
-            {/*//     }else {*/}
-            {/*//         return (*/}
-            {/*//             <div className="article-section-2">*/}
-            {/*//*/}
-            {/*//                 <Link to={`/createfriendrequest/create`}>*/}
-            {/*//                     <p className="p-intro"> Create Friendrequest!</p>*/}
-            {/*//                 </Link>*/}
-            {/*//             </div>*/}
-            {/*//*/}
-            {/*//         )*/}
-            {/*//     }*/}
-            {/*// })*/}
-            {/*//         : <p>test</p>*/}
-            {/*//*/}
-            {/*//     }*/}
-
-            {/*    { console.log(followings)}*/}
-            {/*    {followings > 0 ?*/}
-            {/*        followings.map((following) => {*/}
-            {/*            console.log(following);*/}
-            {/*            if(profilevisited.id === following.friend.id) {*/}
-            {/*                return (*/}
-            {/*                    <p></p>*/}
-            {/*                )*/}
-            {/*            }else {*/}
-            {/*                return (*/}
-            {/*                    <div className="article-section-2">*/}
-
-            {/*                        <Link to={`/createfollowrequest/create`}>*/}
-            {/*                            <p className="p-intro">Create Followrequest</p>*/}
-            {/*                        </Link>*/}
-
-            {/*                    </div>*/}
-            {/*                )*/}
-            {/*            }*/}
-            {/*        })*/}
-            {/*        : <div className="article-section-2">*/}
-
-            {/*            <Link to={`/createfollowrequest/create`}>*/}
-            {/*                <p className="p-intro">Create Followrequest</p>*/}
-            {/*            </Link>*/}
-
-            {/*        </div>*/}
-            {/*    }*/}
 
 
             </div>

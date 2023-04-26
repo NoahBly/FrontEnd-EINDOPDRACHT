@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import {useHistory, useParams} from "react-router-dom";
 import "../createcommentvisitedprofilepage/createcommentvisitedprofilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 
 function Createpost() {
     const {post2Id} = useParams();
@@ -59,9 +60,10 @@ function Createpost() {
                     {errors.comment && <p>{errors.comment.message}</p>}
 
 
-                    <button type="submit">
+                    <ButtonComponent type="submit">
                         Verzenden
-                    </button>
+                    </ButtonComponent>
+
                 </form>
             }
                 </article>

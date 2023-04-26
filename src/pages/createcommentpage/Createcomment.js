@@ -5,10 +5,12 @@ import { useForm } from 'react-hook-form';
 import {useHistory, useParams} from "react-router-dom";
 import "../createcommentpage/createcommentstyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
+import InputComponent from "../../context/components/componentinput/InputComponent";
 
 function Createpost() {
     const {postId} = useParams();
-    const { isAuthenticated,userDetails,currenttoken } = useContext(AuthContext);
+    const { isAuthenticated,userDetails } = useContext(AuthContext);
     const {postidcurrent} = useContext(ProfileContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
@@ -17,6 +19,8 @@ function Createpost() {
 
     const profileidcurrent2 = userDetails.profile.id;
     const postidcurrent2 = postidcurrent;
+
+    const currenttoken = localStorage.getItem("token");
 
     async function clickHandler(data,profileidcurrent,postidcurrent) {
         // Verstuur de inloggegevens via een post-request naar de backend
@@ -48,20 +52,34 @@ function Createpost() {
             <h1>Create your comment!</h1>
             {isAuthenticated === true &&
                 <form onSubmit={handleSubmit(clickHandler)}>
-                    <label htmlFor="comment-field">Comment:</label>
-                    <input
-                        type="text"
-                        id="comment-field"
-                        {...register("comment", {
+
+                    <InputComponent
+                        name={"comment"}
+                        label={"Comment"}
+                        validationRules={{
                             required: "comment is required",
-                        })}
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.comment && <p>{errors.comment.message}</p>}
 
 
-                    <button type="submit">
+                    {/*<label htmlFor="comment-field">Comment:</label>*/}
+                    {/*<input*/}
+                    {/*    type="text"*/}
+                    {/*    id="comment-field"*/}
+                    {/*    {...register("comment", {*/}
+                    {/*        required: "comment is required",*/}
+                    {/*    })}*/}
+                    {/*/>*/}
+                    {/*{errors.comment && <p>{errors.comment.message}</p>}*/}
+
+
+                    <ButtonComponent type="submit">
                         Verzenden
-                    </button>
+                    </ButtonComponent>
+
                 </form>
             }
             </article>

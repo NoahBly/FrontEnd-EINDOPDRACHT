@@ -5,6 +5,7 @@ import "../visitedpostpage/visiteedpoststyle.css"
 
 import axios from "axios";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 
 function Visitedpost() {
     const { post2Id } = useParams();
@@ -129,14 +130,29 @@ function Visitedpost() {
                 {visitedpost.comments &&
                     <ul className="article-section-2">
                         {visitedpost.comments.map((comment) => {
-                            return <li key={`${comment.id}-${comment.name}`}>
-                                <p>{comment.commentmaker.name} -</p>   <p> {comment.comment}</p>
-                                {comment.commentmaker.id === profileidcurrent || comment.post.profile.id === profileidcurrent ?
-                                    <Link to={`/commentdelete/delete/${comment.id}`}>
-                                        delete this comment
-                                    </Link>: <p> </p>}
+                            return (
 
-                            </li>
+
+                            <CommentsComponent
+                                comment={comment}
+                                profilecurrent={profileidcurrent}
+                                profileid={comment.post.profile.id}
+                                children={"delete this comment"}
+                            >
+
+                            </CommentsComponent>
+
+                            //
+                            // <li key={`${comment.id}-${comment.name}`}>
+                            //     <p>{comment.commentmaker.name} -</p>   <p> {comment.comment}</p>
+                            //     {comment.commentmaker.id === profileidcurrent || comment.post.profile.id === profileidcurrent ?
+                            //         <Link to={`/commentdelete/delete/${comment.id}`}>
+                            //             delete this comment
+                            //         </Link>: <p> </p>}
+                            //
+                            // </li>
+
+                            )
                         })}
                     </ul>
                 }

@@ -4,6 +4,7 @@ import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {Link} from "react-router-dom";
 import "../profilepage/profilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import Postscomponent from "../../context/components/componentpost/Postscomponent";
 
 function Profile() {
     const [profile, setProfile] = useState({});
@@ -99,13 +100,20 @@ console.log('profile:', profile)
                     <ul className="article-section-2 ">
                         {profile.posts.map((post) => {
                             return (
-                                <li key={`${post.id}-${post.name}`}>
-                                    <Link to={`/post/${post.id}`}>
-                                        <h1 className="h1-intro">{post.name}</h1>
-                                    </Link>
+
+                                <Postscomponent
+                                post={post}
+                                classname={"h1-intro"}
+                                />
 
 
-                        </li>
+                        //         <li key={`${post.id}-${post.name}`}>
+                        //             <Link to={`/post/${post.id}`}>
+                        //                 <h1 className="h1-intro">{post.name}</h1>
+                        //             </Link>
+                        //
+                        //
+                        // </li>
                             )
                         })}
                     </ul>

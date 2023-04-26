@@ -5,9 +5,11 @@ import { useForm } from 'react-hook-form';
 import {useHistory} from "react-router-dom";
 import "../createpostpage/createpoststyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
+import InputComponent from "../../context/components/componentinput/InputComponent";
 
 function Createpost() {
-    const { isAuthenticated,userDetails,currenttoken } = useContext(AuthContext);
+    const { isAuthenticated,userDetails} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
@@ -16,6 +18,7 @@ function Createpost() {
 
     const profileidcurrent2 = userDetails.profile.id;
 
+    const currenttoken= localStorage.getItem("token");
     async function clickHandler(data,profileidcurrent) {
         // Verstuur de inloggegevens via een post-request naar de backend
 
@@ -47,20 +50,35 @@ function Createpost() {
             <h1>Create your post!</h1>
             {isAuthenticated === true &&
                 <form onSubmit={handleSubmit(clickHandler)}>
-                    <label htmlFor="postname-field">Postname:</label>
-                    <input
-                        type="text"
-                        id="postname-field"
-                        {...register("postname", {
+
+                    <InputComponent
+                        name={"postname"}
+                        label={"Postname"}
+                        validationRules={{
                             required: "postname is required",
-                        })}
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.postname && <p>{errors.postname.message}</p>}
 
 
-                    <button type="submit">
+
+                    {/*<label htmlFor="postname-field">Postname:</label>*/}
+                    {/*<input*/}
+                    {/*    type="text"*/}
+                    {/*    id="postname-field"*/}
+                    {/*    {...register("postname", {*/}
+                    {/*        required: "postname is required",*/}
+                    {/*    })}*/}
+                    {/*/>*/}
+                    {/*{errors.postname && <p>{errors.postname.message}</p>}*/}
+
+
+                    <ButtonComponent type="submit">
                         Verzenden
-                    </button>
+                    </ButtonComponent>
+
                 </form>
             }
                 </article>
