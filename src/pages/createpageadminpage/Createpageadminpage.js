@@ -44,7 +44,7 @@ function Createpageadminpage() {
                         name={"username"}
                         label={"Username"}
                         validationRules={{
-                            required: "Voornaam is verplicht",
+                            required: "username is verplicht",
                         }}
                         inputType={"text"}
                         errors={errors}
@@ -90,47 +90,6 @@ function Createpageadminpage() {
 
 
 
-
-                    {/*<label htmlFor="username-field">Username:</label>*/}
-                    {/*<input*/}
-                    {/*    type="text"*/}
-                    {/*    id="username-field"*/}
-                    {/*    {...register("username", {*/}
-                    {/*        required: "username is required",*/}
-                    {/*    })}*/}
-                    {/*/>*/}
-                    {/*{errors.username && <p>{errors.username.message}</p>}*/}
-
-                    {/*<label htmlFor="email-field">Email:</label>*/}
-                    {/*<input*/}
-                    {/*    type="text"*/}
-                    {/*    id="email-field"*/}
-                    {/*    {...register("email", {*/}
-                    {/*        required: "email is required",*/}
-                    {/*    })}*/}
-                    {/*/>*/}
-                    {/*{errors.email && <p>{errors.email.message}</p>}*/}
-
-
-                    {/*<label htmlFor="password-field">Password:</label>*/}
-                    {/*<input*/}
-                    {/*    type="text"*/}
-                    {/*    id="password-field"*/}
-                    {/*    {...register("password", {*/}
-                    {/*        required: "password is required",*/}
-                    {/*    })}*/}
-                    {/*/>*/}
-                    {/*{errors.password && <p>{errors.password.message}</p>}*/}
-
-                    {/*<label htmlFor="profilename-field">Profilename:</label>*/}
-                    {/*<input*/}
-                    {/*    type="text"*/}
-                    {/*    id="profilename-field"*/}
-                    {/*    {...register("profilename", {*/}
-                    {/*        required: "profilename is required",*/}
-                    {/*    })}*/}
-                    {/*/>*/}
-                    {/*{errors.password && <p>{errors.password.message}</p>}*/}
 
 
                     <ButtonComponent type="submit">

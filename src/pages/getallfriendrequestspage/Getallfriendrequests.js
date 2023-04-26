@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfriendrequestspage/getallfriendrequestsstyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+import Request from "../../context/components/componentgetrequest/componentListRequest";
 
 function Getallfriendrequests() {
 
@@ -33,16 +34,26 @@ function Getallfriendrequests() {
             {friendrequests.length > 0 && <ul className="article-section-2">
                     {friendrequests.map((friendrequest) => {
                         return (
-                            <li key={`${friendrequest.id}-${friendrequest.maker.name}`}>
 
-                                <Link  to={`/friendrequestaccept/${friendrequest.id}`} >
-                                    <button onClick={( ) => setTest(!test)}  className="text-align ">accept as friend :   {friendrequest.maker.name}</button>
-                                </Link>
-                                <p className="text-align">  or  </p>
-                                <Link to={`/friendrequestdelete/${friendrequest.id}`} >
-                                    <p className="text-align">delete friendrequest from : {friendrequest.maker.name}</p>
-                                </Link>
-                            </li>
+                            <Request
+                            key={`${friendrequest.id}-${friendrequest.maker.name}`}
+                            setTest={setTest}
+                            test={test}
+                            request={friendrequest}
+                            >
+                                Delete friendrequest from
+
+                            </Request>
+                            // <li key={}>
+                            //
+                            //     <Link  to={`/friendrequestaccept/${friendrequest.id}`} >
+                            //         <button onClick={( ) => setTest(!test)}  className="text-align ">accept as friend :   {friendrequest.maker.name}</button>
+                            //     </Link>
+                            //     <p className="text-align">  or  </p>
+                            //     <Link to={`/friendrequestdelete/${friendrequest.id}`} >
+                            //         <p className="text-align">delete friendrequest from : {friendrequest.maker.name}</p>
+                            //     </Link>
+                            // </li>
                         )
                     })}
                 </ul>

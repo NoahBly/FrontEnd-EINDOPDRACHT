@@ -22,8 +22,9 @@ function Createfriendrequest() {
 
     console.log(data);
     useEffect(() => {
-        clickHandlerCreate(`http://localhost:8083/friendrequests/create/${profileidcurrent2}/${visitedprofileid2}`, token, data, setData);
 
+        clickHandlerCreate(`http://localhost:8083/friendrequests/create/${profileidcurrent2}/${visitedprofileid2}`, token, data, setData);
+        console.log(data);
     },[]);
 
 

@@ -103,17 +103,12 @@ console.log('profile:', profile)
 
                                 <Postscomponent
                                 post={post}
-                                classname={"h1-intro"}
+                                key={`${post.id}-${post.name}`}
+                                classname ={"h1-intro"}
                                 />
 
 
-                        //         <li key={`${post.id}-${post.name}`}>
-                        //             <Link to={`/post/${post.id}`}>
-                        //                 <h1 className="h1-intro">{post.name}</h1>
-                        //             </Link>
-                        //
-                        //
-                        // </li>
+
                             )
                         })}
                     </ul>

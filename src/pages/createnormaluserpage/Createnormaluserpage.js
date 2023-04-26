@@ -44,7 +44,7 @@ function Createnormaluserpage() {
                     name={"username"}
                     label={"Username"}
                     validationRules={{
-                        required: "Voornaam is verplicht",
+                        required: "username is verplicht",
                     }}
                     inputType={"text"}
                     errors={errors}

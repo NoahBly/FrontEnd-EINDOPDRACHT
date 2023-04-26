@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import "../loginpage/loginstyle.css"
+import InputComponent from "../../context/components/componentinput/InputComponent";
 
 function Login() {
     const { isAuthenticated, loginFunction, setTokenfunction } = useContext(AuthContext);
@@ -38,24 +39,31 @@ function Login() {
             {isAuthenticated === false &&
                 <form onSubmit={handleSubmit(clickHandler)}>
                     <label htmlFor="username-field">Username:</label>
-                    <input
-                        type="text"
-                        id="username-field"
-                        {...register("username", {
-                            required: "username is required",
-                        })}
-                    />
-                    {errors.username && <p>{errors.username.message}</p>}
 
-                    <label htmlFor="password-field">Password:</label>
-                    <input
-                        type="text"
-                        id="password-field"
-                        {...register("password", {
-                            required: "password is required",
-                        })}
+                    <InputComponent
+                        name={"username"}
+                        label={"Username"}
+                        validationRules={{
+                            required: "Username is verplicht",
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.password && <p>{errors.password.message}</p>}
+
+
+                    <InputComponent
+                        name={"password"}
+                        label={"Password"}
+                        validationRules={{
+                            required: "Password is verplicht",
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
+                    />
+
+
                     <button type="submit">
                         Verzenden
                     </button>

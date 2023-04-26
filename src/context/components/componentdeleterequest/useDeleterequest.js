@@ -20,4 +20,4 @@ export async function clickHandlerdelete(url, token, data, setData ) {
         console.error(e);
     }
 }
-clickHandlerdelete()
+

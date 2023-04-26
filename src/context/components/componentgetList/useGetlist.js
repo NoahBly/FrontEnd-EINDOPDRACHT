@@ -22,7 +22,7 @@ import axios from "axios";
         }
     }
 
-clickHandler()
+
 
 //     useEffect(()=> {
 //         clickHandler();

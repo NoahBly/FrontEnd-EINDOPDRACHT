@@ -4,7 +4,7 @@ import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import axios from "axios";
 import "../postpage/poststyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import Comments from "../../context/components/componentcomments/CommentsComponent";
 
 function Post() {
     const { postId } = useParams();
@@ -117,16 +117,18 @@ function Post() {
                 {post.comments &&
                     <ul className="article-section-2">
                         {post.comments.map((comment) => {
+                           console.log(comment);
                             return (
 
-                                <CommentsComponent
+                                <Comments
                                 comment={comment}
                                 profilecurrent={profileidcurrent}
+                                commentmaker={comment.commentmaker.id}
                                 profileid={comment.post.profile.id}
-                                children={"delete this comment"}
+                                key={`${comment.id}-${comment.name}`}
                                 >
-
-</CommentsComponent>
+                                    delete this comment
+</Comments>
 
                             )
                         })}

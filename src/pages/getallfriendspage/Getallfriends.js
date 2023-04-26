@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import {Link} from "react-router-dom";
 import "../getallfriendspage/getallfriendsstyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
 // import useGetlist from "../../context/components/componentgetList/useGetlist";
 
 function Getallfriends() {
@@ -36,16 +37,16 @@ const token = localStorage.getItem("token");
             {friends.length > 0 && <ul className="article-section-2">
                 {friends.map((friend ) => {
                     return (
-                        <li key={`${friend.id}-${friend.friend.name}`}>
 
-                              <p><strong> {friend.friend.name}</strong></p>
+                        <List
+                        key={`${friend.id}-${friend.friend.name}`}
+                        profile={friend}
+                        url={`/friendlistremove/friend/${friend.id}`}
+                        >
+                            Delete as friend
+                        </List>
 
-                            <Link to={`/friendlistremove/friend/${friend.id}`}>
-                                remove {friend.friend.name} as friend
-                            </Link>
 
-
-                        </li>
                     )
                 })}
             </ul>

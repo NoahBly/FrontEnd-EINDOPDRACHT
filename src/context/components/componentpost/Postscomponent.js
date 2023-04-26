@@ -4,7 +4,7 @@ import React from "react";
 function Posts({post,to,classname,children}) {
 
     return (
-<li key={`${post.id}-${post.name}`}>
+<li>
     <Link to={`/post/${post.id}`}>
         <h1 className={classname}>{post.name}</h1>
     </Link>

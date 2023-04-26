@@ -5,12 +5,12 @@ function List ({profile,children, url}) {
  return (
 
 
-<li key={`${profile.id}-${profile.friend.name}`}>
+<li >
 
-    <p><strong> {children}</strong></p>
+    <p><strong> {profile.friend.name}</strong></p>
 
     <Link to={url}>
-        {children}
+        {children} {profile.friend.name}
     </Link>
 
 </li>

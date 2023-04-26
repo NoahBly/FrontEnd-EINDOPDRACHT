@@ -6,6 +6,7 @@ import {useHistory, useParams} from "react-router-dom";
 import "../createcommentvisitedprofilepage/createcommentvisitedprofilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
+import InputComponent from "../../context/components/componentinput/InputComponent";
 
 function Createpost() {
     const {post2Id} = useParams();
@@ -50,14 +51,18 @@ function Createpost() {
             {isAuthenticated === true &&
                 <form onSubmit={handleSubmit(clickHandler)}>
                     <label htmlFor="comment-field">Comment:</label>
-                    <input
-                        type="text"
-                        id="comment-field"
-                        {...register("comment", {
+
+                    <InputComponent
+                        name={"comment"}
+                        label={"Comment"}
+                        validationRules={{
                             required: "comment is required",
-                        })}
+                        }}
+                        inputType={"text"}
+                        errors={errors}
+                        register={register}
                     />
-                    {errors.comment && <p>{errors.comment.message}</p>}
+
 
 
                     <ButtonComponent type="submit">

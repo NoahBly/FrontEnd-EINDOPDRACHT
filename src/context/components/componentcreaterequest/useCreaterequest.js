@@ -22,7 +22,7 @@ export async function clickHandlerCreate(url, token, data, setData) {
         console.error(e);
     }
 }
-clickHandlerCreate()
+
 
 //
 //     return [data];

@@ -21,7 +21,7 @@ export async function clickHandleraccept(url, token, data, setData ) {
         console.error(e);
     }
 }
-clickHandleraccept()
+
 
 
 //     return [data];

@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfollowingpage/getallfollowingpagestyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
 
 function Getallfollowings() {
 
@@ -31,15 +32,13 @@ function Getallfollowings() {
             {followings.length > 0 && <ul className="article-section-2">
                 {followings.map((following) => {
                     return (
-                        <li key={`${following.id}-${following.friend.name}`}>
-
-                            <p><strong> {following.friend.name}</strong></p>
-
-                            <Link to={`/followingslistremove/following/${following.id}`}>
-                                remove {following.friend.name} as friend
-                            </Link>
-
-                        </li>
+                        <List
+                            key={`${following.id}-${following.friend.name}`}
+                            profile={following}
+                            url={`/followingslistremove/following/${following.id}`}
+                        >
+                            Delete as friend
+                        </List>
                     )
                 })}
             </ul>
