@@ -44,16 +44,7 @@ function Getallfriendrequests() {
                                 Delete friendrequest from
 
                             </Request>
-                            // <li key={}>
-                            //
-                            //     <Link  to={`/friendrequestaccept/${friendrequest.id}`} >
-                            //         <button onClick={( ) => setTest(!test)}  className="text-align ">accept as friend :   {friendrequest.maker.name}</button>
-                            //     </Link>
-                            //     <p className="text-align">  or  </p>
-                            //     <Link to={`/friendrequestdelete/${friendrequest.id}`} >
-                            //         <p className="text-align">delete friendrequest from : {friendrequest.maker.name}</p>
-                            //     </Link>
-                            // </li>
+
                         )
                     })}
                 </ul>
