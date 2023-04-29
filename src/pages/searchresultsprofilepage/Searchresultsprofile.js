@@ -10,7 +10,7 @@ function Searchresultsprofile() {
     const {profilesearchresults} = useContext(AuthContext);
     const {setVisitedprofilepostsfunction,setVisitedprofileidfunction} = useContext(ProfileContext);
     const [profilevisited, setProfilevisited] = useState();
-    const [imageBlob, setImageBlob] = useState();
+    const [graphicimageBlob, setGraphicimageBlob] = useState();
     const [profiles, setProfiles] = useState([]);
     const {userDetails} = useContext(AuthContext);
     const [followers, setFollowers] = useState([]);
@@ -75,14 +75,14 @@ function Searchresultsprofile() {
                 reader.onload = function (e) {
                     const image = new Image();
                     image.src = e.target.result;
-                    setImageBlob(image);
+                    setGraphicimageBlob(image);
                 }
                 // console.log(data);
                 // setImageBlob(data);
                 // const bloburl = URL.createObjectURL(data.blob);
                 // console.log(bloburl);
                 reader.readAsDataURL(blob);
-                console.log(imageBlob)
+                console.log(graphicimageBlob)
                 console.log(response);
                 console.log(response.data);
             } catch (e) {
@@ -182,9 +182,9 @@ function Searchresultsprofile() {
                 {profilevisited &&
                     <>
                         <h1 className="h1-intro">{profilevisited.name}</h1>
-                        {imageBlob && <img
+                        {graphicimageBlob && <img
                             alt="Afbeelding profile"
-                            src={imageBlob.src} className="image-post"
+                            src={graphicimageBlob.src} className="image-post"
                         />}
 
                         <p className="p-intro"><strong>Friendlist: </strong>{profilevisited.friendlist &&

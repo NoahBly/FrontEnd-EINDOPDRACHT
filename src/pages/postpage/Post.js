@@ -14,8 +14,8 @@ function Post() {
     console.log(postsofprofile);
     console.log(postId);
 
-    const [imageBlob, setImageBlob] = useState(null);
-    const [videoBlob, setVideoBlob] = useState(null);
+    const [graphicimageBlob, setGraphicimageBlob] = useState(null);
+    const [graphicvideoBlob, setGraphicvideoBlob] = useState(null);
     const currenttoken = localStorage.getItem("token");
 
     useEffect(() => {
@@ -55,14 +55,14 @@ function Post() {
                     console.log(blob);
                     if(blob.type === "video/mp4") {
                         const objectURL = URL.createObjectURL(blob);
-                        setVideoBlob(objectURL);
+                        setGraphicvideoBlob(objectURL);
                     }else {
                     const reader = new FileReader();
                     reader.onload= function(e) {
                         const image = new Image();
 
                         image.src = e.target.result;
-                        setImageBlob(image);
+                        setGraphicimageBlob(image);
                     }
 
                     // console.log(data);
@@ -71,7 +71,7 @@ function Post() {
                     // console.log(bloburl);
                     reader.readAsDataURL(blob);
                     }
-                    console.log(imageBlob)
+                    console.log(graphicimageBlob)
                     console.log(response);
                     console.log(response.data);
 
@@ -104,13 +104,13 @@ function Post() {
                 </NavLink>
 
                 <h1 className="text-padding">{post.name}</h1>
-                {imageBlob && <img
+                {graphicimageBlob && <img
                 alt="Afbeelding post"
-                src={imageBlob.src} className="image-post2"
+                src={graphicimageBlob.src} className="image-post2"
                /> }
-                {videoBlob && <video
+                {graphicvideoBlob && <video
                     width="750" height="500" controls >
-                    <source src={videoBlob} type="video/mp4"/>
+                    <source src={graphicvideoBlob} type="video/mp4"/>
                 </video>}
                 <Link to={`/comment/create`}> <p>voeg comment toe!</p> </Link>
                 <p><strong>Comments: </strong></p>

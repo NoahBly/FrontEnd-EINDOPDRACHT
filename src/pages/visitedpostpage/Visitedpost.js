@@ -17,8 +17,8 @@ function Visitedpost() {
 
     const {visitedpostidcurrent, setVisitedpostidfunction} = useContext(AuthContext);
 
-    const [imageBlob, setImageBlob] = useState();
-    const [videoBlob,setVideoBlob] = useState();
+    const [graphicimageBlob, setGraphicimageBlob] = useState();
+    const [graphicvideoBlob,setGraphicvideoBlob] = useState();
     const token = localStorage.getItem("token");
     useEffect(() => {
 
@@ -74,14 +74,14 @@ function Visitedpost() {
                     console.log(blob);
                     if(blob.type === "video/mp4") {
                         const objectURL = URL.createObjectURL(blob);
-                        setVideoBlob(objectURL);
+                        setGraphicvideoBlob(objectURL);
                     }else {
                         const reader = new FileReader();
                         reader.onload= function(e) {
                             const image = new Image();
 
                             image.src = e.target.result;
-                            setImageBlob(image);
+                            setGraphicimageBlob(image);
                         }
 
                         // console.log(data);
@@ -90,7 +90,7 @@ function Visitedpost() {
                         // console.log(bloburl);
                         reader.readAsDataURL(blob);
                     }
-                    console.log(imageBlob)
+                    console.log(graphicimageBlob)
                     console.log(response);
                     console.log(response.data);
 
@@ -116,13 +116,13 @@ function Visitedpost() {
             {visitedpost &&
             <article className="article-section-2">
                 <h1>{visitedpost.name}</h1>
-                {imageBlob && <img
+                {graphicimageBlob && <img
                     alt="Afbeelding post"
-                    src={imageBlob.src} className="image-post"
+                    src={graphicimageBlob.src} className="image-post"
                 /> }
-                {videoBlob && <video
+                {graphicvideoBlob && <video
                     width="750" height="500" controls >
-                    <source src={videoBlob} type="video/mp4"/>
+                    <source src={graphicvideoBlob} type="video/mp4"/>
                 </video>}
                 <Link to={`/commentvisitedprofile/create`}> <p>voeg comment toe!</p> </Link>
 

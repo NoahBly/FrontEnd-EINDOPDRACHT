@@ -12,7 +12,7 @@ function Profile() {
     const {userDetails} = useContext(AuthContext);
 
 
-    const[imageBlob, setImageBlob] = useState(null);
+    const[graphicimageBlob, setGraphicimageBlob] = useState(null);
     const currenttoken = localStorage.getItem("token");
     useEffect(() => {
         console.log(userDetails.id);
@@ -60,14 +60,14 @@ console.log('profile:', profile)
             reader.onload= function(e) {
                 const image = new Image();
                 image.src = e.target.result;
-                setImageBlob(image);
+                setGraphicimageBlob(image);
             }
             // console.log(data);
             // setImageBlob(data);
             // const bloburl = URL.createObjectURL(data.blob);
             // console.log(bloburl);
             reader.readAsDataURL(blob);
-            // console.log(imageBlob)
+            // console.log(graphicimageBlob)
             // console.log(response);
             console.log(response.data);
         } catch (e) {
@@ -83,9 +83,9 @@ console.log('profile:', profile)
             {profile &&
             <>
                 <h1 className="h1-intro">{profile.name}</h1>
-                {imageBlob  && <img
+                {graphicimageBlob  && <img
                     alt="Afbeelding profile"
-                    src={imageBlob.src}
+                    src={graphicimageBlob.src}
                     className="image-post"
                 /> }
                 <Link to={`/profileimage/add`}> <p>Add profileimage!</p></Link>
