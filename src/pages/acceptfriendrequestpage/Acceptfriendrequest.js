@@ -1,11 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { AuthContext } from '../../context/authenticationcontext/AuthContext';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
+
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../acceptfriendrequestpage/acceptfriendrequeststyle.css"
-import useAcceptrequest, {clickHandleraccept} from "../../context/components/componentacceptrequest/useAcceptrequest";
-import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+import {clickHandleraccept} from "../../context/components/componentacceptrequest/useAcceptrequest";
+
 
 
 function Acceptfriendrequest() {

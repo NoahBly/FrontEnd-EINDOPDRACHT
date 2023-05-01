@@ -26,7 +26,7 @@ function Createpost() {
         // Verstuur de inloggegevens via een post-request naar de backend
 
         try {
-            // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
+
             const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`, {
                 comment: data.comment,
             },{
@@ -34,10 +34,10 @@ function Createpost() {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
                 }});
-            // We krijgen een object terug en kijk dan naar waar de token zit:
+            // We krijgen een object terug
             console.log('object uit de backend teruggekregen na posten', response);
             history.push(`/post/${postidcurrent2}`);
-            // We geven de token mee aan de context-functie, zodat de context de rest voor ons afhandeld!
+
 
         } catch (e) {
             console.error(e);
@@ -63,17 +63,6 @@ function Createpost() {
                         errors={errors}
                         register={register}
                     />
-
-
-                    {/*<label htmlFor="comment-field">Comment:</label>*/}
-                    {/*<input*/}
-                    {/*    type="text"*/}
-                    {/*    id="comment-field"*/}
-                    {/*    {...register("comment", {*/}
-                    {/*        required: "comment is required",*/}
-                    {/*    })}*/}
-                    {/*/>*/}
-                    {/*{errors.comment && <p>{errors.comment.message}</p>}*/}
 
 
                     <ButtonComponent type="submit">

@@ -1,10 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../../context/authenticationcontext/AuthContext';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
+
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../createfollowrequestpage/createfollowrequeststyle.css"
-import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+
 import {clickHandlerCreate} from "../../context/components/componentcreaterequest/useCreaterequest";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 

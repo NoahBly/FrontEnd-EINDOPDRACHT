@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import Searchresults from "../searchresultspage/Searchresults";
 import {useHistory} from "react-router-dom";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import InputComponent from "../../context/components/componentinput/InputComponent";
+import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 
 function Search() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -26,19 +28,23 @@ function Search() {
             <h1>Search</h1>
             {isAuthenticated === true &&
                 <form onSubmit={handleSubmit(clickHandler)}>
-                    <label htmlFor="profilename-field">profilename:</label>
-                    <input
-                        type="text"
-                        id="profilename-field"
-                        {...register("profilename", {
-                            required: "profilename is required",
-                        })}
-                    />
-                    {errors.profilename && <p>{errors.profilename.message}</p>}
 
-                    <button type="submit">
-                        Verzenden
-                    </button>
+                    <InputComponent
+                    name={"profilename"}
+                    label={"Profilename"}
+                    validationRules={
+                        {required: "profilename is required"}
+                    }
+                    inputType={"text"}
+                    errors={errors}
+                    register={register}
+                    />
+
+                    <ButtonComponent
+                        type={"submit"}>
+                    Verzenden
+                    </ButtonComponent>
+
                 </form>
             }
         </div>

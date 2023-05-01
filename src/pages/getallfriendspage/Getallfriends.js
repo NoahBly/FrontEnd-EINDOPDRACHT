@@ -1,10 +1,10 @@
 import React, {useContext, useState,useEffect} from 'react';
 import { AuthContext } from '../../context/authenticationcontext/AuthContext';
-import {Link} from "react-router-dom";
+
 import "../getallfriendspage/getallfriendsstyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
-// import useGetlist from "../../context/components/componentgetList/useGetlist";
+
 
 function Getallfriends() {
 

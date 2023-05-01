@@ -134,7 +134,7 @@ function Searchresultsprofile() {
         async function fetchdata5() {
             // Verstuur de inloggegevens via een post-request naar de backend
             try {
-                // 2. We moeten de keys 'email' en 'password' meesturen (normaliter komen die uit een formulier, maar voor nu gebruiken we ze even hardcoded
+
                 const response = await axios.get(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`, {
                     headers: {
                         "Content-Type": "application/json",

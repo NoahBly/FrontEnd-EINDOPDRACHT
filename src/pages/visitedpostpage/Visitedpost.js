@@ -105,11 +105,6 @@ function Visitedpost() {
 
 
 
-    //
-    // const currentPost = postsofvisitedprofile.find((post) => {
-    //     return post.id === post2Id;
-    // });
-
     return (
         <section className="outer-container-2">
         <div className="inner-container-2">

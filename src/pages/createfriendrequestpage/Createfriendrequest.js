@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../createfriendrequestpage/createfriendrequeststyle.css"
 import useCreaterequest, {clickHandlerCreate} from "../../context/components/componentcreaterequest/useCreaterequest";
-import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 
 

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// function useAcceptrequest (url)  {
-//     const [data, setData] = useState(null);
+
 export async function clickHandleraccept(url, token, data, setData ) {
     // Verstuur de inloggegevens via een post-request naar de backend
     try {
@@ -24,7 +23,3 @@ export async function clickHandleraccept(url, token, data, setData ) {
 
 
 
-//     return [data];
-// };
-//
-// export default useAcceptrequest;
