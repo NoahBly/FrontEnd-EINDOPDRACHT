@@ -16,7 +16,7 @@ function Acceptfriendrequest() {
 
 const token = localStorage.getItem("token");
 
-const friendrequests = useAcceptrequest(`http://localhost:8083/friendrequests/${friendrequestId}`,token)
+const friendrequests = useAcceptrequest(`http://localhost:8083/friendrequests/${friendrequestId}`,null,null,null,token)
 
 
 

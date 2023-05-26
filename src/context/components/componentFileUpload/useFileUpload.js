@@ -19,7 +19,7 @@ function UseFileUpload(url, token, url2, test, setTest) {
 
 
         async function onSubmit(data) {
-            console.log(data.file)
+
             console.log(test);
 
             const profileidcurrent2 = profileidcurrent;
