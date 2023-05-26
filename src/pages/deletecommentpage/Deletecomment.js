@@ -6,6 +6,7 @@ import {Link, useHistory, useParams} from "react-router-dom";
 import ".//deletecommentstyle.css"
 import {clickHandlerdelete} from "../../context/components/componentdeleterequest/useDeleterequest";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 
 
 function Deletecomment() {
@@ -15,21 +16,18 @@ function Deletecomment() {
     const {commentId} = useParams();
     const{currenttoken} = useContext(AuthContext);
     console.log(currenttoken);
-    const [data,setData] = useState();
+
 
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
+    const comment = useAcceptrequest(null,null,`http://localhost:8083/comments/${commentId}`,null,token);
 
-        clickHandlerdelete(`http://localhost:8083/comments/${commentId}`, token, data, setData)
-
-    },[]);
 
 
     return (
         <div className="outer-container">
             <div className="inner-container">
-                {data &&
+                {comment &&
                 <article className="article-begin">
             <h1>You have deleted this comment!</h1>
             <Link to={`/post/${postidcurrent}`}> <p>click here to return to the post!</p></Link>

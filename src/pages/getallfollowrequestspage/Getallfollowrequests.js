@@ -4,20 +4,20 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfollowrequestspage/getallfollowrequestsstyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import Request from "../../context/components/componentgetrequest/componentListRequest";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 
 function Getallfollowrequests() {
 
   const [test, setTest] = useState([]);
-    const [followrequests, setFollowrequests] = useState([]);
+
     const {userDetails} = useContext(AuthContext);
 
     console.log(userDetails);
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
-        clickHandler(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}`, token, followrequests, setFollowrequests);
-
-    }, [test])
+    const followrequests = useAcceptrequest(null,null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}`, token)
 
 
 
@@ -34,15 +34,21 @@ console.log(followrequests);
             {followrequests.length > 0 && <ul className="article-section-2">
                     {followrequests.map((followrequest) => {
                         return (
-                            <li key={`${followrequest.id}-${followrequest.maker.name}`}>
-                                <Link to={`/followrequestaccept/${followrequest.id}`} >
-                              <button onClick={( ) => setTest(!test)} className="text-align"> accept followrequest from : {followrequest.maker.name}</button>
-                            </Link>
-                                <p className="text-align">  or  </p>
-                                <Link to={`/followrequestdelete/${followrequest.id}`} >
-                                   <p className="text-align"> delete followrequest from : {followrequest.maker.name}</p>
-                                </Link>
-                            </li>
+
+
+                            <CommentsComponent
+                                key={`${followrequest.id}-${followrequest.maker.name}`}
+                                setTest={setTest}
+                                test={test}
+                                request={followrequest}
+                                url1={`/followrequestaccept/${followrequest.id}`}
+                                url2={`/followrequestdelete/${followrequest.id}`}
+                            >
+                                Delete followrequest from
+
+                            </CommentsComponent>
+
+
                         )
                     })}
                 </ul>

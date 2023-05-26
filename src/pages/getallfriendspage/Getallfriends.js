@@ -4,11 +4,12 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import "../getallfriendspage/getallfriendsstyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 
 
 function Getallfriends() {
 
-    const [friends, setFriends] = useState([]);
     const {userDetails} = useContext(AuthContext);
     const [data, setData] = useState([]);
 
@@ -17,14 +18,10 @@ function Getallfriends() {
 
 const token = localStorage.getItem("token");
 
+const friends = useAcceptrequest(null,null,null,`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends`,token)
 
+    console.log(friends);
 
-    console.log(data);
-
-    useEffect(() => {
-        clickHandler(`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends`, token, friends, setFriends);
-
-    },[]);
 
 
     return (
@@ -38,13 +35,13 @@ const token = localStorage.getItem("token");
                 {friends.map((friend ) => {
                     return (
 
-                        <List
+                        <CommentsComponent
                         key={`${friend.id}-${friend.friend.name}`}
                         profile={friend}
-                        url={`/friendlistremove/friend/${friend.id}`}
+                        url1={`/friendlistremove/friend/${friend.id}`}
                         >
                             Delete as friend
-                        </List>
+                        </CommentsComponent>
 
 
                     )

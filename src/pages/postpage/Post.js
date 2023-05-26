@@ -5,6 +5,7 @@ import axios from "axios";
 import "../postpage/poststyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import Comments from "../../context/components/componentcomments/CommentsComponent";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 
 function Post() {
     const { postId } = useParams();
@@ -120,15 +121,16 @@ function Post() {
                            console.log(comment);
                             return (
 
-                                <Comments
+                                <CommentsComponent
                                 comment={comment}
                                 profilecurrent={profileidcurrent}
                                 commentmaker={comment.commentmaker.id}
                                 profileid={comment.post.profile.id}
                                 key={`${comment.id}-${comment.name}`}
+                                url1={`/commentdelete/delete/${comment.id}`}
                                 >
                                     delete this comment
-</Comments>
+</CommentsComponent>
 
                             )
                         })}

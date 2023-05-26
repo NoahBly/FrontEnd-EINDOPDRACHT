@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import "../searchresultsprofilepage/searchresultsprofilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 
 function Searchresultsprofile() {
     const {profile2Id} = useParams();
@@ -202,12 +203,18 @@ function Searchresultsprofile() {
                             <ul className= "article-section-2 ">
                                 {profilevisited.posts.map((post) => {
                                     return (
-                                        <li key={`${post.id}-${post.name}`}>
-                                            <Link to={`/searchresultsposts/profile/${post.id}`}>
-                                                <h2>{post.name}</h2>
-                                            </Link>
 
-                                        </li>
+                                        <CommentsComponent
+                                            post={post}
+                                            key={`${post.id}-${post.name}`}
+                                            classname ={"h1-intro"}
+                                            url1={`/searchresultsposts/profile/${post.id}`}
+                                        />
+
+
+
+
+
                                     )
                                 })}
                             </ul>

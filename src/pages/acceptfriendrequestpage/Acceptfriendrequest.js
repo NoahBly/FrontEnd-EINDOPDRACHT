@@ -2,14 +2,13 @@ import React, {useContext, useEffect, useState} from 'react';
 
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../acceptfriendrequestpage/acceptfriendrequeststyle.css"
-import {clickHandleraccept} from "../../context/components/componentacceptrequest/useAcceptrequest";
+import useAcceptrequest, {clickHandleraccept} from "../../context/components/componentacceptrequest/useAcceptrequest";
 
 
 
 function Acceptfriendrequest() {
     //
 
-    const [data, setData] = useState([]);
 
 
     const {friendrequestId} = useParams();
@@ -17,19 +16,15 @@ function Acceptfriendrequest() {
 
 const token = localStorage.getItem("token");
 
+const friendrequests = useAcceptrequest(`http://localhost:8083/friendrequests/${friendrequestId}`,token)
 
 
-
-    useEffect(() => {
-        clickHandleraccept(`http://localhost:8083/friendrequests/${friendrequestId}`,token,data, setData);
-
-    },[]);
 
 
     return (
         <div className="outer-container">
             <div className="inner-container ">
-                {data &&
+                {friendrequests &&
                     <article className="article-begin">
                         <h1>You have accepted this friendrequest!</h1>
                         <Link to={`/friendrequests/profile`}><p>click here to return to the friendrequest list!</p>

@@ -4,11 +4,12 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import "../getallfollowerspage/getallfollowersstyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 
 
 function Getallfollowers() {
 
-    const [followers, setFollowers] = useState([]);
     const {userDetails} = useContext(AuthContext);
 
 
@@ -16,13 +17,9 @@ function Getallfollowers() {
 
     const token = localStorage.getItem("token");
 
+    const followers = useAcceptrequest(null,null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followers`,token)
 
 
-    useEffect(() => {
-        clickHandler(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followers`, token, followers, setFollowers)
-
-
-    },[]);
 
 
     return (
@@ -35,13 +32,13 @@ function Getallfollowers() {
             {followers.length > 0 && <ul className="article-section-2">
                 {followers.map((follower) => {
                     return (
-                        <List
+                        <CommentsComponent
                             key={`${follower.id}-${follower.friend.name}`}
                             profile={follower}
-                            url={`/followerslistremove/follower/${follower.id}`}
+                            url1={`/followerslistremove/follower/${follower.id}`}
                         >
                             Delete as friend
-                        </List>
+                        </CommentsComponent>
 
 
                     )

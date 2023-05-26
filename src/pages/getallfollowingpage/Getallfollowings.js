@@ -5,10 +5,11 @@ import {Link} from "react-router-dom";
 import "../getallfollowingpage/getallfollowingpagestyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 
 function Getallfollowings() {
 
-    const [followings, setFollowings] = useState([]);
     const {userDetails} = useContext(AuthContext);
 
 
@@ -16,10 +17,8 @@ function Getallfollowings() {
     console.log(userDetails);
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
-        clickHandler(`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`, token,followings, setFollowings)
+    const followings = useAcceptrequest(null,null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`,token)
 
-    },[]);
 
 
     return (
@@ -32,13 +31,13 @@ function Getallfollowings() {
             {followings.length > 0 && <ul className="article-section-2">
                 {followings.map((following) => {
                     return (
-                        <List
+                        <CommentsComponent
                             key={`${following.id}-${following.friend.name}`}
                             profile={following}
-                            url={`/followingslistremove/following/${following.id}`}
+                            url1={`/followingslistremove/following/${following.id}`}
                         >
                             Delete as friend
-                        </List>
+                        </CommentsComponent>
                     )
                 })}
             </ul>

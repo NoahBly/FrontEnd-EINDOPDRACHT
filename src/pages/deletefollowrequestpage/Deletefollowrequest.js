@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../deletefollowrequestpage/deletefollowrequeststyle.css"
 import {clickHandlerdelete} from "../../context/components/componentdeleterequest/useDeleterequest";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 
 
 function Deletefriendrequest() {
@@ -15,18 +16,13 @@ function Deletefriendrequest() {
 
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
-
-
-      clickHandlerdelete(`http://localhost:8083/followrequests/${followrequestId}`, token, data,setData)
-
-    },[]);
+    const followrequest = useAcceptrequest(null,null,`http://localhost:8083/followrequests/${followrequestId}`,null, token)
 
 
     return (
         <div className="outer-container">
             <div className="inner-container">
-                {data &&
+                {followrequest &&
                 <article className="article-begin">
                     <h1>You have deleted this followrequest from your list!</h1>
                     <Link to={`/followrequests/profile`}> <p>click here to return to the followrequests list!</p></Link>

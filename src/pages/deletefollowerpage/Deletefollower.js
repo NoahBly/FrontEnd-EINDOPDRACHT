@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../deletefollowerpage/deletefollowerstyle.css"
 import {clickHandlerdelete} from "../../context/components/componentdeleterequest/useDeleterequest";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 
 
 function Deletefollower() {
@@ -16,19 +17,14 @@ function Deletefollower() {
 
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
+    const follower = useAcceptrequest(null,null,`http://localhost:8083/followrequests/profile/${userDetails.user.profile.id}/followers/${followerId}`,null,token)
 
-        const profileidcurrent2 = userDetails.profile.id;
-
-        clickHandlerdelete(`http://localhost:8083/followrequests/profile/${profileidcurrent2}/followers/${followerId}`, token, data, setData)
-
-    },[]);
 
 
     return (
         <div className="outer-container">
             <div className="inner-container">
-                {data &&
+                {follower &&
                 <article className="article-begin">
             <h1>You have deleted this follower from your followerslist!</h1>
             <Link to={`/followerslist/profile`}> <p>click here to return to the followers list!</p></Link>

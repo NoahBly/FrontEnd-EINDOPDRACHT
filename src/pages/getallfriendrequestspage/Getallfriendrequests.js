@@ -5,10 +5,12 @@ import {Link} from "react-router-dom";
 import "../getallfriendrequestspage/getallfriendrequestsstyle.css"
 import {clickHandler} from "../../context/components/componentgetList/useGetlist";
 import Request from "../../context/components/componentgetrequest/componentListRequest";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 
 function Getallfriendrequests() {
 
-    const [friendrequests, setFriendrequests] = useState([]);
+
     const [test, setTest] = useState(false);
 
     const {userDetails} = useContext(AuthContext);
@@ -16,8 +18,10 @@ function Getallfriendrequests() {
     console.log(userDetails.profile.id);
     const token = localStorage.getItem("token");
 
+    const friendrequests = useAcceptrequest(null,null,null,`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}`, token)
+
     useEffect(() => {
-        clickHandler(`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}`, token, friendrequests, setFriendrequests);
+
 
 }, [test])
 
@@ -35,15 +39,17 @@ function Getallfriendrequests() {
                     {friendrequests.map((friendrequest) => {
                         return (
 
-                            <Request
+                            <CommentsComponent
                             key={`${friendrequest.id}-${friendrequest.maker.name}`}
                             setTest={setTest}
                             test={test}
                             request={friendrequest}
+                            url1={`/friendrequestaccept/${friendrequest.id}`}
+                            url2={`/friendrequestaccept/${friendrequest.id}`}
                             >
                                 Delete friendrequest from
 
-                            </Request>
+                            </CommentsComponent>
 
                         )
                     })}
