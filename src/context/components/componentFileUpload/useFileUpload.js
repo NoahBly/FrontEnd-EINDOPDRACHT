@@ -3,6 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../authenticationcontext/AuthContext";
+import profileContext, {ProfileContext} from "../../profilecontext/ProfileContext";
 
 function UseFileUpload(url, token, url2, test, setTest) {
 
@@ -10,12 +11,9 @@ function UseFileUpload(url, token, url2, test, setTest) {
 
     const {register,handleSubmit} = useForm();
 
-    const {profileidcurrent} = useContext(AuthContext);
+    const {profileidcurrent} = useContext(ProfileContext);
     const history = useHistory();
 
-
-
-    useEffect(()=> {
 
 
         async function onSubmit(data) {
@@ -50,10 +48,10 @@ function UseFileUpload(url, token, url2, test, setTest) {
         }
 
 
-        onSubmit();
 
 
-    }, [])
+
+
 
 
     return data2;

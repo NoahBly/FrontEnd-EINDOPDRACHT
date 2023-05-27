@@ -17,7 +17,7 @@ function Deletefollower() {
 
     const token = localStorage.getItem("token");
 
-    const follower = useAcceptrequest(null,null,`http://localhost:8083/followrequests/profile/${userDetails.user.profile.id}/followers/${followerId}`,null,token)
+    const follower = useAcceptrequest(null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followers/${followerId}`,null,token)
 
 
 

@@ -4,16 +4,18 @@ import {AuthContext} from "../../authenticationcontext/AuthContext";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 import useFileUpload from "../componentFileUpload/useFileUpload";
+import {ProfileContext} from "../../profilecontext/ProfileContext";
 
 function Draganddropzzz() {
     const {register,handleSubmit} = useForm();
     const [test, setTest] = useState([]);
+    const [test2,setTest2] = useState([]);
 
-    const {profileidcurrent,currenttoken} = useContext(AuthContext);
+    const {profileidcurrent,currenttoken} = useContext(ProfileContext);
     const history = useHistory();
 
     const token = localStorage.getItem("token");
-    const profileidcurrent2 = profileidcurrent
+    const profileidcurrent2 = profileidcurrent;
 
     function HandleChange(e) {
         const upload = e.target.files[0];
@@ -50,8 +52,12 @@ function Draganddropzzz() {
 //             }
 //         }
 
+
+
         const file = useFileUpload(`http://localhost:8083/profiles/${profileidcurrent2}/addProfileImage`,token,"/profile", test,null)
 
+
+        const urllink = `http://localhost:8083/profiles/${profileidcurrent2}/addProfileImage`;
 
 
 

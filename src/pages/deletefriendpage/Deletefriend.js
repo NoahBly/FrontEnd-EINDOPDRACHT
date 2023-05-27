@@ -18,7 +18,7 @@ function Deletefriend() {
 
     const token = localStorage.getItem("token");
 
-    const friend = useAcceptrequest(null,null,`http://localhost:8083/friendrequests/profile/${userDetails.user.profile.id}/friends/${friendId}`,null, token)
+    const friend = useAcceptrequest(null,null,`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends/${friendId}`,null, token)
 
 
 
