@@ -38,7 +38,7 @@ function Login() {
             <h1 className="h1-begin ">Login pagina</h1>
             {isAuthenticated === false &&
                 <form onSubmit={handleSubmit(clickHandler)}>
-                    <label htmlFor="username-field">Username:</label>
+
 
                     <InputComponent
                         name={"username"}

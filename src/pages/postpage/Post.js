@@ -10,7 +10,7 @@ import CommentsComponent from "../../context/components/componentcomments/Commen
 function Post() {
     const { postId } = useParams();
     const [post,setPost] = useState();
-    const {postsofprofile,setPostidfunction,profileidcurrent} = useContext(ProfileContext);
+    const {postsofprofile,setPostidfunction,profileidcurrent,postidcurrent} = useContext(ProfileContext);
 
     console.log(postsofprofile);
     console.log(postId);
@@ -86,7 +86,9 @@ function Post() {
             }
 
 
-    }}, []);
+    }
+
+        }, []);
 
 
     // const currentPost = postsofprofile.find((post) => {

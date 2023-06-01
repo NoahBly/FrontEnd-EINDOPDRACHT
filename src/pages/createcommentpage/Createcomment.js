@@ -7,6 +7,7 @@ import "../createcommentpage/createcommentstyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 import InputComponent from "../../context/components/componentinput/InputComponent";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 
 function Createpost() {
     const {postId} = useParams();
@@ -21,6 +22,9 @@ function Createpost() {
     const postidcurrent2 = postidcurrent;
 
     const currenttoken = localStorage.getItem("token");
+
+
+   // const comment = useAcceptrequest(null,null,null,null,`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`,`/post/${postidcurrent2}`,null,null,null,null,currenttoken)
 
     async function clickHandler(data,profileidcurrent,postidcurrent) {
         // Verstuur de inloggegevens via een post-request naar de backend

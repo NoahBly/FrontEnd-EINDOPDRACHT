@@ -20,7 +20,7 @@ function Deletecomment() {
 
     const token = localStorage.getItem("token");
 
-    const comment = useAcceptrequest(null,null,`http://localhost:8083/comments/${commentId}`,null,token);
+    const comment = useAcceptrequest(null,null,`http://localhost:8083/comments/${commentId}`,null,null,null,null,null,null,null,null,null,token);
 
 
 

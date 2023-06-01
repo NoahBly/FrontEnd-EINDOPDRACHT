@@ -16,7 +16,7 @@ function Deletefriendrequest() {
 
     const token = localStorage.getItem("token");
 
-    const followrequest = useAcceptrequest(null,null,`http://localhost:8083/followrequests/${followrequestId}`,null, token)
+    const followrequest = useAcceptrequest(null,null,`http://localhost:8083/followrequests/${followrequestId}`,null,null,null,null,null,null,null,null,null, token)
 
 
     return (

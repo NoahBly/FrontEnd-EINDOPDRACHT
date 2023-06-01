@@ -17,7 +17,7 @@ function Getallfollowings() {
     console.log(userDetails);
     const token = localStorage.getItem("token");
 
-    const followings = useAcceptrequest(null,null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`,token)
+    const followings = useAcceptrequest(null,null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}/followings`,null,null,null,null,null,null,null,null,token)
 
 
 

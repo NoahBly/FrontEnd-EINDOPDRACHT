@@ -17,7 +17,7 @@ function Getallfollowrequests() {
     console.log(userDetails);
     const token = localStorage.getItem("token");
 
-    const followrequests = useAcceptrequest(null,null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}`, token)
+    const followrequests = useAcceptrequest(null,null,null,`http://localhost:8083/followrequests/profile/${userDetails.profile.id}`,null,null,null,null,null,null,null,null, token)
 
 
 

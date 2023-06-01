@@ -30,8 +30,8 @@ import Deletefollowing from "./pages/deletefollowingpage/Deletefollowing";
 
 
 
-import Draganddropzzz from "./context/components/profileimageupload/Draganddropzzz";
-import Postfileupload from "./context/components/postfileupload/Postfileupload";
+import Draganddropzzz from "./pages/profileimageupload/Draganddropzzz";
+import Postfileupload from "./pages/postfileupload/Postfileupload2";
 import DeleteAccount from "./pages/deleteaccountpage/DeleteAccount";
 import Settings from "./pages/settingspage/Settings";
 import Deletepost from "./pages/deletepostpage/Deletepost";
@@ -43,6 +43,8 @@ import Navigationbar from "./context/components/navigationbar/Navigationbar";
 import Deletefriendrequest from "./pages/deletefriendrequestpage/Deletefriendrequest";
 import Deletefollowrequest from "./pages/deletefollowrequestpage/Deletefollowrequest";
 import Privateroutercomponent from "./context/components/componentPrivaterouter/Privateroutercomponent";
+import ProfileImageupload from "./pages/profileimageupload/ProfileImageupload";
+import PostFileupload22 from "./pages/postfileupload/PostFileupload2.2";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -348,6 +350,14 @@ function App() {
                 path={"/followrequestdelete/:followrequestId"}
                 page={<Deletefollowrequest />}
                 />
+            <Privateroutercomponent
+                path={"/profileimageadd/page"}
+                page={<ProfileImageupload />}
+            />
+            <Privateroutercomponent
+                path={"/postfileadd/page"}
+                page={<PostFileupload22/>}
+            />
 
 
         </Switch>

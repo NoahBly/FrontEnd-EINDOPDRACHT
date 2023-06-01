@@ -21,6 +21,8 @@ function ProfileContextProvider({ children }) {
 
     const [visitedpostid, setVisitedpostid] = useState();
 
+    const [upload, setUpload] = useState();
+
 
 
     function arrangeprofileposts(posts) {
@@ -70,6 +72,8 @@ function ProfileContextProvider({ children }) {
         visitedprofileid: visitedprofid,
         visitedpostidcurrent: visitedpostid,
         setVisitedpostidfunction: arrangevisitedpostid,
+        uploadfile : upload,
+        setUploadfile: setUpload
     };
 
     return (

@@ -21,7 +21,7 @@ function Createfollowrequest() {
 
 const token = localStorage.getItem("token");
 
-const followrequests = useAcceptrequest(null,`http://localhost:8083/followrequests/create/${profileidcurrent2}/${visitedprofileid2}`,null,null ,token)
+const followrequests = useAcceptrequest(null,`http://localhost:8083/followrequests/create/${profileidcurrent2}/${visitedprofileid2}`,null,null,null,null,null,null,null,null, null, null ,token)
 
 console.log(followrequests);
 

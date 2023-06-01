@@ -18,7 +18,7 @@ function Getallfriends() {
 
 const token = localStorage.getItem("token");
 
-const friends = useAcceptrequest(null,null,null,`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends`,token)
+const friends = useAcceptrequest(null,null,null,`http://localhost:8083/friendrequests/profile/${userDetails.profile.id}/friends`,null,null,null,null,null,null,null,null,token)
 
     console.log(friends);
 

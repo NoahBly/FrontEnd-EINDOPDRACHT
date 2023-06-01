@@ -1,17 +1,17 @@
 import React, {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
-import {AuthContext} from "../../authenticationcontext/AuthContext";
+import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
-import useFileUpload from "../componentFileUpload/useFileUpload";
-import {ProfileContext} from "../../profilecontext/ProfileContext";
+import useFileUpload from "../../context/components/componentFileUpload/useFileUpload";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import {upload} from "@testing-library/user-event/dist/upload";
 
 function Draganddropzzz() {
     const {register,handleSubmit} = useForm();
-    const [test, setTest] = useState([]);
-    const [test2,setTest2] = useState([]);
 
-    const {profileidcurrent,currenttoken} = useContext(ProfileContext);
+
+    const {profileidcurrent,setUploadfile} = useContext(ProfileContext);
     const history = useHistory();
 
     const token = localStorage.getItem("token");
@@ -19,8 +19,17 @@ function Draganddropzzz() {
 
     function HandleChange(e) {
         const upload = e.target.files[0];
-        setTest(upload);
+        setUploadfile(upload);
+        console.log(e.target.files[0]);
+
+        return upload;
     }
+
+    function HandleSubmit(){
+        history.push("/profileimageadd/page");
+    }
+
+
 //splits dit in delen op
 //     async function onSubmit(data) {
 //         console.log(data.file)
@@ -54,18 +63,16 @@ function Draganddropzzz() {
 
 
 
-        const file = useFileUpload(`http://localhost:8083/profiles/${profileidcurrent2}/addProfileImage`,token,"/profile", test,null)
 
 
-        const urllink = `http://localhost:8083/profiles/${profileidcurrent2}/addProfileImage`;
 
 
 
     return(
-        <form onSubmit={handleSubmit(useFileUpload)}>
+        <form onSubmit={handleSubmit(HandleSubmit)}>
             <input {...register('file', { required: true })} onChange={HandleChange} type="file"  name="file"/>
 
-            <button>Submit</button>
+            <button type="submit">Submit</button>
 
         </form>
     );

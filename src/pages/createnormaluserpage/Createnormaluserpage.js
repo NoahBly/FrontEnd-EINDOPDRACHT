@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import "../createnormaluserpage/createnormaluserstyle.css"
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 import InputComponent from "../../context/components/componentinput/InputComponent";
+import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 
 function Createnormaluserpage() {
     const { isAuthenticated} = useContext(AuthContext);
@@ -12,8 +13,11 @@ function Createnormaluserpage() {
         mode: 'onChange',
     });
 
-    async function clickHandler(data) {
-        // Verstuur de inloggegevens via een post-request naar de backend
+   async  function clickHandler(data) {
+
+       // useAcceptrequest(null,null,null,null,null,null,null,null,null,'http://localhost:8083/users/normal',data)
+
+             // Verstuur de inloggegevens via een post-request naar de backend
         try {
 
             const response = await axios.post('http://localhost:8083/users/normal', {
@@ -30,8 +34,8 @@ function Createnormaluserpage() {
         } catch (e) {
             console.error(e);
         }
-    }
-
+     }
+    // const profile = useAcceptrequest(null,null,null,null,null,null,null,null,null,'http://localhost:8083/users/normal',data)
 
     return (
         <div className="outer-container">

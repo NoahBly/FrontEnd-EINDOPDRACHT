@@ -15,7 +15,7 @@ function Acceptfollowrequest() {
  const token = localStorage.getItem("token");
 
 
- const followrequests = useAcceptrequest(`http://localhost:8083/followrequests/${followrequestId}`,null,null,null,token)
+ const followrequests = useAcceptrequest(`http://localhost:8083/followrequests/${followrequestId}`,null,null,null,null,null,null,null,null,null,null,null,token)
 
 
 

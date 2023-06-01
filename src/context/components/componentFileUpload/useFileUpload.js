@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import {AuthContext} from "../../authenticationcontext/AuthContext";
 import profileContext, {ProfileContext} from "../../profilecontext/ProfileContext";
 
-function UseFileUpload(url, token, url2, test, setTest) {
+function UseFileUpload(url, token, url2, file) {
 
     const [data2, setData2] = useState({});
 
@@ -14,16 +14,18 @@ function UseFileUpload(url, token, url2, test, setTest) {
     const {profileidcurrent} = useContext(ProfileContext);
     const history = useHistory();
 
+    useEffect(()=>{
 
 
-        async function onSubmit(data) {
 
-            console.log(test);
+        async function onSubmit() {
+
+
 
             const profileidcurrent2 = profileidcurrent;
 
             let formdata = new FormData();
-            formdata.append("file",test);
+            formdata.append("file",file);
 
             // Verstuur de gegevens via een post-request naar de backend
 
@@ -46,6 +48,8 @@ function UseFileUpload(url, token, url2, test, setTest) {
                 console.error(e);
             }
         }
+        onSubmit();
+},[])
 
 
 

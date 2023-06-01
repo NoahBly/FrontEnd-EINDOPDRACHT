@@ -17,7 +17,7 @@ function Deletepost() {
     const postidcurrent2 = postidcurrent;
     const token = localStorage.getItem("token");
 
-    const post = useAcceptrequest(null,null,`http://localhost:8083/posts/post/${postidcurrent2}`,null, token)
+    const post = useAcceptrequest(null,null,`http://localhost:8083/posts/post/${postidcurrent2}`,null,null,null,null,null,null,null, null,null, token)
 
 
 
