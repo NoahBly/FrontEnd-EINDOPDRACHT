@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function InputElement({ errors, register, name, label, inputType, validationRules }) {
+function InputElement({ errors, register, name, label, inputType, validationRules,Handlechange }) {
     return (
         <>
             <label htmlFor={`${name}-field`}>
@@ -16,6 +16,7 @@ function InputElement({ errors, register, name, label, inputType, validationRule
                         type={inputType}
                         id={`${name}-field`}
                         {...register(name, validationRules)}
+                         onChange={Handlechange}
                     />
                     {errors[name] && <p>{errors[name].message}</p>}
                 </>)}

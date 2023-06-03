@@ -6,10 +6,11 @@ import "../profilepage/profilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import Postscomponent from "../../context/components/componentpost/Postscomponent";
 import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import { v4 as uuidV4 } from "uuid";
 
 function Profile() {
     const [profile, setProfile] = useState({});
-    const {setProfilepostsfunction,setProfileidfunction,profileidcurrent} = useContext(ProfileContext);
+    const {setProfilepostsfunction,setProfileidfunction,profileidcurrent,makeLinkkeyProfimage,makeLinkkeyPostfile} = useContext(ProfileContext);
     const {userDetails} = useContext(AuthContext);
 
 
@@ -89,13 +90,13 @@ console.log('profile:', profile)
                     src={graphicimageBlob.src}
                     className="image-post"
                 /> }
-                <Link to={`/profileimage/add`}> <p>Add profileimage!</p></Link>
+                <Link to={`/profileimage/add`} onClick={() => makeLinkkeyProfimage(uuidV4())}> <p>Add profileimage!</p></Link>
                 <p className="p-intro"><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>
                 <p className="p-intro"><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
                 <p className="p-intro"><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>
                 <h1 className="h1-intro"><strong>Bio: </strong>{profile.bioinformation}</h1>
                 <Link to={`/profilebio/update`}> <p className="p-intro">update Bio!</p></Link>
-               <Link to={`/post/create`}> <p className="p-intro">create post!</p></Link>
+               <Link to={`/post/create`} onClick={() => makeLinkkeyPostfile(uuidV4())}> <p className="p-intro">create post!</p></Link>
                 <p className="p-intro"><strong>Posts: </strong></p>
                 {profile.posts &&
                     <ul className="article-section-2 ">

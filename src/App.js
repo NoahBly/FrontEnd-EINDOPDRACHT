@@ -45,6 +45,8 @@ import Deletefollowrequest from "./pages/deletefollowrequestpage/Deletefollowreq
 import Privateroutercomponent from "./context/components/componentPrivaterouter/Privateroutercomponent";
 import ProfileImageupload from "./pages/profileimageupload/ProfileImageupload";
 import PostFileupload22 from "./pages/postfileupload/PostFileupload2.2";
+import Postfileupload2 from "./pages/postfileupload/Postfileupload2";
+import Createcommentpage from "./pages/createcommentpage/Createcommentpage2";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -97,7 +99,7 @@ function App() {
 
             <Privateroutercomponent
                 path={"/postfile/create"}
-                page={<Postfileupload />}
+                page={<Postfileupload2 />}
                 />
 
 
@@ -358,6 +360,12 @@ function App() {
                 path={"/postfileadd/page"}
                 page={<PostFileupload22/>}
             />
+
+            <Privateroutercomponent
+                path={"/commentadd/page"}
+                page={<Createcommentpage/>}
+            />
+
 
 
         </Switch>

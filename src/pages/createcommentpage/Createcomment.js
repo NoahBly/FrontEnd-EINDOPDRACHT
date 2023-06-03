@@ -12,40 +12,36 @@ import useAcceptrequest from "../../context/components/componentacceptrequest/us
 function Createpost() {
     const {postId} = useParams();
     const { isAuthenticated,userDetails } = useContext(AuthContext);
-    const {postidcurrent} = useContext(ProfileContext);
+    const {postidcurrent,setCommentData} = useContext(ProfileContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
     const history = useHistory();
 
-    const profileidcurrent2 = userDetails.profile.id;
-    const postidcurrent2 = postidcurrent;
 
-    const currenttoken = localStorage.getItem("token");
-
-
-   // const comment = useAcceptrequest(null,null,null,null,`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`,`/post/${postidcurrent2}`,null,null,null,null,currenttoken)
-
-    async function clickHandler(data,profileidcurrent,postidcurrent) {
+    async function clickHandler(data) {
         // Verstuur de inloggegevens via een post-request naar de backend
+        console.log(data);
+        setCommentData(data);
+        history.push("/commentadd/page");
 
-        try {
-
-            const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`, {
-                comment: data.comment,
-            },{
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
-                }});
-            // We krijgen een object terug
-            console.log('object uit de backend teruggekregen na posten', response);
-            history.push(`/post/${postidcurrent2}`);
-
-
-        } catch (e) {
-            console.error(e);
-        }
+        // try {
+        //
+        //     const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`, {
+        //         comment: data.comment,
+        //     },{
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+        //         }});
+        //     // We krijgen een object terug
+        //     console.log('object uit de backend teruggekregen na posten', response);
+        //     history.push(`/post/${postidcurrent2}`);
+        //
+        //
+        // } catch (e) {
+        //     console.error(e);
+        // }
     }
 
 

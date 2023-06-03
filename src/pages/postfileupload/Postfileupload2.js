@@ -7,11 +7,11 @@ import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 import useFileUpload from "../../context/components/componentFileUpload/useFileUpload";
 
-function Draganddropzzz() {
+function Postfileupload2() {
     const {register,handleSubmit} = useForm();
     const [test, setTest] = useState([]);
 
-    const {postidcurrent,setUploadfile} = useContext(ProfileContext);
+    const {postidcurrent,setUploadfilecontext,linkkeypathPostfile} = useContext(ProfileContext);
     const history = useHistory();
     const upload = {};
 
@@ -20,7 +20,8 @@ function Draganddropzzz() {
 
     function HandleChange(e) {
         const upload = e.target.files[0];
-        setUploadfile(upload);
+        setUploadfilecontext(upload);
+        // useFileUpload(`http://localhost:8083/profiles/${profileidcurrent2}/addProfileImage`,token,"/profile", e.target.files[0])
         console.log(e.target.files[0]);
         return upload;
     }
@@ -28,7 +29,7 @@ function Draganddropzzz() {
     const postidcurrent2 = postidcurrent;
 
     function HandleSubmit() {
-
+        console.log(linkkeypathPostfile);
 
         history.push("/postfileadd/page");
          // console.log(data.file)
@@ -80,4 +81,4 @@ function Draganddropzzz() {
 
 }
 
-export default Draganddropzzz;
+export default Postfileupload2;

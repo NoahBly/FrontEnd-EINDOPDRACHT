@@ -23,7 +23,9 @@ function ProfileContextProvider({ children }) {
 
     const [upload, setUpload] = useState();
 
-
+    const [linkkey, setLinkkey] = useState();
+    const [linkkey2, setLinkkey2] = useState();
+    const [datacomment, setDatacomment] = useState({});
 
     function arrangeprofileposts(posts) {
 
@@ -56,6 +58,18 @@ function ProfileContextProvider({ children }) {
         setVisitedpostid(postid);
     }
 
+    function arrangeupload(file){
+        setUpload(file);
+    }
+    function arrangelinkkey(linkkey){
+        setLinkkey(linkkey);
+    }
+    function arrangelinkkey2(linkkey){
+        setLinkkey2(linkkey);
+    }
+    function arrangedatacomment(data){
+        setDatacomment(data);
+    }
 
     const contextData = {
         setProfilepostsfunction: arrangeprofileposts,
@@ -73,7 +87,13 @@ function ProfileContextProvider({ children }) {
         visitedpostidcurrent: visitedpostid,
         setVisitedpostidfunction: arrangevisitedpostid,
         uploadfile : upload,
-        setUploadfile: setUpload
+        setUploadfilecontext: arrangeupload,
+        linkkeypathProfimage: linkkey,
+        makeLinkkeyProfimage: arrangelinkkey,
+        linkkeypathPostfile: linkkey2,
+        makeLinkkeyPostfile: arrangelinkkey2,
+        commentdata: datacomment,
+        setCommentData: setDatacomment
     };
 
     return (

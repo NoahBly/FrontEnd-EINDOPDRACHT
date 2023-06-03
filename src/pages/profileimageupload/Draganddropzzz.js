@@ -6,28 +6,44 @@ import axios from "axios";
 import useFileUpload from "../../context/components/componentFileUpload/useFileUpload";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import {upload} from "@testing-library/user-event/dist/upload";
+import InputComponent from "../../context/components/componentinput/InputComponent";
+import InputElement from "../../context/components/componentinput/InputComponent";
 
 function Draganddropzzz() {
     const {register,handleSubmit} = useForm();
 
 
-    const {profileidcurrent,setUploadfile} = useContext(ProfileContext);
+    const {profileidcurrent,setUploadfilecontext,linkkeypathProfimage} = useContext(ProfileContext);
     const history = useHistory();
 
     const token = localStorage.getItem("token");
     const profileidcurrent2 = profileidcurrent;
 
+    // const navigation = [
+    //     {
+    //         path: '"/profileimageadd/page"',
+    //         key: linkkeypathProfimage
+    //     },
+    //     {
+    //         path: '"/postfileadd/page"',
+    //         key: linkkeypathPostfile
+    //     },
+    // ];
+
     function HandleChange(e) {
         const upload = e.target.files[0];
-        setUploadfile(upload);
+        setUploadfilecontext(upload);
         console.log(e.target.files[0]);
 
         return upload;
     }
 
-    function HandleSubmit(){
-        history.push("/profileimageadd/page");
+    function HandleSubmit() {
+            console.log(linkkeypathProfimage);
+            history.push("/profileimageadd/page");
+
     }
+
 
 
 //splits dit in delen op
@@ -71,6 +87,17 @@ function Draganddropzzz() {
     return(
         <form onSubmit={handleSubmit(HandleSubmit)}>
             <input {...register('file', { required: true })} onChange={HandleChange} type="file"  name="file"/>
+
+            {/*<InputElement*/}
+            {/*    name="file"*/}
+            {/*    label="file"*/}
+            {/*    validationRules={{*/}
+            {/*        required: true,*/}
+            {/*    }}*/}
+            {/*    inputType="file"*/}
+            {/*    register={register}*/}
+            {/*    Handlechange={HandleChange}*/}
+            {/*/>*/}
 
             <button type="submit">Submit</button>
 
