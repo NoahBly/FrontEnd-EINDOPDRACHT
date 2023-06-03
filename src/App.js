@@ -47,6 +47,8 @@ import ProfileImageupload from "./pages/profileimageupload/ProfileImageupload";
 import PostFileupload22 from "./pages/postfileupload/PostFileupload2.2";
 import Postfileupload2 from "./pages/postfileupload/Postfileupload2";
 import Createcommentpage from "./pages/createcommentpage/Createcommentpage2";
+import Createpostpage from "./pages/createpostpage/Createpostpage";
+import Createnormalpage from "./pages/createnormaluserpage/Createnormalpage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -58,12 +60,19 @@ function App() {
          </Navigationbar>
 
         <Switch>
+
           <Route exact path="/">
             <Home />
           </Route>
+
             <Route exact path="/createnormaluserpage">
                 <Createnormaluserpage />
             </Route>
+
+            <Route exact path="/createnormalpage/upload/data">
+                < Createnormalpage/>
+            </Route>
+
             <Route exact path="/createcelebrityuserpage">
                 <Createcelebrityuserpage />
             </Route>
@@ -365,6 +374,11 @@ function App() {
                 path={"/commentadd/page"}
                 page={<Createcommentpage/>}
             />
+            <Privateroutercomponent
+                path={"/postadd/page"}
+                page={<Createpostpage/>}
+            />
+
 
 
 

@@ -6,34 +6,40 @@ import "../createnormaluserpage/createnormaluserstyle.css"
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 import InputComponent from "../../context/components/componentinput/InputComponent";
 import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import {useHistory} from "react-router-dom";
 
 function Createnormaluserpage() {
     const { isAuthenticated} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
+    const { setDataSubmitProfile,profiledatasubmitted} = useContext(ProfileContext);
+    const history = useHistory();
+
 
    async  function clickHandler(data) {
 
-       // useAcceptrequest(null,null,null,null,null,null,null,null,null,'http://localhost:8083/users/normal',data)
-
+    console.log(data);
+    setDataSubmitProfile(data);
+    history.push("/createnormalpage/upload/data");
              // Verstuur de inloggegevens via een post-request naar de backend
-        try {
-
-            const response = await axios.post('http://localhost:8083/users/normal', {
-                username: data.username,
-                password: data.password,
-                email: data.email,
-                profilename: data.profilename,
-            });
-            // We krijgen een object terug
-            console.log('object uit de backend teruggekregen na inloggen', response);
-
-
-
-        } catch (e) {
-            console.error(e);
-        }
+        // try {
+        //
+        //     const response = await axios.post('http://localhost:8083/users/normal', {
+        //         username: data.username,
+        //         password: data.password,
+        //         email: data.email,
+        //         profilename: data.profilename,
+        //     });
+        //     // We krijgen een object terug
+        //     console.log('object uit de backend teruggekregen na inloggen', response);
+        //
+        //
+        //
+        // } catch (e) {
+        //     console.error(e);
+        // }
      }
     // const profile = useAcceptrequest(null,null,null,null,null,null,null,null,null,'http://localhost:8083/users/normal',data)
 
