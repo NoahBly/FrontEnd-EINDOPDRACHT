@@ -5,31 +5,42 @@ import { useForm } from 'react-hook-form';
 import "../createpageadminpage/createpageadminstyle.css"
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 import InputComponent from "../../context/components/componentinput/InputComponent";
+import {ProfileContext} from "../../context/profilecontext/ProfileContext";
+import {useHistory} from "react-router-dom";
 
 function Createpageadminpage() {
     const { isAuthenticated} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
+    const {setDataSubmitProfile} = useContext(ProfileContext);
+    const history = useHistory();
 
     async function clickHandler(data) {
+
+
+        console.log(data);
+        setDataSubmitProfile(data);
+        history.push("/createpageadminpage/upload/data");
+
+
         // Verstuur de inloggegevens via een post-request naar de backend
-        try {
-
-            const response = await axios.post('http://localhost:8083/users/pageadmin', {
-                username: data.username,
-                password: data.password,
-                email: data.email,
-                profilename: data.profilename,
-            });
-            // We krijgen een object terug
-            console.log('object uit de backend teruggekregen na inloggen', response);
-
-
-
-        } catch (e) {
-            console.error(e);
-        }
+        // try {
+        //
+        //     const response = await axios.post('http://localhost:8083/users/pageadmin', {
+        //         username: data.username,
+        //         password: data.password,
+        //         email: data.email,
+        //         profilename: data.profilename,
+        //     });
+        //     // We krijgen een object terug
+        //     console.log('object uit de backend teruggekregen na inloggen', response);
+        //
+        //
+        //
+        // } catch (e) {
+        //     console.error(e);
+        // }
     }
 
 

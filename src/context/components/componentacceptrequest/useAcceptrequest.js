@@ -14,6 +14,9 @@ function UseCustomhook(url1,url2,url3,url4,url5, locationurl5, url6, url7, locat
         const source = cancelToken.source();
 
 
+        // const controller = new AbortController();
+        // const signal = controller.signal;
+
         async function clickHandleraccept() {
 
 
@@ -101,10 +104,13 @@ function UseCustomhook(url1,url2,url3,url4,url5, locationurl5, url6, url7, locat
                         password: data2.password,
                         email: data2.email,
                         profilename: data2.profilename,
-                    });
+                    }
+
+                    );
                     // We krijgen een object terug
                     console.log('object uit de backend teruggekregen na inloggen', response);
                     setData(response);
+
 
                 }
 
@@ -148,6 +154,8 @@ function UseCustomhook(url1,url2,url3,url4,url5, locationurl5, url6, url7, locat
         return () => {
             source.cancel("axios request cancelled");
         };
+        // return () => {controller.abort();};
+
     }, [])
 
 

@@ -9,26 +9,26 @@ import useAcceptrequest from "../../context/components/componentacceptrequest/us
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import {Link, Redirect, useHistory} from "react-router-dom";
 
-function Createnormalpage() {
+function Createcelebritypage() {
 
     const {profiledatasubmitted} = useContext(ProfileContext);
-    ;
 
-console.log(profiledatasubmitted);
 
-   const response = useAcceptrequest(null,null,null,null,null,null,'http://localhost:8083/users/normal',null,null,null,null,profiledatasubmitted,null)
+    console.log(profiledatasubmitted);
+
+    const response = useAcceptrequest(null,null,null,null,null,null,'http://localhost:8083/users/celebrity',null,null,null,null,profiledatasubmitted,null)
 
     console.log(response);
 
 
     return  (
         <div>
-            <Link to={`/`}>
-                <h2 className="p-intro"> Click here to return to Home page to login and start!</h2>
-            </Link>
+        <Link to={`/`}>
+            <h2 className="p-intro"> Click here to return to Home page to login and start!</h2>
+        </Link>
 
-        </div>
+    </div>
     );
 }
 
-export default Createnormalpage;
+export default Createcelebritypage;

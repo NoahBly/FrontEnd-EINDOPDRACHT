@@ -49,6 +49,8 @@ import Postfileupload2 from "./pages/postfileupload/Postfileupload2";
 import Createcommentpage from "./pages/createcommentpage/Createcommentpage2";
 import Createpostpage from "./pages/createpostpage/Createpostpage";
 import Createnormalpage from "./pages/createnormaluserpage/Createnormalpage";
+import Createcelebritypage from "./pages/createcelebuserpage/Createcelebritypage";
+import Createpageadminpage2 from "./pages/createpageadminpage/Createpageadminpage2";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -70,18 +72,28 @@ function App() {
             </Route>
 
             <Route exact path="/createnormalpage/upload/data">
-                < Createnormalpage/>
+                <Createnormalpage/>
             </Route>
 
             <Route exact path="/createcelebrityuserpage">
                 <Createcelebrityuserpage />
             </Route>
+
+            <Route exact path="/createcelebritypage/upload/data">
+                <Createcelebritypage />
+            </Route>
+
             <Route exact path="/createpageadminuserpage">
                 <Createpageadminpage />
             </Route>
 
 
-          <Route path="/login">
+            <Route exact path="/createpageadminpage/upload/data">
+                <Createpageadminpage2 />
+            </Route>
+
+
+            <Route path="/login">
             <Login />
           </Route>
           {/*<Route path="/profile">*/}
