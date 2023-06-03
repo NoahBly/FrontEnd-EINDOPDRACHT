@@ -12,7 +12,7 @@ import {Link, Redirect, useHistory} from "react-router-dom";
 function Createpageadminpage2() {
 
     const {profiledatasubmitted} = useContext(ProfileContext);
-    ;
+
 
     console.log(profiledatasubmitted);
 

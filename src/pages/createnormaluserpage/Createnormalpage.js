@@ -12,7 +12,7 @@ import {Link, Redirect, useHistory} from "react-router-dom";
 function Createnormalpage() {
 
     const {profiledatasubmitted} = useContext(ProfileContext);
-    ;
+
 
 console.log(profiledatasubmitted);
 
