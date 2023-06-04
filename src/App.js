@@ -51,6 +51,7 @@ import Createpostpage from "./pages/createpostpage/Createpostpage";
 import Createnormalpage from "./pages/createnormaluserpage/Createnormalpage";
 import Createcelebritypage from "./pages/createcelebuserpage/Createcelebritypage";
 import Createpageadminpage2 from "./pages/createpageadminpage/Createpageadminpage2";
+import Createcommentvisitedprofilepage from "./pages/createcommentvisitedprofilepage/Createcommentvisitedprofilepage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -391,6 +392,10 @@ function App() {
                 page={<Createpostpage/>}
             />
 
+            <Privateroutercomponent
+                path={"/commentadding/visitedpage"}
+                page={<Createcommentvisitedprofilepage/>}
+            />
 
 
 

@@ -11,35 +11,42 @@ import InputComponent from "../../context/components/componentinput/InputCompone
 function Createpost() {
     const {post2Id} = useParams();
     const { isAuthenticated,userDetails,currenttoken } = useContext(AuthContext);
-    const {visitedpostidcurrent,} = useContext(ProfileContext);
+    const {visitedpostidcurrent,setCommentData2} = useContext(ProfileContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
+
     const history = useHistory();
 
     const profileidmaker = userDetails.profile.id;
     const postidcurrent2 = visitedpostidcurrent;
 
     async function clickHandler(data,profileidcurrent,postidcurrent) {
+
         // Verstuur de inloggegevens via een post-request naar de backend
+        console.log(data);
+        setCommentData2(data);
+        history.push("/commentadding/visitedpage");
 
-        try {
-
-            const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidmaker}`, {
-                comment: data.comment,
-            },{
-                headers: {
-                    "Content-Type": "application/json",
-                        Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
-                }});
-            // We krijgen een object terug
-            console.log('object uit de backend teruggekregen na posten', response);
-            history.push(`/searchresultsposts/profile/${postidcurrent2}`);
-
-
-        } catch (e) {
-            console.error(e);
-        }
+        // Verstuur de inloggegevens via een post-request naar de backend
+        //
+        // try {
+        //
+        //     const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidmaker}`, {
+        //         comment: data.comment,
+        //     },{
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //                 Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+        //         }});
+        //     // We krijgen een object terug
+        //     console.log('object uit de backend teruggekregen na posten', response);
+        //     history.push(`/searchresultsposts/profile/${postidcurrent2}`);
+        //
+        //
+        // } catch (e) {
+        //     console.error(e);
+        // }
     }
 
 

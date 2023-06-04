@@ -26,6 +26,7 @@ function ProfileContextProvider({ children }) {
     const [linkkey, setLinkkey] = useState();
     const [linkkey2, setLinkkey2] = useState();
     const [datacomment, setDatacomment] = useState({});
+    const [datacomment2, setDatacomment2] = useState({});
     const [datapost, setDatapost] = useState({});
     const [datasubmittedprofile, setDatasubmittedprofile] = useState({});
 
@@ -79,7 +80,9 @@ function ProfileContextProvider({ children }) {
     function arrangedatasubmitprofile(data){
         setDatasubmittedprofile(data);
     }
-
+    function arrangedatacomment2(data){
+        setDatacomment2(data);
+    }
 
 
     const contextData = {
@@ -108,7 +111,9 @@ function ProfileContextProvider({ children }) {
         postdata: datapost,
         setPostData: arrangedatapost,
         profiledatasubmitted: datasubmittedprofile,
-        setDataSubmitProfile: arrangedatasubmitprofile
+        setDataSubmitProfile: arrangedatasubmitprofile,
+        commentdata2: datacomment2,
+        setCommentData2: setDatacomment2
     };
 
     return (
