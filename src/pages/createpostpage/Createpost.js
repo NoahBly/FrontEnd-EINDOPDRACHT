@@ -14,7 +14,7 @@ function Createpost() {
         mode: 'onChange',
     });
     const history = useHistory();
-    const {setPostData} = useContext(ProfileContext);
+    const {setPostData,setPostidfunction} = useContext(ProfileContext);
 
     const profileidcurrent2 = userDetails.profile.id;
 
@@ -23,27 +23,26 @@ function Createpost() {
     async function clickHandler(data) {
         // Verstuur de inloggegevens via een post-request naar de backend
         console.log(data);
-        setPostData(data);
-        history.push("/postadd/page");
 
-        // try {
-        //
-        //     const response = await axios.post(`http://localhost:8083/posts/${profileidcurrent2}`, {
-        //         name: data.postname,
-        //     },{
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
-        //         }});
-        //     // We krijgen een object terug
-        //     console.log('object uit de backend teruggekregen na posten', response);
-        //     setPostidfunction(response.data);
-        //     history.push("/postfile/create");
-        //
-        //
-        // } catch (e) {
-        //     console.error(e);
-        // }
+
+        try {
+
+            const response = await axios.post(`http://localhost:8083/posts/${profileidcurrent2}`, {
+                name: data.postname,
+            },{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
+                }});
+            // We krijgen een object terug
+            console.log('object uit de backend teruggekregen na posten', response);
+            setPostidfunction(response.data);
+            history.push("/postfile/create");
+
+
+        } catch (e) {
+            console.error(e);
+        }
     }
 
 

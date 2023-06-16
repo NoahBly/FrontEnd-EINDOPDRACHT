@@ -4,7 +4,7 @@ import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {Link} from "react-router-dom";
 import "../profilepage/profilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import Postscomponent from "../../context/components/componentpost/Postscomponent";
+import Posts from "../../context/components/componentpost/Postscomponent";
 import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
 import { v4 as uuidV4 } from "uuid";
 

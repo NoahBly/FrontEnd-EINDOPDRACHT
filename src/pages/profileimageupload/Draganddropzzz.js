@@ -85,6 +85,8 @@ function Draganddropzzz() {
 
 
     return(
+        <>
+        <h1>Start your upload</h1>
         <form onSubmit={handleSubmit(HandleSubmit)}>
             <input {...register('file', { required: true })} onChange={HandleChange} type="file"  name="file"/>
 
@@ -102,6 +104,7 @@ function Draganddropzzz() {
             <button type="submit">Submit</button>
 
         </form>
+        </>
     );
 
 

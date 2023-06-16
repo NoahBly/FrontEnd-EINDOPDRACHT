@@ -67,7 +67,7 @@ function Postfileupload2() {
 
     return(
         <>
-        <h1>Upload Image or video for your post!</h1>
+        <h1>Start your upload</h1>
         <form onSubmit={handleSubmit(HandleSubmit)}>
             <input {...register('file', { required: true })} onChange={HandleChange} type="file"  name="file"/>
 
