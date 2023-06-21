@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../context/authenticationcontext/AuthContext";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import axios from "axios";
 import useFileUpload from "../../context/components/componentFileUpload/useFileUpload";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
@@ -11,6 +11,8 @@ import InputElement from "../../context/components/componentinput/InputComponent
 
 function Draganddropzzz() {
     const {register,handleSubmit} = useForm();
+    const {url} = useParams();
+    console.log(url);
 
 
     const {profileidcurrent,setUploadfilecontext,linkkeypathProfimage} = useContext(ProfileContext);
@@ -40,8 +42,15 @@ function Draganddropzzz() {
 
     function HandleSubmit() {
             console.log(linkkeypathProfimage);
-            history.push("/profileimageadd/page");
-
+            if(url === "profileimageadd" ) {
+                history.push(`/profileimageadd/page`);
+            }else if (url === "postfileadd" ) {
+                history.push(`/postfileadd/page`);
+            }
+            // history.push(`${url}/page`);
+        //     history.push(`/profileimageadd/page`);
+        // history.push(`/postfileadd/page`);
+        console.log(url);
     }
 
 

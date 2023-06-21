@@ -119,10 +119,10 @@ function App() {
             {/*    {isAuthenticated ? <Postfileupload /> : <Redirect to="/" />}*/}
             {/*</Route>*/}
 
-            <Privateroutercomponent
-                path={"/postfile/create"}
-                page={<Postfileupload2 />}
-                />
+            {/*<Privateroutercomponent*/}
+            {/*    path={"/postfile/create/:"}*/}
+            {/*    page={<Postfileupload2 />}*/}
+            {/*    />*/}
 
 
             {/*<Route path="/post/:postId">*/}
@@ -308,7 +308,7 @@ function App() {
             {/*</Route>*/}
 
             <Privateroutercomponent
-                path={"/profileimage/add"}
+                path={"/profileimage/add/:url"}
                 page={<Draganddropzzz />}
                 />
 

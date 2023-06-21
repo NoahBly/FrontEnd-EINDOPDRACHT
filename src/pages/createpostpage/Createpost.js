@@ -19,6 +19,7 @@ function Createpost() {
     const profileidcurrent2 = userDetails.profile.id;
 
     const currenttoken= localStorage.getItem("token");
+    const path = "postfileadd/page";
 
     async function clickHandler(data) {
         // Verstuur de inloggegevens via een post-request naar de backend
@@ -37,7 +38,8 @@ function Createpost() {
             // We krijgen een object terug
             console.log('object uit de backend teruggekregen na posten', response);
             setPostidfunction(response.data);
-            history.push("/postfile/create");
+            // history.push("/postfile/create");
+            history.push(`/profileimage/add/${path}`);
 
 
         } catch (e) {

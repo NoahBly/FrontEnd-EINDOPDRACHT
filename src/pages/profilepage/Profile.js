@@ -12,7 +12,7 @@ function Profile() {
     const [profile, setProfile] = useState({});
     const {setProfilepostsfunction,setProfileidfunction,profileidcurrent,makeLinkkeyProfimage,makeLinkkeyPostfile} = useContext(ProfileContext);
     const {userDetails} = useContext(AuthContext);
-
+    const path = "profileimageadd/page";
 
     const[graphicimageBlob, setGraphicimageBlob] = useState(null);
     const currenttoken = localStorage.getItem("token");
@@ -90,7 +90,7 @@ console.log('profile:', profile)
                     src={graphicimageBlob.src}
                     className="image-post"
                 /> }
-                <Link to={`/profileimage/add`} onClick={() => makeLinkkeyProfimage(uuidV4())}> <p>Add profileimage!</p></Link>
+                <Link to={`/profileimage/add/${path}`} onClick={() => makeLinkkeyProfimage(uuidV4())}> <p>Add profileimage!</p></Link>
                 <p className="p-intro"><strong>Friendlist: </strong>{profile.friendlist && <p>{profile.friendlist.length}</p>}</p>
                 <p className="p-intro"><strong>Followerslist: </strong>{profile.followerslist && <p>{profile.followerslist.length}</p>}</p>
                 <p className="p-intro"><strong>Followingslist: </strong>{profile.followinglist && <p>{profile.followinglist.length}</p>}</p>
