@@ -7,7 +7,7 @@ import ButtonComponent from "../../context/components/componentbutton/ButtonComp
 import InputComponent from "../../context/components/componentinput/InputComponent";
 import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 function Createnormaluserpage() {
     const { isAuthenticated} = useContext(AuthContext);
@@ -16,13 +16,21 @@ function Createnormaluserpage() {
     });
     const { setDataSubmitProfile,profiledatasubmitted} = useContext(ProfileContext);
     const history = useHistory();
-
+    const {urlcreate} = useParams();
 
    async  function clickHandler(data) {
 
     console.log(data);
     setDataSubmitProfile(data);
-    history.push("/createnormalpage/upload/data");
+    if(urlcreate === "normalusercreate") {
+        history.push("/createnormalpage/upload/data");
+    }
+    if(urlcreate === "celebrityusercreate"){
+        history.push("/createcelebritypage/upload/data");
+    }
+    if(urlcreate === "pageadminusercreate"){
+       history.push("/createpageadminpage/upload/data");
+    }
              // Verstuur de inloggegevens via een post-request naar de backend
         // try {
         //
@@ -41,7 +49,7 @@ function Createnormaluserpage() {
         //     console.error(e);
         // }
      }
-    // const profile = useAcceptrequest(null,null,null,null,null,null,null,null,null,'http://localhost:8083/users/normal',data)
+
 
     return (
         <div className="outer-container">

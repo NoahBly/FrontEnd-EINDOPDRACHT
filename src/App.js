@@ -68,7 +68,7 @@ function App() {
             <Home />
           </Route>
 
-            <Route exact path="/createnormaluserpage">
+            <Route exact path="/createuserpage/:urlcreate">
                 <Createnormaluserpage />
             </Route>
 
