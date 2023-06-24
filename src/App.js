@@ -140,7 +140,7 @@ function App() {
             {/*</Route>*/}
 
             <Privateroutercomponent
-                path={"/comment/create"}
+                path={"/comment/create/:commentpath"}
                 page={<Createcomment />}
                 />
 

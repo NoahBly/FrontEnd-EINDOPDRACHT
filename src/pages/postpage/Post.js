@@ -18,6 +18,7 @@ function Post() {
     const [graphicimageBlob, setGraphicimageBlob] = useState(null);
     const [graphicvideoBlob, setGraphicvideoBlob] = useState(null);
     const currenttoken = localStorage.getItem("token");
+    const path = "commentown/page"
 
     useEffect(() => {
 
@@ -115,7 +116,7 @@ function Post() {
                     width="750" height="500" controls >
                     <source src={graphicvideoBlob} type="video/mp4"/>
                 </video>}
-                <Link to={`/comment/create`}> <p>voeg comment toe!</p> </Link>
+                <Link to={`/comment/create/${path}`}> <p>voeg comment toe!</p> </Link>
                 <p><strong>Comments: </strong></p>
                 {post.comments &&
                     <ul className="article-section-2">

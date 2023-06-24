@@ -9,21 +9,28 @@ import ButtonComponent from "../../context/components/componentbutton/ButtonComp
 import InputComponent from "../../context/components/componentinput/InputComponent";
 import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
 
-function Createpost() {
+function Createcomment() {
     const {postId} = useParams();
     const { isAuthenticated,userDetails } = useContext(AuthContext);
-    const {postidcurrent,setCommentData} = useContext(ProfileContext);
+    const {postidcurrent,setCommentData,setCommentData2} = useContext(ProfileContext);
     const { register, formState: { errors }, handleSubmit} = useForm({
         mode: 'onChange',
     });
     const history = useHistory();
-
+    const {commentpath} = useParams();
 
     async function clickHandler(data) {
         // Verstuur de inloggegevens via een post-request naar de backend
         console.log(data);
-        setCommentData(data);
-        history.push("/commentadd/page");
+        if(commentpath === "commentown"){
+            setCommentData(data);
+            history.push("/commentadd/page");
+        }
+        if(commentpath === "commentvisited") {
+            setCommentData2(data);
+            history.push("/commentadding/visitedpage");
+        }
+
 
         // try {
         //
@@ -77,4 +84,4 @@ function Createpost() {
     );
 }
 
-export default Createpost;
+export default Createcomment;

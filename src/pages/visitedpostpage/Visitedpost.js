@@ -21,6 +21,8 @@ function Visitedpost() {
     const [graphicimageBlob, setGraphicimageBlob] = useState();
     const [graphicvideoBlob,setGraphicvideoBlob] = useState();
     const token = localStorage.getItem("token");
+    const path = "commentvisited/page"
+
     useEffect(() => {
 
         console.log(post2Id);
@@ -120,7 +122,7 @@ function Visitedpost() {
                     width="750" height="500" controls >
                     <source src={graphicvideoBlob} type="video/mp4"/>
                 </video>}
-                <Link to={`/commentvisitedprofile/create`}> <p>voeg comment toe!</p> </Link>
+                <Link to={`/comment/create/${path}`}> <p>voeg comment toe!</p> </Link>
 
                 <p><strong>Comments: </strong></p>
                 {visitedpost.comments &&
