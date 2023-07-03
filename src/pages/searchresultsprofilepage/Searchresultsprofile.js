@@ -4,7 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import "../searchresultsprofilepage/searchresultsprofilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import Lists from "../../context/components/componentlist/ListsComponent";
 
 function Searchresultsprofile() {
     const {profile2Id} = useParams();
@@ -204,7 +204,7 @@ function Searchresultsprofile() {
                                 {profilevisited.posts.map((post) => {
                                     return (
 
-                                        <CommentsComponent
+                                        <Lists
                                             post={post}
                                             key={`${post.id}-${post.name}`}
                                             classname ={"h1-intro"}

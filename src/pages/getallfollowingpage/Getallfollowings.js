@@ -3,10 +3,8 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfollowingpage/getallfollowingpagestyle.css"
-import {clickHandler} from "../../context/components/componentgetList/useGetlist";
-import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
+import Lists from "../../context/components/componentlist/ListsComponent";
 
 function Getallfollowings() {
 
@@ -31,13 +29,13 @@ function Getallfollowings() {
             {followings.length > 0 && <ul className="article-section-2">
                 {followings.map((following) => {
                     return (
-                        <CommentsComponent
+                        <Lists
                             key={`${following.id}-${following.friend.name}`}
                             profile={following}
                             url1={`/followingslistremove/following/${following.id}`}
                         >
                             Delete as friend
-                        </CommentsComponent>
+                        </Lists>
                     )
                 })}
             </ul>

@@ -5,8 +5,7 @@ import "../visitedpostpage/visiteedpoststyle.css"
 
 import axios from "axios";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import Comments from "../../context/components/componentcomments/CommentsComponent";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import Lists from "../../context/components/componentlist/ListsComponent";
 
 function Visitedpost() {
     const { post2Id } = useParams();
@@ -131,7 +130,7 @@ function Visitedpost() {
                             return (
 
 
-                            <CommentsComponent
+                            <Lists
                                 comment={comment}
                                 profilecurrent={profileidcurrent}
                                 profileid={comment.post.profile.id}
@@ -140,7 +139,7 @@ function Visitedpost() {
                                 url1={`/commentdelete/delete/${comment.id}`}
                             >
                                 delete this comment
-                            </CommentsComponent>
+                            </Lists>
 
 
                             )

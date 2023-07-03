@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import "../createnormaluserpage/createnormaluserstyle.css"
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 import InputComponent from "../../context/components/componentinput/InputComponent";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import {useHistory, useParams} from "react-router-dom";
 

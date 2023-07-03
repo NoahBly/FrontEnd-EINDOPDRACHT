@@ -4,9 +4,8 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../deletepostpage/deletepoststyle.css"
-import {clickHandlerdelete} from "../../context/components/componentdeleterequest/useDeleterequest";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
 
 
 function Deletepost() {

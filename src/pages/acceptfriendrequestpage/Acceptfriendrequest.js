@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../acceptfriendrequestpage/acceptfriendrequeststyle.css"
-import useAcceptrequest, {clickHandleraccept} from "../../context/components/componentacceptrequest/useAcceptrequest";
+import useAcceptrequest, {clickHandleraccept} from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
 
 
 

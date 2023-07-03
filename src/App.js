@@ -14,7 +14,6 @@ import Visitedpost from "./pages/visitedpostpage/Visitedpost";
 import Createnormaluserpage from "./pages/createnormaluserpage/Createnormaluserpage";
 import Createpost from "./pages/createpostpage/Createpost";
 import Createcomment from "./pages/createcommentpage/Createcomment";
-import Createcommentvisitedprofile from "./pages/createcommentvisitedprofilepage/Createcommentvisitedprofile";
 import Createfriendrequest from "./pages/createfriendrequestpage/Createfriendrequest";
 import Getallfriendrequests from "./pages/getallfriendrequestspage/Getallfriendrequests";
 import Acceptfriendrequest from "./pages/acceptfriendrequestpage/Acceptfriendrequest";
@@ -31,7 +30,6 @@ import Deletefollowing from "./pages/deletefollowingpage/Deletefollowing";
 
 
 import Draganddropzzz from "./pages/profileimageupload/Draganddropzzz";
-import Postfileupload from "./pages/postfileupload/Postfileupload2";
 import DeleteAccount from "./pages/deleteaccountpage/DeleteAccount";
 import Settings from "./pages/settingspage/Settings";
 import Deletepost from "./pages/deletepostpage/Deletepost";
@@ -45,7 +43,6 @@ import Deletefollowrequest from "./pages/deletefollowrequestpage/Deletefollowreq
 import Privateroutercomponent from "./context/components/componentPrivaterouter/Privateroutercomponent";
 import ProfileImageupload from "./pages/profileimageupload/ProfileImageupload";
 import PostFileupload22 from "./pages/postfileupload/PostFileupload2.2";
-import Postfileupload2 from "./pages/postfileupload/Postfileupload2";
 import Createcommentpage from "./pages/createcommentpage/Createcommentpage2";
 import Createpostpage from "./pages/createpostpage/Createpostpage";
 import Createnormalpage from "./pages/createnormaluserpage/Createnormalpage";
@@ -97,37 +94,22 @@ function App() {
             <Route path="/login">
             <Login />
           </Route>
-          {/*<Route path="/profile">*/}
-          {/*  {isAuthenticated ? <Profile /> : <Redirect to="/" />}*/}
-          {/*</Route>*/}
+
             <Privateroutercomponent
                 path={"/profile"}
                 page={<Profile />}
                 />
 
 
-            {/*<Route path="/post/create">*/}
-            {/*    {isAuthenticated ? <Createpost /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/post/create"}
                 page={<Createpost />}
             />
 
-            {/*<Route path="/postfile/create">*/}
-            {/*    {isAuthenticated ? <Postfileupload /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
-
-            {/*<Privateroutercomponent*/}
-            {/*    path={"/postfile/create/:"}*/}
-            {/*    page={<Postfileupload2 />}*/}
-            {/*    />*/}
 
 
-            {/*<Route path="/post/:postId">*/}
-            {/*    {isAuthenticated ? <Post /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
 
             <Privateroutercomponent
                 path={"/post/:postId"}
@@ -135,9 +117,7 @@ function App() {
                 />
 
 
-            {/*<Route path="/comment/create">*/}
-            {/*    {isAuthenticated ? <Createcomment /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/comment/create/:commentpath"}
@@ -173,30 +153,13 @@ function App() {
                 />
 
 
-
-            {/*<Route path="/commentvisitedprofile/create">*/}
-            {/*    {isAuthenticated ? <Createcommentvisitedprofile /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
-
-            <Privateroutercomponent
-                path={"/commentvisitedprofile/create"}
-                page={<Createcommentvisitedprofile />}
-                />
-
-
-            {/*<Route path="/createfriendrequest/create">*/}
-            {/*    {isAuthenticated ? <Createfriendrequest /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
-
             <Privateroutercomponent
                 path={"/createfriendrequest/create"}
                 page={<Createfriendrequest />}
                 />
 
 
-            {/*<Route path="/friendrequests/profile">*/}
-            {/*    {isAuthenticated ? <Getallfriendrequests /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
 
             <Privateroutercomponent
@@ -205,9 +168,6 @@ function App() {
                 />
 
 
-            {/*<Route path="/friendrequestaccept/:friendrequestId">*/}
-            {/*    {isAuthenticated ? <Acceptfriendrequest /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
 
             <Privateroutercomponent
                 path={"/friendrequestaccept/:friendrequestId"}
@@ -216,9 +176,7 @@ function App() {
 
 
 
-            {/*<Route path="/createfollowrequest/create">*/}
-            {/*    {isAuthenticated ? <Createfollowrequest /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
 
             <Privateroutercomponent
@@ -226,9 +184,7 @@ function App() {
                 page={<Createfollowrequest />}
                 />
 
-            {/*<Route path="/followrequests/profile">*/}
-            {/*    {isAuthenticated ? <Getallfollowrequests /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/followrequests/profile"}
@@ -236,9 +192,7 @@ function App() {
                 />
 
 
-            {/*<Route path="/followrequestaccept/:followrequestId">*/}
-            {/*    {isAuthenticated ? <Acceptfollowrequest /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/followrequestaccept/:followrequestId"}
@@ -246,9 +200,7 @@ function App() {
                 />
 
 
-            {/*<Route path="/friendlist/profile">*/}
-            {/*    {isAuthenticated ? <Getallfriends /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
 
             <Privateroutercomponent
@@ -256,18 +208,14 @@ function App() {
                 page={<Getallfriends />}
                 />
 
-            {/*<Route path="/friendlistremove/friend/:friendId">*/}
-            {/*    {isAuthenticated ? <Deletefriend /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/friendlistremove/friend/:friendId"}
                 page={<Deletefriend />}
                 />
 
-            {/*<Route path="/followerslist/profile">*/}
-            {/*    {isAuthenticated ? <Getallfollowers /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
 
             <Privateroutercomponent
@@ -275,9 +223,7 @@ function App() {
                 page={ <Getallfollowers />}
                 />
 
-            {/*<Route path="/followerslistremove/follower/:followerId">*/}
-            {/*    {isAuthenticated ? <Deletefollower /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
 
             <Privateroutercomponent
@@ -285,90 +231,68 @@ function App() {
                 page={<Deletefollower />}
                 />
 
-            {/*<Route path="/followingslist/profile">*/}
-            {/*    {isAuthenticated ? <Getallfollowings /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/followingslist/profile"}
                 page={<Getallfollowings /> }
                 />
 
-            {/*<Route path="/followingslistremove/following/:followingId">*/}
-            {/*    {isAuthenticated ? <Deletefollowing /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/followingslistremove/following/:followingId"}
                 page={<Deletefollowing />}
                 />
 
-            {/*<Route path="/profileimage/add">*/}
-            {/*    {isAuthenticated ? <Draganddropzzz /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/profileimage/add/:url"}
                 page={<Draganddropzzz />}
                 />
 
-            {/*<Route path="/userprofileaccount/delete">*/}
-            {/*    {isAuthenticated ? <DeleteAccount /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/userprofileaccount/delete"}
                 page={ <DeleteAccount />}
                 />
 
-            {/*<Route path="/userprofile/settings">*/}
-            {/*    {isAuthenticated ? <Settings /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/userprofile/settings"}
                 page={<Settings />}
                 />
 
-            {/*<Route path="/postsdelete/delete">*/}
-            {/*    {isAuthenticated ? <Deletepost /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/postsdelete/delete"}
                 page={<Deletepost />}
                 />
 
-            {/*<Route path="/commentdelete/delete/:commentId">*/}
-            {/*    {isAuthenticated ? <Deletecomment /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/commentdelete/delete/:commentId"}
                 page={<Deletecomment />}
                 />
 
-            {/*<Route path="/profilebio/update/">*/}
-            {/*    {isAuthenticated ? <Updatebiopage /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
+
 
             <Privateroutercomponent
                 path={"/profilebio/update/"}
                 page={<Updatebiopage />}
                 />
 
-            {/*<Route path="/friendrequestdelete/:friendrequestId">*/}
-            {/*    {isAuthenticated ? <Deletefriendrequest /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
 
             <Privateroutercomponent
                 path={"/friendrequestdelete/:friendrequestId"}
                 page={<Deletefriendrequest />}
                 />
 
-            {/*<Route path="/followrequestdelete/:followrequestId">*/}
-            {/*    {isAuthenticated ? <Deletefollowrequest /> : <Redirect to="/" />}*/}
-            {/*</Route>*/}
 
             <Privateroutercomponent
                 path={"/followrequestdelete/:followrequestId"}

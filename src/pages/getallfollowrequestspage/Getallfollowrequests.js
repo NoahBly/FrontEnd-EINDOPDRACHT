@@ -3,10 +3,8 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfollowrequestspage/getallfollowrequestsstyle.css"
-import {clickHandler} from "../../context/components/componentgetList/useGetlist";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
-import Request from "../../context/components/componentgetrequest/componentListRequest";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
+import Lists from "../../context/components/componentlist/ListsComponent";
 
 function Getallfollowrequests() {
 
@@ -36,7 +34,7 @@ console.log(followrequests);
                         return (
 
 
-                            <CommentsComponent
+                            <Lists
                                 key={`${followrequest.id}-${followrequest.maker.name}`}
                                 setTest={setTest}
                                 test={test}
@@ -46,7 +44,7 @@ console.log(followrequests);
                             >
                                 Delete followrequest from
 
-                            </CommentsComponent>
+                            </Lists>
 
 
                         )

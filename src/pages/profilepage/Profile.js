@@ -4,8 +4,7 @@ import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {Link} from "react-router-dom";
 import "../profilepage/profilestyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import Posts from "../../context/components/componentpost/Postscomponent";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import Lists from "../../context/components/componentlist/ListsComponent";
 import { v4 as uuidV4 } from "uuid";
 
 function Profile() {
@@ -103,7 +102,7 @@ console.log('profile:', profile)
                         {profile.posts.map((post) => {
                             return (
 
-                                <CommentsComponent
+                                <Lists
                                 post={post}
                                 key={`${post.id}-${post.name}`}
                                 classname ={"h1-intro"}

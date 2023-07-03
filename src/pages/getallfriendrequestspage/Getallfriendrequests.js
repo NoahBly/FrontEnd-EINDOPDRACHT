@@ -3,10 +3,8 @@ import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import "../getallfriendrequestspage/getallfriendrequestsstyle.css"
-import {clickHandler} from "../../context/components/componentgetList/useGetlist";
-import Request from "../../context/components/componentgetrequest/componentListRequest";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
+import Lists from "../../context/components/componentlist/ListsComponent";
 
 function Getallfriendrequests() {
 
@@ -39,7 +37,7 @@ function Getallfriendrequests() {
                     {friendrequests.map((friendrequest) => {
                         return (
 
-                            <CommentsComponent
+                            <Lists
                             key={`${friendrequest.id}-${friendrequest.maker.name}`}
                             setTest={setTest}
                             test={test}
@@ -49,7 +47,7 @@ function Getallfriendrequests() {
                             >
                                 Delete friendrequest from
 
-                            </CommentsComponent>
+                            </Lists>
 
                         )
                     })}

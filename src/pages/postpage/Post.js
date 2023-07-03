@@ -4,8 +4,7 @@ import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import axios from "axios";
 import "../postpage/poststyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import Comments from "../../context/components/componentcomments/CommentsComponent";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
+import Lists from "../../context/components/componentlist/ListsComponent";
 
 function Post() {
     const { postId } = useParams();
@@ -124,7 +123,7 @@ function Post() {
                            console.log(comment);
                             return (
 
-                                <CommentsComponent
+                                <Lists
                                 comment={comment}
                                 profilecurrent={profileidcurrent}
                                 commentmaker={comment.commentmaker.id}
@@ -133,7 +132,7 @@ function Post() {
                                 url1={`/commentdelete/delete/${comment.id}`}
                                 >
                                     delete this comment
-</CommentsComponent>
+</Lists>
 
                             )
                         })}

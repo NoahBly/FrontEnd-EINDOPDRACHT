@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import React from "react";
 
-function Comments ({comment,request,profile, post, children, commentmaker, profileid,profilecurrent, url1,url2,setTest,test}) {
+function Lists ({comment,request,profile, post, children, commentmaker, profileid,profilecurrent, url1,url2,setTest,test}) {
     return (
 <li >
     {comment &&
@@ -54,4 +54,4 @@ function Comments ({comment,request,profile, post, children, commentmaker, profi
 
 
 
-export default Comments;
+export default Lists;

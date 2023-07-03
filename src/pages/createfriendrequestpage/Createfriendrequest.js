@@ -2,10 +2,9 @@ import React, {useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 import {Link, useHistory, useParams} from "react-router-dom";
 import "../createfriendrequestpage/createfriendrequeststyle.css"
-import useCreaterequest, {clickHandlerCreate} from "../../context/components/componentcreaterequest/useCreaterequest";
 
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
 
 
 function Createfriendrequest() {

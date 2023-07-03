@@ -7,7 +7,7 @@ import "../createcommentpage/createcommentstyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 import InputComponent from "../../context/components/componentinput/InputComponent";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
 
 function Createcommentvisitedprofilepage() {
     const {postId} = useParams();

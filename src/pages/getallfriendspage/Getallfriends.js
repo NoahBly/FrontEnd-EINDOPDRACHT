@@ -2,10 +2,8 @@ import React, {useContext, useState,useEffect} from 'react';
 import { AuthContext } from '../../context/authenticationcontext/AuthContext';
 
 import "../getallfriendspage/getallfriendsstyle.css"
-import {clickHandler} from "../../context/components/componentgetList/useGetlist";
-import List from "../../context/components/componentgetfriendfollowerfollowing/componentGetlist";
-import CommentsComponent from "../../context/components/componentcomments/CommentsComponent";
-import useAcceptrequest from "../../context/components/componentacceptrequest/useAcceptrequest";
+import Lists from "../../context/components/componentlist/ListsComponent";
+import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
 
 
 function Getallfriends() {
@@ -35,13 +33,13 @@ const friends = useAcceptrequest(null,null,null,`http://localhost:8083/friendreq
                 {friends.map((friend ) => {
                     return (
 
-                        <CommentsComponent
+                        <Lists
                         key={`${friend.id}-${friend.friend.name}`}
                         profile={friend}
                         url1={`/friendlistremove/friend/${friend.id}`}
                         >
                             Delete as friend
-                        </CommentsComponent>
+                        </Lists>
 
 
                     )

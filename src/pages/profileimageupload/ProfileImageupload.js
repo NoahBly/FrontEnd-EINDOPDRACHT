@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import useFileUpload from "../../context/components/componentFileUpload/useFileUpload";
+import useFileUpload from "../../context/components/CustomHookFileUpload/useFileUpload";
 
 
 
