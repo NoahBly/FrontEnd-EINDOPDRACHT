@@ -1,13 +1,7 @@
 import React, {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
-import {AuthContext} from "../../context/authenticationcontext/AuthContext";
 import {useHistory, useParams} from "react-router-dom";
-import axios from "axios";
-import useFileUpload from "../../context/components/CustomHookFileUpload/useFileUpload";
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
-import {upload} from "@testing-library/user-event/dist/upload";
-import InputComponent from "../../context/components/componentinput/InputComponent";
-import InputElement from "../../context/components/componentinput/InputComponent";
 
 function Draganddropzzz() {
     const {register,handleSubmit} = useForm();
@@ -21,16 +15,6 @@ function Draganddropzzz() {
     const token = localStorage.getItem("token");
     const profileidcurrent2 = profileidcurrent;
 
-    // const navigation = [
-    //     {
-    //         path: '"/profileimageadd/page"',
-    //         key: linkkeypathProfimage
-    //     },
-    //     {
-    //         path: '"/postfileadd/page"',
-    //         key: linkkeypathPostfile
-    //     },
-    // ];
 
     function HandleChange(e) {
         const upload = e.target.files[0];

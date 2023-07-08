@@ -11,7 +11,7 @@ import Post from "./pages/postpage/Post";
 import { AuthContext } from './context/authenticationcontext/AuthContext';
 import Searchresultsprofile from "./pages/searchresultsprofilepage/Searchresultsprofile";
 import Visitedpost from "./pages/visitedpostpage/Visitedpost";
-import Createnormaluserpage from "./pages/createnormaluserpage/Createnormaluserpage";
+import Createuserpage from "./pages/createnormaluserpage/Createuserpage";
 import Createpost from "./pages/createpostpage/Createpost";
 import Createcomment from "./pages/createcommentpage/Createcomment";
 import Createfriendrequest from "./pages/createfriendrequestpage/Createfriendrequest";
@@ -34,8 +34,6 @@ import DeleteAccount from "./pages/deleteaccountpage/DeleteAccount";
 import Settings from "./pages/settingspage/Settings";
 import Deletepost from "./pages/deletepostpage/Deletepost";
 import Deletecomment from "./pages/deletecommentpage/Deletecomment";
-import Createcelebrityuserpage from "./pages/createcelebuserpage/Createcelebrityuserpage";
-import Createpageadminpage from "./pages/createpageadminpage/Createpageadminpage";
 import Updatebiopage from "./pages/updatebiopage/Updatebiopage";
 import Navigationbar from "./context/components/navigationbar/Navigationbar";
 import Deletefriendrequest from "./pages/deletefriendrequestpage/Deletefriendrequest";
@@ -66,23 +64,16 @@ function App() {
           </Route>
 
             <Route exact path="/createuserpage/:urlcreate">
-                <Createnormaluserpage />
+                <Createuserpage />
             </Route>
 
             <Route exact path="/createnormalpage/upload/data">
                 <Createnormalpage/>
             </Route>
 
-            <Route exact path="/createcelebrityuserpage">
-                <Createcelebrityuserpage />
-            </Route>
 
             <Route exact path="/createcelebritypage/upload/data">
                 <Createcelebritypage />
-            </Route>
-
-            <Route exact path="/createpageadminuserpage">
-                <Createpageadminpage />
             </Route>
 
 

@@ -132,6 +132,7 @@ function Visitedpost() {
 
                             <Lists
                                 comment={comment}
+                                commentmaker={comment.commentmaker.id}
                                 profilecurrent={profileidcurrent}
                                 profileid={comment.post.profile.id}
                                 children={"delete this comment"}

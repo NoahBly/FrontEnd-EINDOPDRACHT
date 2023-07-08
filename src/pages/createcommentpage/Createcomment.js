@@ -7,7 +7,6 @@ import "../createcommentpage/createcommentstyle.css"
 import {ProfileContext} from "../../context/profilecontext/ProfileContext";
 import ButtonComponent from "../../context/components/componentbutton/ButtonComponent";
 import InputComponent from "../../context/components/componentinput/InputComponent";
-import useAcceptrequest from "../../context/components/CustomHookacceptrequest/useAcceptrequest";
 
 function Createcomment() {
     const {postId} = useParams();
@@ -31,24 +30,6 @@ function Createcomment() {
             history.push("/commentadding/visitedpage");
         }
 
-
-        // try {
-        //
-        //     const response = await axios.post(`http://localhost:8083/comments/post/${postidcurrent2}/profile/${profileidcurrent2}`, {
-        //         comment: data.comment,
-        //     },{
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Authorization: `Bearer ${currenttoken}`, // is hetzelfde als 'Bearer ' + token,
-        //         }});
-        //     // We krijgen een object terug
-        //     console.log('object uit de backend teruggekregen na posten', response);
-        //     history.push(`/post/${postidcurrent2}`);
-        //
-        //
-        // } catch (e) {
-        //     console.error(e);
-        // }
     }
 
 
